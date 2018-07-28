@@ -560,7 +560,7 @@ lookup clig_cleanup {
     sub v00 @hyphen_doubles' @hyphen_triples by v00;
     sub v00 @less_doubles' @less_triples by v00;        
     sub v00 [less_exclam less_asterisk]' v00 by v00;
-    sub v00 [slash_slash slash_equal slash_asterisk]' [slash_slash_slash slash_equal_equal slash_asterisk_asterisk] by v00; // trailing subst for clig_slash
+    sub v00 [slash_slash slash_equal slash_asterisk]' [slash_slash_slash slash_equal_equal slash_asterisk_asterisk] by v00; # trailing substitutions for clig_slash
 } clig_cleanup;
 
 feature clig {
