@@ -1,5 +1,5 @@
-languagesystem DFLT dflt;
-
+# v0.0.33 fixed :D and :P
+# v0.0.32 fixed =/= precedence
 # v0.0.31 fixed <|> and <|| precedence
 # v0.0.30 added final missing sustitutions, reordered lookups minimize precedence overrides
 # v0.0.25 fixed ==== //// <<<< bugs
@@ -13,7 +13,7 @@ languagesystem DFLT dflt;
 
 lookup drop_if_next_is {
     sub [exclam numbersign less percent equal underscore ampersand plus asterisk greater hyphen bar period
-         slash colon question asciitilde asciicircum backslash dollar at quotedbl bracketleft bracketright]' by v00;
+         slash colon question asciitilde asciicircum backslash dollar at quotedbl bracketleft bracketright D P]' by v00;
 } drop_if_next_is;
 
 #############################################################
@@ -437,12 +437,11 @@ lookup clig_bar {
 lookup clig_slash {
     ignore sub slash slash slash slash; # four slashes in a row are no-op
     ignore sub slash slash' slash; # further slashes are no-op
-    #ignore sub equal slash'; # precedence exception =/
+    ignore sub equal slash' equal; # precedence exception =/
     ignore sub hyphen less' bar; # precedence exception
     sub slash'          lookup drop_if_next_is @slash_heads'        lookup clig_slash_tails; # /* // /> /=
     sub v00 [slash_slash slash_equal slash_asterisk] [slash equal asterisk]' lookup clig_slash_tails_3; #  ///  /==  /**
 } clig_slash;
-
 
 
 lookup clig_hyphen {
@@ -647,9 +646,6 @@ lookup clig_cleanup {
 
 ######################################################################################################
 
-
-######################################################################################################
-
 feature calt {
     lookup clig_hyphen;         # sequences starting with -
     lookup clig_slash;          # sequences starting with /
@@ -678,4 +674,3 @@ feature calt {
     lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
     lookup clig_cleanup;        # replace artifacts with v00
 } calt;
-
