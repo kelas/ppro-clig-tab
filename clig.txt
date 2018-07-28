@@ -1,6 +1,7 @@
 languagesystem DFLT dflt;
 
-# v0.0.30 added final missing sustitutions, reordered lookups to minimize precedence overrides
+# v0.0.31 fixed <|> and <|| precedence
+# v0.0.30 added final missing sustitutions, reordered lookups minimize precedence overrides
 # v0.0.25 fixed ==== //// <<<< bugs
 # v0.0.20 performance improvements, added tag ligatures, fixed double/triple/series subs
 # v0.0.10 initial release
@@ -401,6 +402,24 @@ lookup clig_hyphen_tails_3 {
 
 #############################################################
 
+lookup clig_less {
+    ignore sub less less less less; # four lesses in a row are no-op
+    ignore sub less less' less; # further lesses are no-op
+    ignore sub [hyphen equal bar] less' less; # precedence exception
+	 ignore sub hyphen less' bar; # precedence exception
+    # <!-- <**>
+    # <<<  <<=  <<-  <<~  <<^  <<|
+    # <=<  <~~  <--  <|-  <||
+    #           <$>  <*>  <+>  <=>  <|>  <!>  <@>  <#>  <%>  <^>  <&>  <?>  <.>  </>  <\>  <">  <:>  <~>   <->   
+    # <<    <>  <$   <*   <+   <=   <|   <!   <@   <#   <%   <^   <&   <?   <.   </   <\   <"   <:   <~    <-  
+    sub less' lookup drop_if_next_is asciitilde' lookup drop_if_next_is less' lookup clig_less_tail_tilde_less; #  <~<
+    sub less' lookup drop_if_next_is exclam' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup clig_less_long_tails_hyp_gt; # <!--
+    sub less' lookup drop_if_next_is asterisk' lookup drop_if_next_is asterisk' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyp_gt; # <**>
+    sub less' lookup drop_if_next_is equal' lookup drop_if_next_is equal' lookup drop_if_next_is greater' lookup clig_less_long_tails_eq_gt; # <==>
+    sub less' lookup drop_if_next_is @less_heads' lookup clig_less_tails_2;
+    sub v00 @less_doubles [hyphen asterisk greater less equal asciitilde asciicircum bar]' lookup clig_less_tails_3;
+} clig_less;
+
 lookup clig_bar {
     ignore sub bar bar bar bar; # four pipes in a row are no-op
     ignore sub bar bar' bar; # further pipes are no-op
@@ -419,27 +438,12 @@ lookup clig_slash {
     ignore sub slash slash slash slash; # four slashes in a row are no-op
     ignore sub slash slash' slash; # further slashes are no-op
     #ignore sub equal slash'; # precedence exception =/
+    ignore sub hyphen less' bar; # precedence exception
     sub slash'          lookup drop_if_next_is @slash_heads'        lookup clig_slash_tails; # /* // /> /=
     sub v00 [slash_slash slash_equal slash_asterisk] [slash equal asterisk]' lookup clig_slash_tails_3; #  ///  /==  /**
 } clig_slash;
 
-lookup clig_less {
-    ignore sub less less less less; # four lesses in a row are no-op
-    ignore sub less less' less; # further lesses are no-op
-    ignore sub [hyphen equal bar] less' less; # precedence exception
-	 ignore sub hyphen less' bar; # precedence exception
-    # <!-- <**>
-    # <<<  <<=  <<-  <<~  <<^  <<|
-    # <=<  <~~  <--  <|-  <||
-    #           <$>  <*>  <+>  <=>  <|>  <!>  <@>  <#>  <%>  <^>  <&>  <?>  <.>  </>  <\>  <">  <:>  <~>   <->   
-    # <<    <>  <$   <*   <+   <=   <|   <!   <@   <#   <%   <^   <&   <?   <.   </   <\   <"   <:   <~    <-  
-    sub less' lookup drop_if_next_is asciitilde' lookup drop_if_next_is less' lookup clig_less_tail_tilde_less; #  <~<
-    sub less' lookup drop_if_next_is exclam' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup clig_less_long_tails_hyp_gt; # <!--
-    sub less' lookup drop_if_next_is asterisk' lookup drop_if_next_is asterisk' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyp_gt; # <**>
-    sub less' lookup drop_if_next_is equal' lookup drop_if_next_is equal' lookup drop_if_next_is greater' lookup clig_less_long_tails_eq_gt; # <==>
-    sub less' lookup drop_if_next_is @less_heads' lookup clig_less_tails_2;
-    sub v00 @less_doubles [hyphen asterisk greater less equal asciitilde asciicircum bar]' lookup clig_less_tails_3;
-} clig_less;
+
 
 lookup clig_hyphen {
     ignore sub hyphen hyphen hyphen hyphen; # four hyphens in a row are no-op
@@ -640,6 +644,9 @@ lookup clig_cleanup {
     sub v00 @less_doubles' @less_triples by v00;        
     sub v00 [slash_slash slash_equal slash_asterisk]' [slash_slash_slash slash_equal_equal slash_asterisk_asterisk] by v00; # trailing substitutions for clig_slash
 } clig_cleanup;
+
+######################################################################################################
+
 
 ######################################################################################################
 
