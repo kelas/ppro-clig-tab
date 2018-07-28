@@ -1,3 +1,4 @@
+# v0.0.34 fixed -|>
 # v0.0.33 fixed :D and :P
 # v0.0.32 fixed =/= precedence
 # v0.0.31 fixed <|> and <|| precedence
@@ -423,6 +424,7 @@ lookup clig_less {
 lookup clig_bar {
     ignore sub bar bar bar bar; # four pipes in a row are no-op
     ignore sub bar bar' bar; # further pipes are no-op
+    ignore sub hyphen bar' greater; # precedence exception -|>
     sub bar'            lookup drop_if_next_is hyphen'              lookup drop_if_next_is hyphen' lookup drop_if_next_is greater'  lookup clig_bar_long_tail_hyphen_greater; # |-->
     sub bar'            lookup drop_if_next_is equal'               lookup drop_if_next_is equal'  lookup drop_if_next_is greater' lookup clig_bar_long_tail_equal_greater; # |==>
     sub bar'            lookup drop_if_next_is hyphen'              lookup drop_if_next_is greater' lookup clig_bar_tail_hyphen_greater; # |->
@@ -438,7 +440,7 @@ lookup clig_slash {
     ignore sub slash slash slash slash; # four slashes in a row are no-op
     ignore sub slash slash' slash; # further slashes are no-op
     ignore sub equal slash' equal; # precedence exception =/
-    ignore sub hyphen less' bar; # precedence exception
+    ignore sub hyphen less' bar; # precedence exception -<|
     sub slash'          lookup drop_if_next_is @slash_heads'        lookup clig_slash_tails; # /* // /> /=
     sub v00 [slash_slash slash_equal slash_asterisk] [slash equal asterisk]' lookup clig_slash_tails_3; #  ///  /==  /**
 } clig_slash;
