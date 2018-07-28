@@ -1,4 +1,9 @@
-# v0.0.2
+languagesystem DFLT dflt;
+
+
+# v0.0.25 fixed ==== //// <<<< bugs
+# v0.0.20 performance improvements, added tag ligatures, fixed double/triple/series subs
+# v0.0.10 initial release
 
 #############################################################
 # a simple predicate used in most of substitution chains.
@@ -277,23 +282,6 @@ lookup clig_backslash_tails {
     sub @backslash_heads' by @backslash_tails;  
 } clig_backslash_tails;
 
-lookup clig_BUG { sub bracketright by BUG;} clig_BUG;
-lookup clig_DEBUG { sub bracketright by DEBUG;} clig_DEBUG;
-lookup clig_ERR { sub bracketright by ERR;} clig_ERR;
-lookup clig_ERROR { sub bracketright by ERROR;} clig_ERROR;
-lookup clig_FATAL { sub bracketright by FATAL;} clig_FATAL;
-lookup clig_FIXME { sub bracketright by FIXME;} clig_FIXME;
-lookup clig_HACK { sub bracketright by HACK;} clig_HACK;
-lookup clig_INFO { sub bracketright by INFO;} clig_INFO;
-lookup clig_MARK { sub bracketright by MARK_;} clig_MARK;
-lookup clig_NOTE { sub bracketright by NOTE;} clig_NOTE;
-lookup clig_TODO { sub bracketright by TODO;} clig_TODO;
-lookup clig_TRACE { sub bracketright by TRACE;} clig_TRACE;
-lookup clig_WARN { sub bracketright by WARN;} clig_WARN;
-lookup clig_WARNING { sub bracketright by WARNING;} clig_WARNING;
-
-# predicate used in clig_tags, replaces glyph with a blank if the rest of the chain is a match
-lookup next { sub [bracketleft A B C D E F G H I K L M N O R T U W X a b c d e f g h i k l m n o r t u w x bracketright] by v00; } next;
 
 #############################################################
 
@@ -366,9 +354,10 @@ lookup clig_hyphen_tails_3 {
 
 #############################################################
 
+
 lookup clig_less {
     ignore sub less less less less; # four lesses in a row are no-op
-    ignore sub less less less' less; # further lesses are no-op
+    ignore sub less less' less; # further lesses are no-op
     ignore sub [hyphen equal bar] less' less; # precedence exception
     # <!-- <**>
     # <<<  <<=  <<-  <<~  <<^  <<|
@@ -394,7 +383,7 @@ lookup clig_hyphen {
 
 lookup clig_slash {
     ignore sub slash slash slash slash; # four slashes in a row are no-op
-    ignore sub slash slash slash' slash; # further slashes are no-op
+    ignore sub slash slash' slash; # further slashes are no-op
     ignore sub equal slash'; # precedence exception
     sub slash'          lookup drop_if_next_is @slash_heads'        lookup clig_slash_tails; # /* // /> /=
     sub v00 [slash_slash slash_equal slash_asterisk] [slash equal asterisk]' lookup clig_slash_tails_3; #  ///  /==  /**
@@ -402,7 +391,7 @@ lookup clig_slash {
 
 lookup clig_equal {
     ignore sub equal equal equal equal; # four eq's in a row are no-op
-    ignore sub equal equal equal' equal; # further eq's are no-op
+    ignore sub equal equal' equal; # further eq's are no-op
     ignore sub colon equal' greater; # precedence exception :=>
     ignore sub exclam equal' equal; # precedence exception !==
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is [equal greater]' lookup clig_equal_tail_equal_greater; # ===  ==>
@@ -534,6 +523,24 @@ lookup clig_quotedbl {
     sub quotedbl'       lookup drop_if_next_is greater'             lookup clig_tail_quot_gt;       #                                    ">
 } clig_quotedbl;
 
+lookup clig_BUG { sub bracketright by BUG;} clig_BUG;
+lookup clig_DEBUG { sub bracketright by DEBUG;} clig_DEBUG;
+lookup clig_ERR { sub bracketright by ERR;} clig_ERR;
+lookup clig_ERROR { sub bracketright by ERROR;} clig_ERROR;
+lookup clig_FATAL { sub bracketright by FATAL;} clig_FATAL;
+lookup clig_FIXME { sub bracketright by FIXME;} clig_FIXME;
+lookup clig_HACK { sub bracketright by HACK;} clig_HACK;
+lookup clig_INFO { sub bracketright by INFO;} clig_INFO;
+lookup clig_MARK { sub bracketright by MARK_;} clig_MARK;
+lookup clig_NOTE { sub bracketright by NOTE;} clig_NOTE;
+lookup clig_TODO { sub bracketright by TODO;} clig_TODO;
+lookup clig_TRACE { sub bracketright by TRACE;} clig_TRACE;
+lookup clig_WARN { sub bracketright by WARN;} clig_WARN;
+lookup clig_WARNING { sub bracketright by WARNING;} clig_WARNING;
+
+# predicate used in clig_tags, replaces glyph with a blank if the rest of the chain is a match
+lookup next { sub [bracketleft A B C D E F G H I K L M N O R T U W X a b c d e f g h i k l m n o r t u w x bracketright] by v00; } next;
+
 lookup clig_numbersign {
     sub numbersign'     lookup drop_if_next_is underscore'          lookup drop_if_next_is parenleft' lookup clig_numbersign_tail_parenleft; # #_(
     sub numbersign'     lookup drop_if_next_is @numbersign_heads'   lookup clig_numbersign_tails;   # #_(                                #_  #(  #{  #?  #>
@@ -563,7 +570,9 @@ lookup clig_cleanup {
     sub v00 [slash_slash slash_equal slash_asterisk]' [slash_slash_slash slash_equal_equal slash_asterisk_asterisk] by v00; # trailing substitutions for clig_slash
 } clig_cleanup;
 
-feature clig {
+###################################################
+
+feature calt {
     lookup clig_hyphen;         # sequences starting with -
     lookup clig_slash;          # sequences starting with /
     lookup clig_equal;          # sequences starting with =
@@ -589,7 +598,5 @@ feature clig {
     lookup clig_numbersign;     # sequences starting with #
     lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
     lookup clig_cleanup;        # replace artifacts with v00
-} clig;
+} calt;
 
-
-#//:~
