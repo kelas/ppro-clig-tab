@@ -1,6 +1,6 @@
 languagesystem DFLT dflt;
 
-# v0.0.30 added final missing sustitutions, reordered lookups minimize precedence overrides
+# v0.0.30 added final missing sustitutions, reordered lookups to minimize precedence overrides
 # v0.0.25 fixed ==== //// <<<< bugs
 # v0.0.20 performance improvements, added tag ligatures, fixed double/triple/series subs
 # v0.0.10 initial release
