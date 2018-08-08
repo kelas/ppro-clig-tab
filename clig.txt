@@ -1,10 +1,11 @@
+# v0.0.37 added <-<
 # v0.0.36 added =~=
 # v0.0.35 added _|_  |-  ||- 
 # v0.0.34 fixed -|>
 # v0.0.33 fixed :D and :P
 # v0.0.32 fixed =/= precedence
 # v0.0.31 fixed <|> and <|| precedence
-# v0.0.30 added final missing sustitutions, reordered lookups minimize precedence overrides
+# v0.0.30 added final missing sustitutions, reordered lookups to minimize precedence overrides
 # v0.0.25 fixed ==== //// <<<< bugs
 # v0.0.20 performance improvements, added tag ligatures, fixed double/triple/series subs
 # v0.0.10 initial release
@@ -51,7 +52,7 @@ lookup drop_if_next_is {
     less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater 
     less_quotedbl_greater less_colon_greater less_asciitilde_greater less_hyphen_greater less_less_less less_less_equal 
     less_less_hyphen less_less_asciitilde less_less_asciicircum less_less_bar less_equal_less less_asciitilde_asciitilde 
-    less_hyphen_hyphen less_bar_hyphen less_bar_bar];
+    less_hyphen_hyphen less_bar_hyphen less_bar_bar less_hyphen_less];
 
 @hyphen_heads =   [hyphen less greater equal];
 @hyphen_doubles = [hyphen_hyphen hyphen_less hyphen_greater hyphen_equal];
@@ -364,7 +365,7 @@ lookup clig_less_tails_3 {
     #   less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater 
     #   less_quotedbl_greater less_colon_greater less_asciitilde_greater less_hyphen_greater];
 
-    # <$>  <*>  <+>  <=>  <|>  <!>  <@>  <#>  <%>  <^>  <&>  <?>  <.>  </>  <\>  <">  <:>  <~>   <->
+    # <$>  <*>  <+>  <=>  <|>  <!>  <@>  <#>  <%>  <^>  <&>  <?>  <.>  </>  <\>  <">  <:>  <~>   <-> <-<
     sub less_dollar greater' by less_dollar_greater;
     sub less_asterisk greater' by less_asterisk_greater;
     sub less_plus greater' by less_plus_greater;
@@ -384,6 +385,7 @@ lookup clig_less_tails_3 {
     sub less_colon greater' by less_colon_greater;
     sub less_asciitilde greater' by less_asciitilde_greater;
     sub less_hyphen greater' by less_hyphen_greater;
+    sub less_hyphen less' by less_hyphen_less;
 
     # <<<  <<=  <<-  <<~  <<^  <<|
     sub less_less less' by less_less_less;
