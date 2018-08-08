@@ -1,3 +1,4 @@
+# v0.0.45 ignore =~/ and <||>
 # v0.0.44 ignore <--->
 # v0.0.43 added =<
 # v0.0.42 added ==>>
@@ -441,6 +442,7 @@ lookup clig_less {
     ignore sub [hyphen equal bar] less' less; # precedence exception
 	 ignore sub hyphen less' bar; # precedence exception
     ignore sub less' hyphen hyphen hyphen greater; # disable <--->
+    ignore sub less' bar bar greater; # disable <||>
     # <!-- <**>
     # <<<  <<=  <<-  <<~  <<^  <<|
     # <=<  <~~  <--  <|-  <||
@@ -460,6 +462,8 @@ lookup clig_bar {
     ignore sub bar bar bar bar; # four pipes in a row are no-op
     ignore sub bar bar' bar; # further pipes are no-op
     ignore sub hyphen bar' greater; # precedence exception -|>
+    ignore sub less bar' bar greater; # disable <||>
+    ignore sub less bar bar' greater; # disable <||>
     sub bar'            lookup drop_if_next_is hyphen'              lookup drop_if_next_is hyphen' lookup drop_if_next_is greater'  lookup clig_bar_long_tail_hyphen_greater; # |-->
     sub bar'            lookup drop_if_next_is equal'               lookup drop_if_next_is equal'  lookup drop_if_next_is greater' lookup clig_bar_long_tail_equal_greater; # |==>
     sub bar'            lookup drop_if_next_is hyphen'              lookup drop_if_next_is greater' lookup clig_bar_tail_hyphen_greater; # |->
@@ -634,6 +638,7 @@ lookup clig_equal {
     #ignore sub exclam equal' equal; # precedence exception !==
     #ignore sub greater equal' greater; # precedence exception >=>
     #ignore sub bar equal' greater; #precedence exception |=>
+    ignore sub equal' asciitilde slash; # disable =~/
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup drop_if_next_is greater' lookup clig_equal_tail_eq_gt_gt; # ==>>
     sub equal'          lookup drop_if_next_is asciitilde'          lookup drop_if_next_is equal' lookup clig_equal_tail_tilde_equal; # =~=
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is [equal greater]' lookup clig_equal_tail_equal_greater; # ===  ==>
