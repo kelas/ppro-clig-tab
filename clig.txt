@@ -1,3 +1,4 @@
+# v0.0.42 added ==>>
 # v0.0.41 added <<==
 # v0.0.40 added <==
 # v0.0.39 added <-->
@@ -361,6 +362,10 @@ lookup clig_less_tail_tilde_less {
     sub less by less_asciitilde_less;
 } clig_less_tail_tilde_less;
 
+lookup clig_less_long_less_eq_eq {
+    sub equal by less_less_equal_equal; # <<==
+} clig_less_long_less_eq_eq;
+
 lookup clig_less_tails_2 {
     # << <> <$ <* <+ <= <| <! <@ <# <% <^ <& <? <. </ <\ <" <: <~ <-   
     sub @less_heads by @less_doubles; 
@@ -427,10 +432,6 @@ lookup clig_hyphen_tails_3 {
 } clig_hyphen_tails_3;
 
 #############################################################
-
-lookup clig_less_long_less_eq_eq {
-    sub equal by less_less_equal_equal; # <<==
-} clig_less_long_less_eq_eq;
 
 lookup clig_less {
     ignore sub less less less less; # four lesses in a row are no-op
@@ -538,6 +539,7 @@ lookup clig_greater {
     ignore sub greater greater greater greater; # four pipes in a row are no-op
     ignore sub [asciitilde greater] greater' greater; # further pipes are no-op, precedence exception ~>>
     #ignore sub bar greater' [greater hyphen]; # precedence exceptions |>> |>-
+    ignore sub equal equal greater' greater; # precedence exception ==>>
     sub greater'        lookup drop_if_next_is greater'             lookup drop_if_next_is [hyphen equal greater asciicircum bar]' lookup clig_greater_tail_greater_greater; # >>>  >>-  >>=  >>^ >>|
     sub greater'        lookup drop_if_next_is hyphen'               lookup drop_if_next_is greater' lookup clig_greater_tail_hyphen_gt; #    >->
     sub greater'        lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_greater_tail_eq_gt; #    >=>
@@ -616,6 +618,10 @@ lookup clig_numbersign {
     sub numbersign'     lookup drop_if_next_is @numbersign_heads'   lookup clig_numbersign_tails;   # #_(                                #_  #(  #{  #?  #>
 } clig_numbersign;
 
+lookup clig_equal_tail_eq_gt_gt {
+    sub greater by equal_equal_greater_greater;
+} clig_equal_tail_eq_gt_gt;
+
 lookup clig_equal {
     ignore sub equal equal equal equal; # four eq's in a row are no-op
     ignore sub equal equal' equal; # further eq's are no-op
@@ -623,6 +629,7 @@ lookup clig_equal {
     #ignore sub exclam equal' equal; # precedence exception !==
     #ignore sub greater equal' greater; # precedence exception >=>
     #ignore sub bar equal' greater; #precedence exception |=>
+    sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup drop_if_next_is greater' lookup clig_equal_tail_eq_gt_gt; # ==>>
     sub equal'          lookup drop_if_next_is asciitilde'          lookup drop_if_next_is equal' lookup clig_equal_tail_tilde_equal; # =~=
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is [equal greater]' lookup clig_equal_tail_equal_greater; # ===  ==>
     sub equal'          lookup drop_if_next_is slash'               lookup drop_if_next_is equal'   lookup clig_equal_tail_eq_le_gt; #   =/=
