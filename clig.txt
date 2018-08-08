@@ -1,3 +1,4 @@
+# v0.0.36 added =~=
 # v0.0.35 added _|_  |-  ||- 
 # v0.0.34 fixed -|>
 # v0.0.33 fixed :D and :P
@@ -563,12 +564,6 @@ lookup clig_percent {
     sub percent'        lookup drop_if_next_is @percent_heads'      lookup clig_percent_tails;      # %>%                                %= %> 
 } clig_percent;
 
-lookup clig_asciitilde {
-    sub asciitilde'     lookup drop_if_next_is asciitilde'          lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt; #    ~~>
-    sub asciitilde'     lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt_gt; # ~>>
-    sub asciitilde'     lookup drop_if_next_is @asciitilde_heads'   lookup clig_asciitilde_tails;   #                                    ~= ~> 
-} clig_asciitilde;
-
 lookup clig_asciicircum {
     sub asciicircum'    lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_asciicircum_tail_le_gt_pt; # ^<<
     sub asciicircum'    lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_asciicircum_tail_le_gt_pt; # ^>>
@@ -595,6 +590,10 @@ lookup clig_numbersign {
     sub numbersign'     lookup drop_if_next_is @numbersign_heads'   lookup clig_numbersign_tails;   # #_(                                #_  #(  #{  #?  #>
 } clig_numbersign;
 
+lookup clig_equal_tail_tilde_equal {
+    sub equal by equal_asciitilde_equal;
+} clig_equal_tail_tilde_equal;
+
 lookup clig_equal {
     ignore sub equal equal equal equal; # four eq's in a row are no-op
     ignore sub equal equal' equal; # further eq's are no-op
@@ -602,12 +601,19 @@ lookup clig_equal {
     #ignore sub exclam equal' equal; # precedence exception !==
     #ignore sub greater equal' greater; # precedence exception >=>
     #ignore sub bar equal' greater; #precedence exception |=>
+    sub equal'          lookup drop_if_next_is asciitilde'          lookup drop_if_next_is equal' lookup clig_equal_tail_tilde_equal; # =~=
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is [equal greater]' lookup clig_equal_tail_equal_greater; # ===  ==>
     sub equal'          lookup drop_if_next_is slash'               lookup drop_if_next_is equal'   lookup clig_equal_tail_eq_le_gt; #   =/=
     sub equal'          lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_equal_tail_eq_le_gt; #   =<<
     sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_equal_tail_eq_le_gt; #   =>>
     sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~   
 } clig_equal;
+
+lookup clig_asciitilde {
+    sub asciitilde'     lookup drop_if_next_is asciitilde'          lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt; #    ~~>
+    sub asciitilde'     lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt_gt; # ~>>
+    sub asciitilde'     lookup drop_if_next_is @asciitilde_heads'   lookup clig_asciitilde_tails;   #                                    ~= ~> 
+} clig_asciitilde;
 
 lookup clig_underscore {
     sub underscore'     lookup drop_if_next_is bar'          lookup drop_if_next_is underscore' lookup clig_underscore_tail_bar_underscore; # _|_
