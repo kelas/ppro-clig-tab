@@ -1,3 +1,4 @@
+# v0.0.44 ignore <--->
 # v0.0.43 added =<
 # v0.0.42 added ==>>
 # v0.0.41 added <<==
@@ -439,6 +440,7 @@ lookup clig_less {
     ignore sub less less' less; # further lesses are no-op
     ignore sub [hyphen equal bar] less' less; # precedence exception
 	 ignore sub hyphen less' bar; # precedence exception
+    ignore sub less' hyphen hyphen hyphen greater; # disable <--->
     # <!-- <**>
     # <<<  <<=  <<-  <<~  <<^  <<|
     # <=<  <~~  <--  <|-  <||
@@ -485,6 +487,8 @@ lookup clig_hyphen {
     #ignore sub less exclam hyphen' hyphen'; # precedence exception
     #ignore sub less hyphen' [hyphen greater]'; # precedence exception
     ignore sub greater hyphen' greater; # precedence exception >->
+    ignore sub less hyphen hyphen hyphen' greater; # disable <--->
+    ignore sub less hyphen' hyphen hyphen greater; # disable <--->
     sub hyphen' lookup drop_if_next_is backslash' lookup drop_if_next_is slash' lookup clig_hyphen_tail_backsl_slash; #  -\/ 
     sub hyphen' lookup drop_if_next_is plus' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_plus_hyphen; #  -+- 
     sub hyphen' lookup drop_if_next_is less' lookup drop_if_next_is less' lookup clig_hyphen_tail_less_less;#   -<<
