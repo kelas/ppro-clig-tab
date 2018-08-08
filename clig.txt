@@ -1,3 +1,4 @@
+# v0.0.43 added =<
 # v0.0.42 added ==>>
 # v0.0.41 added <<==
 # v0.0.40 added <==
@@ -78,8 +79,8 @@ lookup drop_if_next_is {
 
 # === =/= =<< ==> =>> == => =~ 
 # slash less 
-@equal_heads = [equal greater asciitilde];
-@equal_tails = [equal_equal equal_greater equal_asciitilde];
+@equal_heads = [equal greater asciitilde less];
+@equal_tails = [equal_equal equal_greater equal_asciitilde less_equal];
 
 # >>- >>= >>> >>^ >>| >=>  >!= >- >= >>
 @greater_heads = [hyphen equal greater];
@@ -635,7 +636,7 @@ lookup clig_equal {
     sub equal'          lookup drop_if_next_is slash'               lookup drop_if_next_is equal'   lookup clig_equal_tail_eq_le_gt; #   =/=
     sub equal'          lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_equal_tail_eq_le_gt; #   =<<
     sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_equal_tail_eq_le_gt; #   =>>
-    sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~   
+    sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~ =<   
 } clig_equal;
 
 lookup clig_asciitilde {
