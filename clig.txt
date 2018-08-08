@@ -1,3 +1,4 @@
+# v0.0.40 added <==
 # v0.0.39 added <-->
 # v0.0.38 added >->
 # v0.0.37 added <-<
@@ -54,7 +55,7 @@ lookup drop_if_next_is {
     less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater 
     less_quotedbl_greater less_colon_greater less_asciitilde_greater less_hyphen_greater less_less_less less_less_equal 
     less_less_hyphen less_less_asciitilde less_less_asciicircum less_less_bar less_equal_less less_asciitilde_asciitilde 
-    less_hyphen_hyphen less_bar_hyphen less_bar_bar less_hyphen_less];
+    less_hyphen_hyphen less_bar_hyphen less_bar_bar less_hyphen_less less_equal_equal];
 
 @hyphen_heads =   [hyphen less greater equal];
 @hyphen_doubles = [hyphen_hyphen hyphen_less hyphen_greater hyphen_equal];
@@ -380,6 +381,7 @@ lookup clig_less_tails_3 {
     sub less_asterisk greater' by less_asterisk_greater;
     sub less_plus greater' by less_plus_greater;
     sub less_equal greater' by less_equal_greater;
+    sub less_equal equal' by less_equal_equal;
     sub less_bar greater' by less_bar_greater;
     sub less_exclam greater' by less_exclam_greater;
     sub less_at greater' by less_at_greater;
