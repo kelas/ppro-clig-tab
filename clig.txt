@@ -1,3 +1,4 @@
+# v0.0.35 added _|_  |-  ||- 
 # v0.0.34 fixed -|>
 # v0.0.33 fixed :D and :P
 # v0.0.32 fixed =/= precedence
@@ -81,9 +82,9 @@ lookup drop_if_next_is {
 @question_heads = [question asciitilde equal greater period];
 @question_tails = [question_question question_asciitilde question_equal question_greater question_period];
 
-# ||| ||> |>> |>- |+| |<<  |= || |> 
-@bar_heads = [equal bar greater];
-@bar_tails = [bar_equal bar_bar bar_greater];
+# |= || |> |-
+@bar_heads = [equal bar greater hyphen];
+@bar_tails = [bar_equal bar_bar bar_greater bar_hyphen];
 
 # ~~> ~>>  ~= ~> 
 @asciitilde_heads = [equal greater];
@@ -171,9 +172,9 @@ lookup clig_equal_tail_eq_le_gt {
     sub [equal less greater] by [equal_slash_equal equal_less_less equal_greater_greater];
 } clig_equal_tail_eq_le_gt;
 
-lookup clig_bar_tail_bar_greater {
-    sub [bar greater] by [bar_bar_bar bar_bar_greater];
-} clig_bar_tail_bar_greater;
+lookup clig_bar_tail_bar_greater_hyphen {
+    sub [bar greater hyphen] by [bar_bar_bar bar_bar_greater bar_bar_hyphen];
+} clig_bar_tail_bar_greater_hyphen;
 
 lookup clig_bar_tail_greater_hyphen {
     sub [greater hyphen] by [bar_greater_greater bar_greater_hyphen];
@@ -234,6 +235,10 @@ lookup clig_equivalence_tail_colon_equiv {
 lookup clig_equivalence_tail_equiv_equiv {
     sub equivalence by equiv_equiv_equiv;
 } clig_equivalence_tail_equiv_equiv;
+
+lookup clig_underscore_tail_bar_underscore {
+	sub underscore by underscore_bar_underscore;
+} clig_underscore_tail_bar_underscore;
 
 ############################################################
 
@@ -429,7 +434,7 @@ lookup clig_bar {
     sub bar'            lookup drop_if_next_is equal'               lookup drop_if_next_is equal'  lookup drop_if_next_is greater' lookup clig_bar_long_tail_equal_greater; # |==>
     sub bar'            lookup drop_if_next_is hyphen'              lookup drop_if_next_is greater' lookup clig_bar_tail_hyphen_greater; # |->
     sub bar'            lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_bar_tail_equal_greater; # |=>
-    sub bar'            lookup drop_if_next_is bar'                 lookup drop_if_next_is [bar greater]' lookup clig_bar_tail_bar_greater; # |||  ||>
+    sub bar'            lookup drop_if_next_is bar'                 lookup drop_if_next_is [bar greater hyphen]' lookup clig_bar_tail_bar_greater_hyphen; # |||  ||>
     sub bar'            lookup drop_if_next_is greater'             lookup drop_if_next_is [greater hyphen]' lookup clig_bar_tail_greater_hyphen; # |>> |>-
     sub bar'            lookup drop_if_next_is plus'                lookup drop_if_next_is bar' lookup clig_bar_tail_bar_less;  #        |+|
     sub bar'            lookup drop_if_next_is less'                lookup drop_if_next_is less' lookup clig_bar_tail_bar_less; #        |<<
@@ -604,6 +609,10 @@ lookup clig_equal {
     sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~   
 } clig_equal;
 
+lookup clig_underscore {
+    sub underscore'     lookup drop_if_next_is bar'          lookup drop_if_next_is underscore' lookup clig_underscore_tail_bar_underscore; # _|_
+} clig_underscore;
+
 ######################################################################################################
 
 lookup clig_BUG { sub bracketright by BUG;} clig_BUG;
@@ -673,6 +682,7 @@ feature calt {
     lookup clig_quotedbl;       # sequences starting with "
     lookup clig_numbersign;     # sequences starting with #
     lookup clig_equivalence;    # sequences starting with ≡
+    lookup clig_underscore;     # sequences starting with _
     lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
     lookup clig_cleanup;        # replace artifacts with v00
 } calt;
