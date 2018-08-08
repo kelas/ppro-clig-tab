@@ -1,3 +1,4 @@
+# v0.0.39 added <-->
 # v0.0.38 added >->
 # v0.0.37 added <-<
 # v0.0.36 added =~=
@@ -346,6 +347,10 @@ lookup clig_less_long_tails_hyp_gt {
     sub [hyphen greater]' by [less_exclam_hyphen_hyphen less_asterisk_asterisk_greater];
 } clig_less_long_tails_hyp_gt;
 
+lookup clig_less_long_tails_hyphen_gt {
+    sub greater by less_hyphen_hyphen_greater;
+} clig_less_long_tails_hyphen_gt;
+
 lookup clig_less_long_tails_eq_gt {
     sub greater by less_equal_equal_greater;
 } clig_less_long_tails_eq_gt;
@@ -433,6 +438,7 @@ lookup clig_less {
     sub less' lookup drop_if_next_is asciitilde' lookup drop_if_next_is less' lookup clig_less_tail_tilde_less; #  <~<
     sub less' lookup drop_if_next_is exclam' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup clig_less_long_tails_hyp_gt; # <!--
     sub less' lookup drop_if_next_is asterisk' lookup drop_if_next_is asterisk' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyp_gt; # <**>
+    sub less' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyphen_gt; # <-->
     sub less' lookup drop_if_next_is equal' lookup drop_if_next_is equal' lookup drop_if_next_is greater' lookup clig_less_long_tails_eq_gt; # <==>
     sub less' lookup drop_if_next_is @less_heads' lookup clig_less_tails_2;
     sub v00 @less_doubles [hyphen asterisk greater less equal asciitilde asciicircum bar]' lookup clig_less_tails_3;
