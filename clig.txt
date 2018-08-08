@@ -173,6 +173,10 @@ lookup clig_equal_tail_eq_le_gt {
     sub [equal less greater] by [equal_slash_equal equal_less_less equal_greater_greater];
 } clig_equal_tail_eq_le_gt;
 
+lookup clig_equal_tail_tilde_equal {
+    sub equal by equal_asciitilde_equal;
+} clig_equal_tail_tilde_equal;
+
 lookup clig_bar_tail_bar_greater_hyphen {
     sub [bar greater hyphen] by [bar_bar_bar bar_bar_greater bar_bar_hyphen];
 } clig_bar_tail_bar_greater_hyphen;
@@ -589,10 +593,6 @@ lookup clig_numbersign {
     sub numbersign'     lookup drop_if_next_is underscore'          lookup drop_if_next_is parenleft' lookup clig_numbersign_tail_parenleft; # #_(
     sub numbersign'     lookup drop_if_next_is @numbersign_heads'   lookup clig_numbersign_tails;   # #_(                                #_  #(  #{  #?  #>
 } clig_numbersign;
-
-lookup clig_equal_tail_tilde_equal {
-    sub equal by equal_asciitilde_equal;
-} clig_equal_tail_tilde_equal;
 
 lookup clig_equal {
     ignore sub equal equal equal equal; # four eq's in a row are no-op
