@@ -1,3 +1,4 @@
+# v0.0.38 added >->
 # v0.0.37 added <-<
 # v0.0.36 added =~=
 # v0.0.35 added _|_  |-  ||- 
@@ -213,6 +214,10 @@ lookup clig_asciicircum_tail_le_gt_pt {
 lookup clig_greater_tail_eq_gt {
     sub [greater equal] by [greater_equal_greater greater_exclam_equal];
 } clig_greater_tail_eq_gt;
+
+lookup clig_greater_tail_hyphen_gt {
+    sub greater by greater_hyphen_greater;
+} clig_greater_tail_hyphen_gt;
  
 lookup clig_asciitilde_tail_gt {
     sub greater by asciitilde_asciitilde_greater;
@@ -463,7 +468,7 @@ lookup clig_hyphen {
     ignore sub hyphen hyphen' hyphen; # further hyphens are no-op
     #ignore sub less exclam hyphen' hyphen'; # precedence exception
     #ignore sub less hyphen' [hyphen greater]'; # precedence exception
-    #ignore sub bar hyphen' greater; # precedence exception |->
+    ignore sub greater hyphen' greater; # precedence exception >->
     sub hyphen' lookup drop_if_next_is backslash' lookup drop_if_next_is slash' lookup clig_hyphen_tail_backsl_slash; #  -\/ 
     sub hyphen' lookup drop_if_next_is plus' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_plus_hyphen; #  -+- 
     sub hyphen' lookup drop_if_next_is less' lookup drop_if_next_is less' lookup clig_hyphen_tail_less_less;#   -<<
@@ -520,6 +525,7 @@ lookup clig_greater {
     ignore sub [asciitilde greater] greater' greater; # further pipes are no-op, precedence exception ~>>
     #ignore sub bar greater' [greater hyphen]; # precedence exceptions |>> |>-
     sub greater'        lookup drop_if_next_is greater'             lookup drop_if_next_is [hyphen equal greater asciicircum bar]' lookup clig_greater_tail_greater_greater; # >>>  >>-  >>=  >>^ >>|
+    sub greater'        lookup drop_if_next_is hyphen'               lookup drop_if_next_is greater' lookup clig_greater_tail_hyphen_gt; #    >->
     sub greater'        lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_greater_tail_eq_gt; #    >=>
     sub greater'        lookup drop_if_next_is exclam'              lookup drop_if_next_is equal' lookup clig_greater_tail_eq_gt; #      >!=
     sub greater'        lookup drop_if_next_is @greater_heads'      lookup clig_greater_tails;      #                                    >- >= >>
