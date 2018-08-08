@@ -1,3 +1,4 @@
+# v0.0.41 added <<==
 # v0.0.40 added <==
 # v0.0.39 added <-->
 # v0.0.38 added >->
@@ -427,6 +428,10 @@ lookup clig_hyphen_tails_3 {
 
 #############################################################
 
+lookup clig_less_long_less_eq_eq {
+    sub equal by less_less_equal_equal; # <<==
+} clig_less_long_less_eq_eq;
+
 lookup clig_less {
     ignore sub less less less less; # four lesses in a row are no-op
     ignore sub less less' less; # further lesses are no-op
@@ -442,6 +447,7 @@ lookup clig_less {
     sub less' lookup drop_if_next_is asterisk' lookup drop_if_next_is asterisk' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyp_gt; # <**>
     sub less' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyphen_gt; # <-->
     sub less' lookup drop_if_next_is equal' lookup drop_if_next_is equal' lookup drop_if_next_is greater' lookup clig_less_long_tails_eq_gt; # <==>
+    sub less' lookup drop_if_next_is less' lookup drop_if_next_is equal' lookup drop_if_next_is equal' lookup clig_less_long_less_eq_eq; # <<==
     sub less' lookup drop_if_next_is @less_heads' lookup clig_less_tails_2;
     sub v00 @less_doubles [hyphen asterisk greater less equal asciitilde asciicircum bar]' lookup clig_less_tails_3;
 } clig_less;
