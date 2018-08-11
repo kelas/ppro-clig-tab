@@ -1,3 +1,4 @@
+# v0.0.47 ignore <--> <--< <--...--< <--...-->
 # v0.0.46 rolled back =< (ambiguous)
 # v0.0.45 ignore =~/ and <||>
 # v0.0.44 ignore <--->
@@ -441,8 +442,8 @@ lookup clig_less {
     ignore sub less less less less; # four lesses in a row are no-op
     ignore sub less less' less; # further lesses are no-op
     ignore sub [hyphen equal bar] less' less; # precedence exception
-	 ignore sub hyphen less' bar; # precedence exception
-    ignore sub less' hyphen hyphen hyphen greater; # disable <--->
+	  ignore sub hyphen less' bar; # precedence exception
+    ignore sub less' hyphen hyphen [hyphen less greater]; # disable <---  <---< <--->
     ignore sub less' bar bar greater; # disable <||>
     # <!-- <**>
     # <<<  <<=  <<-  <<~  <<^  <<|
@@ -492,8 +493,12 @@ lookup clig_hyphen {
     #ignore sub less exclam hyphen' hyphen'; # precedence exception
     #ignore sub less hyphen' [hyphen greater]'; # precedence exception
     ignore sub greater hyphen' greater; # precedence exception >->
-    ignore sub less hyphen hyphen hyphen' greater; # disable <--->
-    ignore sub less hyphen' hyphen hyphen greater; # disable <--->
+    ignore sub less hyphen hyphen hyphen' [greater less]; # disable <---> <---< 
+    ignore sub less hyphen' hyphen hyphen [greater less]; # disable <---> <---< 
+    ignore sub less hyphen' hyphen [greater less]; # disable <--> <--< 
+    ignore sub less hyphen hyphen' [greater less]; # disable <--> <--< 
+    ignore sub hyphen hyphen hyphen hyphen' [greater less]; # disable --------< ---------> 
+
     sub hyphen' lookup drop_if_next_is backslash' lookup drop_if_next_is slash' lookup clig_hyphen_tail_backsl_slash; #  -\/ 
     sub hyphen' lookup drop_if_next_is plus' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_plus_hyphen; #  -+- 
     sub hyphen' lookup drop_if_next_is less' lookup drop_if_next_is less' lookup clig_hyphen_tail_less_less;#   -<<
