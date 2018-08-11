@@ -1,3 +1,5 @@
+# v0.0.56 optimized triples in < block
+# v0.0.55 cleanup
 # v0.0.54 gpos example
 # v0.0.53 ignore <--<
 # v0.0.52 fixed <-->
@@ -383,23 +385,21 @@ lookup clig_less_tails_2 {
     sub @less_heads by @less_doubles; 
 } clig_less_tails_2;
 
-lookup clig_less_tails_3 {
-    # <$>  <*>  <+>  <=>  <|>  <!>  <@>  <#>  <%>  <^>  <&>  <?>  <.>  </>  <\>  <">  <:>  <~>   <->    
-    # probably missing something very simple here - totally begs for optimisation:
-    #rsub greater [less_dollar less_asterisk less_plus less_equal less_bar less_exclam less_at less_numbersign 
-    #   less_percent less_asciicircum less_ampersand less_question less_period less_slash less_backslash 
-    #   less_quotedbl less_colon less_asciitilde less_hyphen]' by
-    #[less_dollar_greater less_asterisk_greater less_plus_greater less_equal_greater less_bar_greater 
-    #   less_exclam_greater less_at_greater less_numbersign_greater less_percent_greater less_asciicircum_greater 
-    #   less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater 
-    #   less_quotedbl_greater less_colon_greater less_asciitilde_greater less_hyphen_greater];
+#@less_doubles_end_greater = [less_dollar less_asterisk less_plus less_bar less_exclam less_at less_numbersign less_percent less_asciicircum less_ampersand less_question less_period less_slash less_backslash less_quotedbl less_colon less_asciitilde];
+#@less_triples_end_greater = [less_dollar_greater less_asterisk_greater less_plus_greater less_bar_greater less_exclam_greater less_at_greater less_numbersign_greater less_percent_greater less_asciicircum_greater less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater less_quotedbl_greater less_colon_greater less_asciitilde_greater];
 
-    # <$>  <*>  <+>  <=>  <|>  <!>  <@>  <#>  <%>  <^>  <&>  <?>  <.>  </>  <\>  <">  <:>  <~>   <-> <-<
+#lookup clig_less_tails_greater_2_to_3 {
+#    sub @less_doubles_end_greater by @less_triples_end_greater;
+#} clig_less_tails_greater_2_to_3;
+
+lookup clig_less_tails_3 {
+    #rsub greater @less_doubles_end_greater' lookup clig_less_tails_greater_2_to_3;
+    #sub @less_doubles_end_greater' by @less_triples_end_greater;
+
+    # <$>  <*>  <+>  <=>  <|>  <!>  <@>  <#>  <%>  <^>  <&>  <?>  <.>  </>  <\>  <">  <:>  <~>  <->
     sub less_dollar greater' by less_dollar_greater;
     sub less_asterisk greater' by less_asterisk_greater;
     sub less_plus greater' by less_plus_greater;
-    sub less_equal greater' by less_equal_greater;
-    sub less_equal equal' by less_equal_equal;
     sub less_bar greater' by less_bar_greater;
     sub less_exclam greater' by less_exclam_greater;
     sub less_at greater' by less_at_greater;
@@ -414,23 +414,23 @@ lookup clig_less_tails_3 {
     sub less_quotedbl greater' by less_quotedbl_greater;
     sub less_colon greater' by less_colon_greater;
     sub less_asciitilde greater' by less_asciitilde_greater;
+    sub less_equal greater' by less_equal_greater;
     sub less_hyphen greater' by less_hyphen_greater;
-    sub less_hyphen less' by less_hyphen_less;
+
+    # <==  <=<
+    sub less_equal [equal less]' by [less_equal_equal less_equal_less];
+
+    # <-<  <--
+    sub less_hyphen [less hyphen]' by [less_hyphen_less less_hyphen_hyphen];
 
     # <<<  <<=  <<-  <<~  <<^  <<|
-    sub less_less less' by less_less_less;
-    sub less_less equal' by less_less_equal;
-    sub less_less hyphen' by less_less_hyphen;
-    sub less_less asciitilde' by less_less_asciitilde;
-    sub less_less asciicircum' by less_less_asciicircum;
-    sub less_less bar' by less_less_bar;
+    sub less_less [less equal hyphen asciitilde asciicircum bar]' by 
+        [less_less_less less_less_equal less_less_hyphen less_less_asciitilde less_less_asciicircum less_less_bar];
 
-    # <=<  <~~  <--  <|-  <||
-    sub less_equal less' by less_equal_less;
+    #  <~~  <|-  <||
     sub less_asciitilde asciitilde' by less_asciitilde_asciitilde;
-    sub less_hyphen hyphen' by less_hyphen_hyphen;
-    sub less_bar hyphen' by less_bar_hyphen;
-    sub less_bar bar' by less_bar_bar;
+    sub less_bar [hyphen bar]' by [less_bar_hyphen less_bar_bar];
+
 } clig_less_tails_3;
 
 lookup clig_hyphen_tails {
@@ -470,11 +470,6 @@ lookup clig_less {
     ignore sub less' hyphen hyphen less; # disable <--<
     ignore sub less' hyphen hyphen hyphen; # disable <---  <---< <--->
     ignore sub less' equal equal equal; # disable <===
-    # <!-- <**>
-    # <<<  <<=  <<-  <<~  <<^  <<|
-    # <=<  <~~  <--  <|-  <||
-    #           <$>  <*>  <+>  <=>  <|>  <!>  <@>  <#>  <%>  <^>  <&>  <?>  <.>  </>  <\>  <">  <:>  <~>   <->   
-    # <<    <>  <$   <*   <+   <=   <|   <!   <@   <#   <%   <^   <&   <?   <.   </   <\   <"   <:   <~    <-  
     sub less' lookup drop_if_next_is asciitilde' lookup drop_if_next_is less' lookup clig_less_tail_tilde_less; #  <~<
     sub less' lookup drop_if_next_is exclam' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup clig_less_long_tails_hyp_gt; # <!--
     sub less' lookup drop_if_next_is asterisk' lookup drop_if_next_is asterisk' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyp_gt; # <**>
@@ -493,7 +488,6 @@ lookup clig_slash {
     sub slash'          lookup drop_if_next_is @slash_heads'        lookup clig_slash_tails; # /* // /> /=
     sub v00 [slash_slash slash_equal slash_asterisk] [slash equal asterisk]' lookup clig_slash_tails_3; #  ///  /==  /**
 } clig_slash;
-
 
 lookup clig_hyphen {
     ignore sub hyphen hyphen hyphen hyphen; # four hyphens in a row are no-op
@@ -725,32 +719,32 @@ lookup clig_cleanup {
 #} kern_while_fix_i;
 
 feature calt {
-    lookup clig_hyphen;         # sequences starting with -
-    lookup clig_slash;          # sequences starting with /
-    lookup clig_equal;          # sequences starting with =
-    lookup clig_less;           # sequences starting with <
-    lookup clig_colon;          # sequences starting with :
-    lookup clig_exclam;         # sequences starting with !
-    lookup clig_ampersand;      # sequences starting with &
-    lookup clig_plus;           # sequences starting with +
-    lookup clig_greater;        # sequences starting with >
-    lookup clig_bar;            # sequences starting with |
-    lookup clig_asterisk;       # sequences starting with *
-    lookup clig_period;         # sequences starting with .
-    lookup clig_question;       # sequences starting with ?
-    lookup clig_bracketright;   # sequences starting with ]
-    lookup clig_bracketleft;    # sequences starting with [
-    lookup clig_backslash;      # sequences starting with \
-    lookup clig_percent;        # sequences starting with %
-    lookup clig_asciitilde;     # sequences starting with ~
-    lookup clig_asciicircum;    # sequences starting with ^
-    lookup clig_dollar;         # sequences starting with $
-    lookup clig_at;             # sequences starting with @
-    lookup clig_quotedbl;       # sequences starting with "
-    lookup clig_numbersign;     # sequences starting with #
-    lookup clig_equivalence;    # sequences starting with ≡
-    lookup clig_underscore;     # sequences starting with _
-    lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
-    lookup clig_cleanup;        # replace artifacts with v00
+     lookup clig_hyphen;         # sequences starting with -
+     lookup clig_slash;          # sequences starting with /
+     lookup clig_equal;          # sequences starting with =
+     lookup clig_less;           # sequences starting with <
+     lookup clig_colon;          # sequences starting with :
+     lookup clig_exclam;         # sequences starting with !
+     lookup clig_ampersand;      # sequences starting with &
+     lookup clig_plus;           # sequences starting with +
+     lookup clig_greater;        # sequences starting with >
+     lookup clig_bar;            # sequences starting with |
+     lookup clig_asterisk;       # sequences starting with *
+     lookup clig_period;         # sequences starting with .
+     lookup clig_question;       # sequences starting with ?
+     lookup clig_bracketright;   # sequences starting with ]
+     lookup clig_bracketleft;    # sequences starting with [
+     lookup clig_backslash;      # sequences starting with \
+     lookup clig_percent;        # sequences starting with %
+     lookup clig_asciitilde;     # sequences starting with ~
+     lookup clig_asciicircum;    # sequences starting with ^
+     lookup clig_dollar;         # sequences starting with $
+     lookup clig_at;             # sequences starting with @
+     lookup clig_quotedbl;       # sequences starting with "
+     lookup clig_numbersign;     # sequences starting with #
+     lookup clig_equivalence;    # sequences starting with ≡
+     lookup clig_underscore;     # sequences starting with _
+     lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
+     lookup clig_cleanup;        # replace artifacts with v00
 #    lookup kern_while_fix_i;
 } calt;
