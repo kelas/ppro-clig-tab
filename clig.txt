@@ -1,3 +1,4 @@
+# v0.0.51 fixed ---> ---<
 # v0.0.50 fixed <===> <--->
 # v0.0.49 fixed <||>
 # v0.0.48 fixed =>> precedence
@@ -501,7 +502,8 @@ lookup clig_hyphen {
     ignore sub less hyphen' hyphen hyphen [greater less]; # disable <---> <---< 
     ignore sub less hyphen' hyphen [greater less]; # disable <--> <--< 
     ignore sub less hyphen hyphen' [greater less]; # disable <--> <--< 
-    ignore sub hyphen hyphen hyphen hyphen' [greater less]; # disable --------< ---------> 
+    ignore sub hyphen hyphen hyphen' [greater less]; # disable --------< ---------> 
+    ignore sub hyphen' hyphen hyphen [greater less]; # disable --------< ---------> 
 
     sub hyphen' lookup drop_if_next_is backslash' lookup drop_if_next_is slash' lookup clig_hyphen_tail_backsl_slash; #  -\/ 
     sub hyphen' lookup drop_if_next_is plus' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_plus_hyphen; #  -+- 
