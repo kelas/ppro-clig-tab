@@ -1,3 +1,4 @@
+# v0.0.53 ignore <--<
 # v0.0.52 fixed <-->
 # v0.0.51 fixed ---> ---<
 # v0.0.50 fixed <===> <--->
@@ -465,9 +466,9 @@ lookup clig_less {
     ignore sub less less' less; # further lesses are no-op
     ignore sub [hyphen equal] less' less; # precedence exception
     ignore sub hyphen less' bar; # precedence exception
+    ignore sub less' hyphen hyphen less; # disable <--<
     ignore sub less' hyphen hyphen hyphen; # disable <---  <---< <--->
     ignore sub less' equal equal equal; # disable <===
-    #ignore sub less' bar bar greater; # disable <||>
     # <!-- <**>
     # <<<  <<=  <<-  <<~  <<^  <<|
     # <=<  <~~  <--  <|-  <||
@@ -718,3 +719,32 @@ lookup clig_cleanup {
 
 ######################################################################################################
 
+feature calt {
+    lookup clig_hyphen;         # sequences starting with -
+    lookup clig_slash;          # sequences starting with /
+    lookup clig_equal;          # sequences starting with =
+    lookup clig_less;           # sequences starting with <
+    lookup clig_colon;          # sequences starting with :
+    lookup clig_exclam;         # sequences starting with !
+    lookup clig_ampersand;      # sequences starting with &
+    lookup clig_plus;           # sequences starting with +
+    lookup clig_greater;        # sequences starting with >
+    lookup clig_bar;            # sequences starting with |
+    lookup clig_asterisk;       # sequences starting with *
+    lookup clig_period;         # sequences starting with .
+    lookup clig_question;       # sequences starting with ?
+    lookup clig_bracketright;   # sequences starting with ]
+    lookup clig_bracketleft;    # sequences starting with [
+    lookup clig_backslash;      # sequences starting with \
+    lookup clig_percent;        # sequences starting with %
+    lookup clig_asciitilde;     # sequences starting with ~
+    lookup clig_asciicircum;    # sequences starting with ^
+    lookup clig_dollar;         # sequences starting with $
+    lookup clig_at;             # sequences starting with @
+    lookup clig_quotedbl;       # sequences starting with "
+    lookup clig_numbersign;     # sequences starting with #
+    lookup clig_equivalence;    # sequences starting with ≡
+    lookup clig_underscore;     # sequences starting with _
+    lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
+    lookup clig_cleanup;        # replace artifacts with v00
+} calt;
