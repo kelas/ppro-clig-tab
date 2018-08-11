@@ -1,3 +1,4 @@
+# v0.0.46 rolled back =< (ambiguous)
 # v0.0.45 ignore =~/ and <||>
 # v0.0.44 ignore <--->
 # v0.0.43 added =<
@@ -81,8 +82,8 @@ lookup drop_if_next_is {
 
 # === =/= =<< ==> =>> == => =~ 
 # slash less 
-@equal_heads = [equal greater asciitilde less];
-@equal_tails = [equal_equal equal_greater equal_asciitilde less_equal];
+@equal_heads = [equal greater asciitilde];
+@equal_tails = [equal_equal equal_greater equal_asciitilde];
 
 # >>- >>= >>> >>^ >>| >=>  >!= >- >= >>
 @greater_heads = [hyphen equal greater];
