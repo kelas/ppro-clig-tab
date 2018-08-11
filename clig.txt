@@ -1,3 +1,4 @@
+# v0.0.48 fixed =>> precedence
 # v0.0.47 ignore <--> <--< <--...--< <--...-->
 # v0.0.46 rolled back =< (ambiguous)
 # v0.0.45 ignore =~/ and <||>
@@ -551,10 +552,10 @@ lookup clig_ampersand {
 } clig_ampersand;
 
 lookup clig_greater {
-    ignore sub greater greater greater greater; # four pipes in a row are no-op
-    ignore sub [asciitilde greater] greater' greater; # further pipes are no-op, precedence exception ~>>
+    ignore sub greater greater greater greater; # four gt's in a row are no-op
+    ignore sub [asciitilde greater] greater' greater; # further gt's are no-op, precedence exception ~>>
     #ignore sub bar greater' [greater hyphen]; # precedence exceptions |>> |>-
-    ignore sub equal equal greater' greater; # precedence exception ==>>
+    ignore sub equal greater' greater; # precedence exception ==>> =>>
     sub greater'        lookup drop_if_next_is greater'             lookup drop_if_next_is [hyphen equal greater asciicircum bar]' lookup clig_greater_tail_greater_greater; # >>>  >>-  >>=  >>^ >>|
     sub greater'        lookup drop_if_next_is hyphen'               lookup drop_if_next_is greater' lookup clig_greater_tail_hyphen_gt; #    >->
     sub greater'        lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_greater_tail_eq_gt; #    >=>
@@ -645,12 +646,12 @@ lookup clig_equal {
     #ignore sub greater equal' greater; # precedence exception >=>
     #ignore sub bar equal' greater; #precedence exception |=>
     ignore sub equal' asciitilde slash; # disable =~/
+    sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_equal_tail_eq_le_gt; #   =>>
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup drop_if_next_is greater' lookup clig_equal_tail_eq_gt_gt; # ==>>
     sub equal'          lookup drop_if_next_is asciitilde'          lookup drop_if_next_is equal' lookup clig_equal_tail_tilde_equal; # =~=
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is [equal greater]' lookup clig_equal_tail_equal_greater; # ===  ==>
     sub equal'          lookup drop_if_next_is slash'               lookup drop_if_next_is equal'   lookup clig_equal_tail_eq_le_gt; #   =/=
     sub equal'          lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_equal_tail_eq_le_gt; #   =<<
-    sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_equal_tail_eq_le_gt; #   =>>
     sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~ =<   
 } clig_equal;
 
