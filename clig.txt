@@ -1,3 +1,4 @@
+# v0.0.54 gpos example
 # v0.0.53 ignore <--<
 # v0.0.52 fixed <-->
 # v0.0.51 fixed ---> ---<
@@ -719,6 +720,10 @@ lookup clig_cleanup {
 
 ######################################################################################################
 
+#lookup kern_while_fix_i {
+#   pos w h i' l e <200 0 0 0>;
+#} kern_while_fix_i;
+
 feature calt {
     lookup clig_hyphen;         # sequences starting with -
     lookup clig_slash;          # sequences starting with /
@@ -747,4 +752,5 @@ feature calt {
     lookup clig_underscore;     # sequences starting with _
     lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
     lookup clig_cleanup;        # replace artifacts with v00
+#    lookup kern_while_fix_i;
 } calt;
