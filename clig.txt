@@ -14,7 +14,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
 # IN THE SOFTWARE.
 
-
+# v0.0.58 merged liga into calt
 # v0.0.57 cleanup
 # v0.0.56 optimized triples in < block
 # v0.0.55 cleanup
@@ -737,9 +737,43 @@ lookup clig_cleanup {
 
 ######################################################################################################
 
+lookup liga_arab_1 {
+    lookupflag IgnoreMarks RightToLeft;
+    sub Alef Fathatan by AlefFathatan.liga;
+    sub Thal AlefSuperscript by AlefMaksuraThal.liga;
+    sub Reh AlefSuperscript by AlefMaksuraReh.liga;
+    sub Noon AlefMaksura.fina by NoonAlefMakFina.liga;
+    sub Noon Yeh.fina by NoonYehFina.liga;
+    sub AlefMaksura AlefSuperscript by AlefMaksuraAlef.liga;
+    sub Shadda Dammatan by ShaddaDammatan;
+    sub Shadda Kastratan by ShaddaKastratan;
+    sub Shadda Fatha by ShaddaFatha;
+    sub Shadda Damma by ShaddaDamma;
+    sub Shadda Kasra by ShaddaKasra;
+    sub Shadda AlefSuperscript by ShaddaAlefSuper;
+    sub Alef.fina Fathatan by AlefFinaFathatan.liga;
+    sub Lam.init Lam.medi by LamLam.init;
+} liga_arab_1;
+
+lookup clig_ballot {
+    sub space space bracketleft space bracketright by ballotBox;
+    sub space space bracketleft hyphen bracketright by ballotBoxWithMinus;
+    sub space space bracketleft V bracketright by ballotBoxWithCheck;
+    sub space space bracketleft X bracketright by ballotBoxWithX;
+    sub space space bracketleft v bracketright by ballotBoxWithCheck;
+    sub space space bracketleft x bracketright by ballotBoxWithX;
+} clig_ballot;
+
+lookup clig_existential {
+    sub existential exclam by existentialexclam;
+    sub theredoesnotexist exclam by notexistentialexclam;
+} clig_existential;
+
 #lookup kern_while_fix_i {
 #   pos w h i' l e <200 0 0 0>;
 #} kern_while_fix_i;
+
+######################################################################################################
 
 feature calt {
      lookup clig_hyphen;         # sequences starting with -
@@ -769,5 +803,10 @@ feature calt {
      lookup clig_underscore;     # sequences starting with _
      lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
      lookup clig_cleanup;        # replace artifacts with v00
-#    lookup kern_while_fix_i;
+     lookup clig_ballot;         # imported from liga
+     lookup clig_existential;    # imported from liga
+#    lookup kern_while_fix_i;    # test contextual positions
+
+     script arab;
+     lookup liga_arab_1;
 } calt;
