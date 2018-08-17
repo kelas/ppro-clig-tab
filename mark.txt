@@ -1,0 +1,1662 @@
+﻿feature mark {
+# GPOS feature : Mark Positioning
+    markClass macron <anchor 511 1207> @top;
+    markClass cedilla <anchor 512 -75> @bottom;
+    markClass circumflex <anchor 511 1207> @top;
+    markClass caron <anchor 511 1207> @top;
+    markClass breve <anchor 512 1207> @top;
+    markClass dotaccent <anchor 511 1207> @top;
+    markClass ring <anchor 512 1207> @top;
+    markClass ogonek <anchor 518 -75> @bottom;
+    markClass tilde <anchor 511 1207> @top;
+    markClass hungarumlaut <anchor 473 1207> @top;
+    markClass gravecomb <anchor 643 1240> @top;
+    markClass acutecomb <anchor 390 1240> @top;
+    markClass circumflexcomb <anchor 512 1230> @top;
+    markClass tildecomb <anchor 511 1230> @top;
+    markClass macroncomb <anchor 512 1287> @top;
+    markClass overlinecomb <anchor 512 1287> @top;
+    markClass brevecomb <anchor 512 1166> @top;
+    markClass dotaccentcomb <anchor 512 1155> @top;
+    markClass dieresiscomb <anchor 512 1188> @top;
+    markClass hookabovecomb <anchor 440 1062> @top;
+    markClass ringcomb <anchor 512 1188> @top;
+    markClass hungarumlautcomb <anchor 473 1207> @top;
+    markClass caroncomb <anchor 512 1200> @top;
+    markClass verticallineabovecomb <anchor 512 1171> @top;
+    markClass dblverticallineabovecomb <anchor 512 1171> @top;
+    markClass dblgravecomb <anchor 604 1207> @top;
+    markClass candraBinducomb <anchor 512 1147> @top;
+    markClass breveinvertedcomb <anchor 512 1215> @top;
+    markClass commaturnedabovecomb <anchor 522 1133> @top;
+    markClass commaabovecomb <anchor 388 1136> @top;
+    markClass commareversedabovecomb <anchor 657 1136> @top;
+    markClass commaaboverightcomb <anchor 512 1207> @top;
+    markClass gravebelowcomb <anchor 407 -31> @bottom;
+    markClass acutebelowcomb <anchor 615 -31> @bottom;
+    markClass lefttackbelowcomb <anchor 512 -48> @bottom;
+    markClass righttackbelowcomb <anchor 512 -48> @bottom;
+    markClass leftangleabovecomb <anchor 512 1207> @top;
+    markClass ringhalfleftbelowcomb <anchor 812 -36> @bottom;
+    markClass uptackbelowcomb <anchor 512 -43> @bottom;
+    markClass downtackbelowcomb <anchor 512 -33> @bottom;
+    markClass plusbelowcomb <anchor 512 30> @bottom;
+    markClass minusbelowcomb <anchor 512 -109> @bottom;
+    markClass hookpalatalizedbelowcomb <anchor 910 85> @pala;
+    markClass hookretroflexbelowcomb <anchor 758 85> @pala;
+    markClass dotbelowcomb <anchor 512 0> @bottom;
+    markClass dieresisbelowcomb <anchor 512 -75> @bottom;
+    markClass ringbelowcomb <anchor 512 -13> @bottom;
+    markClass commaaccentcomb <anchor 472 149> @bottom;
+    markClass cedillacomb <anchor 488 8> @bottom;
+    markClass ogonekcomb <anchor 524 -20> @bottom;
+    markClass verticallinebelowcomb <anchor 512 -75> @bottom;
+    markClass bridgebelowcomb <anchor 512 -18> @bottom;
+    markClass dblarchinvertedbelowcomb <anchor 512 -71> @bottom;
+    markClass caronbelowcomb <anchor 511 -67> @bottom;
+    markClass circumflexbelowcomb <anchor 511 -58> @bottom;
+    markClass brevebelowcomb <anchor 511 -66> @bottom;
+    markClass breveinvertedbelowcomb <anchor 511 -65> @bottom;
+    markClass tildebelowcomb <anchor 511 -75> @bottom;
+    markClass macronbelowcomb <anchor 512 -85> @bottom;
+    markClass lowlinecomb <anchor 512 -75> @bottom;
+    markClass dbllowlinecomb <anchor 512 42> @bottom;
+    markClass tildeoverlaycomb <anchor 512 585> @o;
+    markClass strokeshortcomb <anchor 512 610> @o;
+    markClass strokelongcomb <anchor 512 610> @o;
+    markClass slashshortcomb <anchor 512 585> @o;
+    markClass slashlongcomb <anchor 512 800> @o;
+    markClass ringhalfrightbelowcomb <anchor 477 -7> @bottom;
+    markClass bridgeinvertedbelowcomb <anchor 512 -7> @bottom;
+    markClass squarebelowcomb <anchor 512 0> @bottom;
+    markClass seagullbelowcomb <anchor 512 -41> @bottom;
+    markClass xabovecomb <anchor 512 1207> @top;
+    markClass tildeverticalcomb <anchor 512 1160> @top;
+    markClass dbloverlinecomb <anchor 512 1170> @top;
+    markClass gravetonecomb <anchor 659 1207> @top;
+    markClass acutetonecomb <anchor 383 1207> @top;
+    markClass perispomenicomb <anchor 512 1157> @top;
+    markClass koroniscomb <anchor 395 1135> @top;
+    markClass dialytikatonoscomb <anchor 512 1176> @top;
+    markClass ypogegrammenicomb <anchor 498 0> @bottom;
+    markClass gbridgeabovecomb <anchor 512 1200> @top;
+    markClass equalbelowcomb <anchor 512 0> @bottom;
+    markClass doubleverticallinebelowcomb <anchor 512 0> @bottom;
+    markClass leftanglebelowcomb <anchor 445 0> @bottom;
+    markClass nottildeabovecomb <anchor 512 1150> @top;
+    markClass homotheticabovecomb <anchor 512 1150> @top;
+    markClass almostequaltoabovecomb <anchor 512 1146> @top;
+    markClass arrowleftrightbelowcomb <anchor 512 17> @bottom;
+    markClass arrowupbelowcomb <anchor 512 40> @bottom;
+    markClass arrowheadrightabovecomb <anchor 512 1150> @top;
+    markClass lefthalfringabovecomb <anchor 512 1150> @top;
+    markClass fermatacomb <anchor 512 1130> @top;
+    markClass xbelowcomb <anchor 512 10> @bottom;
+    markClass arrowheadleftbelowcomb <anchor 512 0> @bottom;
+    markClass arrowheadrightbelowcomb <anchor 512 0> @bottom;
+    markClass arrowheadrightheadupbelowcomb <anchor 512 0> @bottom;
+    markClass righthalfringabovecomb <anchor 480 1165> @top;
+    markClass dotaboverightcomb <anchor 512 1207> @top;
+    markClass asteriskbelowcomb <anchor 512 18> @bottom;
+    markClass doubleringbelowcomb <anchor 512 -3> @bottom;
+    markClass zigzagabovecomb <anchor 512 1150> @top;
+    markClass doublebrevebelowcomb <anchor 512 -75> @bottom;
+    markClass doublebrevecomb <anchor 512 1207> @top;
+    markClass doublemacroncomb <anchor 512 1207> @top;
+    markClass doublemacronbelowcomb <anchor 512 -75> @bottom;
+    markClass tildedoublecomb <anchor 512 1207> @top;
+    markClass breveinverteddoublecomb <anchor 512 1207> @top;
+    markClass arrowdoublerightbelowcomb <anchor 512 -75> @bottom;
+    markClass uni0591 <anchor 512 70> @hb;
+    markClass uni0592 <anchor 512 1100> @ht;
+    markClass uni0593 <anchor 512 1100> @ht;
+    markClass uni0594 <anchor 512 1100> @ht;
+    markClass uni0595 <anchor 512 1100> @ht;
+    markClass uni0596 <anchor 439 0> @hb;
+    markClass uni0597 <anchor 512 1100> @ht;
+    markClass uni0598 <anchor 512 1100> @ht;
+    markClass uni0599 <anchor 512 1100> @ht;
+    markClass uni059A <anchor 533 70> @hb;
+    markClass uni059B <anchor 526 70> @hb;
+    markClass uni059C <anchor 512 1100> @ht;
+    markClass uni059D <anchor 512 1100> @ht;
+    markClass uni059E <anchor 512 1100> @ht;
+    markClass uni059F <anchor 512 1100> @ht;
+    markClass uni05A0 <anchor 512 1100> @ht;
+    markClass uni05A1 <anchor 512 1100> @ht;
+    markClass uni05A2 <anchor 512 70> @hb;
+    markClass uni05A3 <anchor 512 80> @hb;
+    markClass uni05A4 <anchor 512 80> @hb;
+    markClass uni05A5 <anchor 581 0> @hb;
+    markClass uni05A6 <anchor 543 0> @hb;
+    markClass uni05A7 <anchor 524 70> @hb;
+    markClass uni05A8 <anchor 512 1100> @ht;
+    markClass uni05A9 <anchor 512 1100> @ht;
+    markClass uni05AA <anchor 512 70> @hb;
+    markClass uni05AB <anchor 512 1100> @ht;
+    markClass uni05AC <anchor 512 1100> @ht;
+    markClass uni05AD <anchor 512 70> @hb;
+    markClass uni05AE <anchor 512 1100> @ht;
+    markClass uni05AF <anchor 512 1100> @ht;
+    markClass uni05B0 <anchor 812 70> @hb;
+    markClass uni05B1 <anchor 512 70> @hb;
+    markClass uni05B2 <anchor 512 70> @hb;
+    markClass uni05B3 <anchor 512 70> @hb;
+    markClass uni05B4 <anchor 812 70> @hb;
+    markClass uni05B5 <anchor 812 70> @hb;
+    markClass uni05B6 <anchor 812 70> @hb;
+    markClass uni05B7 <anchor 812 70> @hb;
+    markClass uni05B8 <anchor 812 70> @hb;
+    markClass uni05B9 <anchor 812 1100> @ht;
+    markClass uni05BA <anchor 512 1100> @ht;
+    markClass uni05BB <anchor 512 70> @hb;
+    markClass uni05BC <anchor 512 606> @hc;
+    markClass uni05C1 <anchor 212 1100> @ht;
+    markClass uni05C2 <anchor 212 1100> @ht;
+    markClass grave.alt01 <anchor 634 1207> @top;
+    markClass acute.alt01 <anchor 398 1207> @top;
+    markClass acomb <anchor 512 1200> @top;
+    markClass ccomb <anchor 512 1200> @top;
+    markClass dcomb <anchor 512 1200> @top;
+    markClass ecomb <anchor 512 1200> @top;
+    markClass hcomb <anchor 512 1200> @top;
+    markClass icomb <anchor 512 1200> @top;
+    markClass mcomb <anchor 512 1200> @top;
+    markClass ocomb <anchor 512 1200> @top;
+    markClass rcomb <anchor 512 1200> @top;
+    markClass tcomb <anchor 512 1200> @top;
+    markClass ucomb <anchor 512 1200> @top;
+    markClass vcomb <anchor 512 1200> @top;
+    markClass xcomb <anchor 512 1200> @top;
+
+  lookup markLTR {
+      pos base A
+          <anchor 512 -75> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 833 85> mark @pala
+          <anchor 518 1610> mark @top;
+      pos base B
+          <anchor 512 -75> mark @bottom
+          <anchor 477 815> mark @o
+          <anchor 247 80> mark @pala
+          <anchor 457 1600> mark @top;
+      pos base C
+          <anchor 555 -75> mark @bottom
+          <anchor 554 800> mark @o
+          <anchor 822 177> mark @pala
+          <anchor 559 1600> mark @top;
+      pos base D
+          <anchor 495 -75> mark @bottom
+          <anchor 523 800> mark @o
+          <anchor 258 80> mark @pala
+          <anchor 472 1600> mark @top;
+      pos base E
+          <anchor 550 -75> mark @bottom
+          <anchor 512 812> mark @o
+          <anchor 808 74> mark @pala
+          <anchor 540 1600> mark @top;
+      pos base F
+          <anchor 576 -75> mark @bottom
+          <anchor 575 811> mark @o
+          <anchor 298 85> mark @pala
+          <anchor 575 1600> mark @top;
+      pos base G
+          <anchor 514 -75> mark @bottom
+          <anchor 512 740> mark @o
+          <anchor 752 176> mark @pala
+          <anchor 523 1600> mark @top;
+      pos base H
+          <anchor 512 -75> mark @bottom
+          <anchor 512 834> mark @o
+          <anchor 795 85> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base I
+          <anchor 511 -75> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 746 72> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base J
+          <anchor 512 -75> mark @bottom
+          <anchor 547 892> mark @o
+          <anchor 680 146> mark @pala
+          <anchor 548 1600> mark @top;
+      pos base K
+          <anchor 589 -75> mark @bottom
+          <anchor 444 800> mark @o
+          <anchor 891 74> mark @pala
+          <anchor 563 1600> mark @top;
+      pos base L
+          <anchor 590 -75> mark @bottom
+          <anchor 346 800> mark @o
+          <anchor 835 70> mark @pala
+          <anchor 346 1600> mark @top;
+      pos base M
+          <anchor 512 -75> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 816 80> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base N
+          <anchor 512 -75> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 800 80> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base O
+          <anchor 512 -75> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 512 54> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base P
+          <anchor 536 -75> mark @bottom
+          <anchor 537 767> mark @o
+          <anchor 277 80> mark @pala
+          <anchor 468 1600> mark @top;
+      pos base Q
+          <anchor 512 -314> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 512 1600> mark @top;
+      pos base R
+          <anchor 556 -75> mark @bottom
+          <anchor 540 800> mark @o
+          <anchor 840 80> mark @pala
+          <anchor 519 1600> mark @top;
+      pos base S
+          <anchor 512 -75> mark @bottom
+          <anchor 505 800> mark @o
+          <anchor 196 219> mark @pala
+          <anchor 547 1600> mark @top;
+      pos base T
+          <anchor 512 -75> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 512 80> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base U
+          <anchor 512 -75> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 512 48> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base V
+          <anchor 512 -75> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 512 80> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base W
+          <anchor 512 -75> mark @bottom
+          <anchor 512 800> mark @o
+          <anchor 712 46> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base X
+          <anchor 512 -75> mark @bottom
+          <anchor 512 801> mark @o
+          <anchor 851 80> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base Y
+          <anchor 512 -75> mark @bottom
+          <anchor 512 819> mark @o
+          <anchor 513 80> mark @pala
+          <anchor 512 1600> mark @top;
+      pos base Z
+          <anchor 531 -75> mark @bottom
+          <anchor 540 801> mark @o
+          <anchor 800 72> mark @pala
+          <anchor 533 1600> mark @top;
+      pos base a
+          <anchor 494 -75> mark @bottom
+          <anchor 495 589> mark @o
+          <anchor 767 80> mark @pala
+          <anchor 482 1207> mark @top;
+      pos base b
+          <anchor 522 -75> mark @bottom
+          <anchor 540 585> mark @o
+          <anchor 232 80> mark @pala
+          <anchor 228 1576> mark @top;
+      pos base c
+          <anchor 567 -75> mark @bottom
+          <anchor 582 585> mark @o
+          <anchor 824 152> mark @pala
+          <anchor 567 1207> mark @top;
+      pos base d
+          <anchor 521 -75> mark @bottom
+          <anchor 498 585> mark @o
+          <anchor 790 80> mark @pala
+          <anchor 784 1576> mark @top;
+      pos base e
+          <anchor 526 -75> mark @bottom
+          <anchor 516 599> mark @o
+          <anchor 796 169> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base f
+          <anchor 432 -75> mark @bottom
+          <anchor 533 686> mark @o
+          <anchor 425 80> mark @pala
+          <anchor 650 1586> mark @top;
+      pos base g
+          <anchor 519 -432> mark @bottom
+          <anchor 526 418> mark @o
+          <anchor 224 -148> mark @pala
+          <anchor 525 1207> mark @top;
+      pos base h
+          <anchor 517 -75> mark @bottom
+          <anchor 519 585> mark @o
+          <anchor 792 80> mark @pala
+          <anchor 223 1576> mark @top;
+      pos base i
+          <anchor 521 -75> mark @bottom
+          <anchor 527 585> mark @o
+          <anchor 766 70> mark @pala
+          <anchor 490 1700> mark @top;
+      pos base j
+          <anchor 339 -443> mark @bottom
+          <anchor 631 585> mark @o
+          <anchor 113 -208> mark @pala
+          <anchor 600 1700> mark @top;
+      pos base k
+          <anchor 557 -75> mark @bottom
+          <anchor 585 753> mark @o
+          <anchor 262 80> mark @pala
+          <anchor 272 1576> mark @top;
+      pos base l
+          <anchor 512 -75> mark @bottom
+          <anchor 515 801> mark @o
+          <anchor 500 1576> mark @top;
+      pos base m
+          <anchor 512 -75> mark @bottom
+          <anchor 508 585> mark @o
+          <anchor 851 80> mark @pala
+          <anchor 520 1207> mark @top;
+      pos base n
+          <anchor 517 -75> mark @bottom
+          <anchor 517 585> mark @o
+          <anchor 792 80> mark @pala
+          <anchor 569 1207> mark @top;
+      pos base o
+          <anchor 512 -75> mark @bottom
+          <anchor 512 585> mark @o
+          <anchor 512 56> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base p
+          <anchor 537 585> mark @o
+          <anchor 230 -260> mark @pala
+          <anchor 526 1207> mark @top;
+      pos base q
+          <anchor 492 585> mark @o
+          <anchor 792 -260> mark @pala
+          <anchor 497 1207> mark @top;
+      pos base r
+          <anchor 582 -75> mark @bottom
+          <anchor 513 585> mark @o
+          <anchor 295 80> mark @pala
+          <anchor 582 1207> mark @top;
+      pos base s
+          <anchor 512 -75> mark @bottom
+          <anchor 525 585> mark @o
+          <anchor 230 194> mark @pala
+          <anchor 547 1207> mark @top;
+      pos base t
+          <anchor 625 -75> mark @bottom
+          <anchor 527 585> mark @o
+          <anchor 840 138> mark @pala
+          <anchor 402 1576> mark @top;
+      pos base u
+          <anchor 512 -75> mark @bottom
+          <anchor 517 585> mark @o
+          <anchor 788 80> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base v
+          <anchor 512 -75> mark @bottom
+          <anchor 512 624> mark @o
+          <anchor 512 80> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base w
+          <anchor 512 -75> mark @bottom
+          <anchor 512 717> mark @o
+          <anchor 702 30> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base x
+          <anchor 512 -75> mark @bottom
+          <anchor 512 585> mark @o
+          <anchor 827 60> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base y
+          <anchor 364 -439> mark @bottom
+          <anchor 512 670> mark @o
+          <anchor 361 -280> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base z
+          <anchor 531 -75> mark @bottom
+          <anchor 585 662> mark @o
+          <anchor 775 70> mark @pala
+          <anchor 531 1207> mark @top;
+      pos base idotless
+          <anchor 478 1207> mark @top;
+      pos base ezhtail
+          <anchor 487 1207> mark @top;
+      pos base ncurl
+          <anchor 568 1207> mark @top;
+      pos base tcurl
+          <anchor 619 -75> mark @bottom;
+      pos base sswashtail
+          <anchor 547 1207> mark @top;
+      pos base zswashtail
+          <anchor 570 1207> mark @top;
+      pos base aturned
+          <anchor 564 -75> mark @bottom
+          <anchor 541 535> mark @o
+          <anchor 832 164> mark @pala
+          <anchor 531 1207> mark @top;
+      pos base bhook
+          <anchor 568 -75> mark @bottom
+          <anchor 538 585> mark @o
+          <anchor 232 80> mark @pala
+          <anchor 516 1566> mark @top;
+      pos base oopen
+          <anchor 502 -75> mark @bottom
+          <anchor 505 584> mark @o
+          <anchor 229 173> mark @pala
+          <anchor 508 1207> mark @top;
+      pos base ccurl
+          <anchor 448 -400> mark @bottom
+          <anchor 575 597> mark @o
+          <anchor 556 1207> mark @top;
+      pos base dtail
+          <anchor 461 585> mark @o
+          <anchor 724 1576> mark @top;
+      pos base dhook
+          <anchor 457 -75> mark @bottom
+          <anchor 472 585> mark @o
+          <anchor 729 80> mark @pala
+          <anchor 289 1207> mark @top;
+      pos base ereversed
+          <anchor 494 -75> mark @bottom
+          <anchor 512 604> mark @o
+          <anchor 224 173> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base schwa
+          <anchor 512 -75> mark @bottom
+          <anchor 512 542> mark @o
+          <anchor 713 139> mark @pala
+          <anchor 509 1207> mark @top;
+      pos base schwahook
+          <anchor 401 -75> mark @bottom
+          <anchor 436 585> mark @o
+          <anchor 389 1207> mark @top;
+      pos base eopen
+          <anchor 537 -75> mark @bottom
+          <anchor 536 579> mark @o
+          <anchor 842 174> mark @pala
+          <anchor 536 1207> mark @top;
+      pos base eopenreversed
+          <anchor 518 -75> mark @bottom
+          <anchor 483 579> mark @o
+          <anchor 213 171> mark @pala
+          <anchor 517 1207> mark @top;
+      pos base eopenreversedhook
+          <anchor 398 -75> mark @bottom
+          <anchor 409 585> mark @o
+          <anchor 166 179> mark @pala
+          <anchor 385 1207> mark @top;
+      pos base eopenreversedclosed
+          <anchor 539 -74> mark @bottom
+          <anchor 540 585> mark @o
+          <anchor 807 147> mark @pala
+          <anchor 536 1207> mark @top;
+      pos base jdotlessstroke
+          <anchor 394 -411> mark @bottom
+          <anchor 134 -200> mark @pala
+          <anchor 472 1207> mark @top;
+      pos base ghook
+          <anchor 463 -428> mark @bottom
+          <anchor 469 610> mark @o
+          <anchor 229 -207> mark @pala
+          <anchor 324 1207> mark @top;
+      pos base gsingle
+          <anchor 488 -422> mark @bottom
+          <anchor 489 613> mark @o
+          <anchor 234 -202> mark @pala
+          <anchor 497 1207> mark @top;
+      pos base Gsmall
+          <anchor 512 -75> mark @bottom
+          <anchor 524 560> mark @o
+          <anchor 755 175> mark @pala
+          <anchor 514 1207> mark @top;
+      pos base ramshorn
+          <anchor 512 -75> mark @bottom
+          <anchor 512 604> mark @o
+          <anchor 668 164> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base hturned
+          <anchor 793 -407> mark @bottom
+          <anchor 512 585> mark @o
+          <anchor 793 -279> mark @pala
+          <anchor 512 1207> mark @top;
+      pos base hhook
+          <anchor 512 -75> mark @bottom
+          <anchor 512 585> mark @o
+          <anchor 791 80> mark @pala
+          <anchor 502 1570> mark @top;
+      pos base henghook
+          <anchor 512 585> mark @o
+          <anchor 519 1557> mark @top;
+      pos base Ismall
+          <anchor 511 1207> mark @top;
+      pos base mturned
+          <anchor 512 1207> mark @top;
+      pos base mlonglegturned
+          <anchor 512 1207> mark @top;
+      pos base mhook
+          <anchor 512 1207> mark @top;
+      pos base nhookleft
+          <anchor 433 1207> mark @top;
+      pos base nhookretroflex
+          <anchor 591 1207> mark @top;
+      pos base Nsmall
+          <anchor 512 1207> mark @top;
+      pos base obarred
+          <anchor 512 1207> mark @top;
+      pos base OEsmall
+          <anchor 536 1207> mark @top;
+      pos base rturned
+          <anchor 441 1207> mark @top;
+      pos base rhookturned
+          <anchor 512 1207> mark @top;
+      pos base rlongleg
+          <anchor 582 1207> mark @top;
+      pos base rhook
+          <anchor 582 1207> mark @top;
+      pos base rfishhook
+          <anchor 548 1207> mark @top;
+      pos base rfishhookreversed
+          <anchor 480 1207> mark @top;
+      pos base Rsmall
+          <anchor 562 1207> mark @top;
+      pos base Rsmallinverted
+          <anchor 562 1207> mark @top;
+      pos base shook
+          <anchor 512 1207> mark @top;
+      pos base eshsquatreversed
+          <anchor 511 1207> mark @top;
+      pos base tturned
+          <anchor 506 1207> mark @top;
+      pos base ubar
+          <anchor 511 1207> mark @top;
+      pos base vhook
+          <anchor 516 1207> mark @top;
+      pos base vturned
+          <anchor 512 1207> mark @top;
+      pos base wturned
+          <anchor 512 1207> mark @top;
+      pos base Ysmall
+          <anchor 512 1207> mark @top;
+      pos base zretroflexhook
+          <anchor 583 1207> mark @top;
+      pos base zcurl
+          <anchor 567 1207> mark @top;
+      pos base ezh
+          <anchor 487 1207> mark @top;
+      pos base ezhcurl
+          <anchor 525 1207> mark @top;
+      pos base cstretched
+          <anchor 575 1207> mark @top;
+      pos base Bsmall
+          <anchor 551 1207> mark @top;
+      pos base eopenclosed
+          <anchor 488 1207> mark @top;
+      pos base Gsmallhook
+          <anchor 543 1207> mark @top;
+      pos base Hsmall
+          <anchor 512 1207> mark @top;
+      pos base kturned
+          <anchor 480 1207> mark @top;
+      pos base Lsmall
+          <anchor 590 1207> mark @top;
+      pos base hturnedfishhook
+          <anchor 427 1207> mark @top;
+      pos base hturnedfishhookandtail
+          <anchor 512 1207> mark @top;
+      pos base uni05D0
+          <anchor 512 -70> mark @hb
+          <anchor 596 871> mark @hc
+          <anchor 512 1200> mark @ht;
+      pos base uni05D1
+          <anchor 512 0> mark @hb
+          <anchor 350 592> mark @hc
+          <anchor 456 1200> mark @ht;
+      pos base uni05D2
+          <anchor 606 0> mark @hb
+          <anchor 350 596> mark @hc
+          <anchor 600 1200> mark @ht;
+      pos base uni05D3
+          <anchor 641 0> mark @hb
+          <anchor 314 596> mark @hc
+          <anchor 624 1200> mark @ht;
+      pos base uni05D4
+          <anchor 550 0> mark @hb
+          <anchor 550 540> mark @hc
+          <anchor 523 1200> mark @ht;
+      pos base uni05D5
+          <anchor 618 0> mark @hb
+          <anchor 312 555> mark @hc
+          <anchor 544 1200> mark @ht;
+      pos base uni05D6
+          <anchor 521 0> mark @hb
+          <anchor 321 555> mark @hc
+          <anchor 570 1200> mark @ht;
+      pos base uni05D7
+          <anchor 550 0> mark @hb
+          <anchor 550 555> mark @hc
+          <anchor 550 1200> mark @ht;
+      pos base uni05D8
+          <anchor 452 0> mark @hb
+          <anchor 532 637> mark @hc
+          <anchor 475 1200> mark @ht;
+      pos base uni05D9
+          <anchor 618 460> mark @hb
+          <anchor 298 680> mark @hc
+          <anchor 557 1200> mark @ht;
+      pos base uni05DA
+          <anchor 272 0> mark @hb
+          <anchor 398 555> mark @hc
+          <anchor 549 1200> mark @ht;
+      pos base uni05DB
+          <anchor 412 0> mark @hb
+          <anchor 374 555> mark @hc
+          <anchor 526 1200> mark @ht;
+      pos base uni05DC
+          <anchor 658 0> mark @hb
+          <anchor 405 670> mark @hc
+          <anchor 803 1200> mark @ht;
+      pos base uni05DD
+          <anchor 519 0> mark @hb
+          <anchor 519 600> mark @hc
+          <anchor 557 1200> mark @ht;
+      pos base uni05DE
+          <anchor 539 0> mark @hb
+          <anchor 562 566> mark @hc
+          <anchor 603 1200> mark @ht;
+      pos base uni05DF
+          <anchor 235 0> mark @hb
+          <anchor 312 555> mark @hc
+          <anchor 596 1200> mark @ht;
+      pos base uni05E0
+          <anchor 494 0> mark @hb
+          <anchor 346 555> mark @hc
+          <anchor 606 1200> mark @ht;
+      pos base uni05E1
+          <anchor 455 -29> mark @hb
+          <anchor 542 648> mark @hc
+          <anchor 543 1200> mark @ht;
+      pos base uni05E2
+          <anchor 567 -42> mark @hb
+          <anchor 567 806> mark @hc
+          <anchor 464 1200> mark @ht;
+      pos base uni05E3
+          <anchor 323 0> mark @hb
+          <anchor 519 821> mark @hc
+          <anchor 649 1200> mark @ht;
+      pos base uni05E4
+          <anchor 493 0> mark @hb
+          <anchor 511 824> mark @hc
+          <anchor 625 1200> mark @ht;
+      pos base uni05E5
+          <anchor 937 0> mark @hb
+          <anchor 588 894> mark @hc
+          <anchor 470 1200> mark @ht;
+      pos base uni05E6
+          <anchor 471 0> mark @hb
+          <anchor 572 863> mark @hc
+          <anchor 466 1201> mark @ht;
+      pos base uni05E7
+          <anchor 939 0> mark @hb
+          <anchor 551 668> mark @hc
+          <anchor 545 1201> mark @ht;
+      pos base uni05E8
+          <anchor 432 0> mark @hb
+          <anchor 432 556> mark @hc
+          <anchor 577 1201> mark @ht;
+      pos base uni05E9
+          <anchor 479 -45> mark @hb
+          <anchor 339 794> mark @hc
+          <anchor 512 1260> mark @ht;
+      pos base uni05EA
+          <anchor 560 2> mark @hb
+          <anchor 560 554> mark @hc
+          <anchor 560 1201> mark @ht;
+      pos base uni05F0
+          <anchor 536 0> mark @hb
+          <anchor 536 601> mark @hc
+          <anchor 485 1260> mark @ht;
+      pos base uni05F1
+          <anchor 741 0> mark @hb
+          <anchor 513 627> mark @hc
+          <anchor 485 1260> mark @ht;
+      pos base uni05F2
+          <anchor 489 436> mark @hb
+          <anchor 532 854> mark @hc
+          <anchor 450 1260> mark @ht;
+      pos base Asmall
+          <anchor 512 -75> mark @bottom;
+      pos base BbarredSmall
+          <anchor 531 -75> mark @bottom;
+      pos base Csmall
+          <anchor 555 -75> mark @bottom;
+      pos base Dsmall
+          <anchor 548 -75> mark @bottom;
+      pos base Esmall
+          <anchor 541 -75> mark @bottom;
+      pos base iTurned
+          <anchor 521 -75> mark @bottom;
+      pos base Jsmall
+          <anchor 481 -75> mark @bottom;
+      pos base Ksmall
+          <anchor 589 -75> mark @bottom;
+      pos base Msmall
+          <anchor 512 -75> mark @bottom;
+      pos base NreversedSmall
+          <anchor 512 -75> mark @bottom;
+      pos base Osmall
+          <anchor 512 -75> mark @bottom;
+      pos base OopenSmall
+          <anchor 472 -75> mark @bottom;
+      pos base oSideways
+          <anchor 512 -75> mark @bottom;
+      pos base oSidewaysOpen
+          <anchor 555 -75> mark @bottom;
+      pos base oslashSideways
+          <anchor 512 -75> mark @bottom;
+      pos base oTophalf
+          <anchor 512 -75> mark @bottom;
+      pos base oBottomhalf
+          <anchor 512 -75> mark @bottom;
+      pos base Psmall
+          <anchor 565 -75> mark @bottom;
+      pos base RreversedSmall
+          <anchor 461 1207> mark @top;
+      pos base TturnedSmall
+          <anchor 461 1207> mark @top;
+      pos base Tsmall
+          <anchor 512 -75> mark @bottom;
+      pos base Usmall
+          <anchor 512 -75> mark @bottom;
+      pos base uSideways
+          <anchor 512 -75> mark @bottom;
+      pos base udieresisSideways
+          <anchor 512 -75> mark @bottom;
+      pos base mSidewaysTurned
+          <anchor 512 -75> mark @bottom;
+      pos base Vsmall
+          <anchor 512 -75> mark @bottom;
+      pos base Wsmall
+          <anchor 512 -75> mark @bottom;
+      pos base Zsmall
+          <anchor 531 -75> mark @bottom;
+      pos base spirantVoicedlaryngeal
+          <anchor 512 -75> mark @bottom
+          <anchor 547 1207> mark @top;
+      pos base uni1D27
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base uni1D29
+          <anchor 565 -75> mark @bottom;
+      pos base omod
+          <anchor 512 1207> mark @top;
+      pos base uni1D6C
+          <anchor 522 -75> mark @bottom;
+      pos base uni1D6D
+          <anchor 591 -75> mark @bottom;
+      pos base uni1D6E
+          <anchor 588 -75> mark @bottom;
+      pos base uni1D6F
+          <anchor 512 -75> mark @bottom;
+      pos base uni1D70
+          <anchor 511 1207> mark @top;
+      pos base uni1D72
+          <anchor 582 -75> mark @bottom
+          <anchor 582 1207> mark @top;
+      pos base uni1D73
+          <anchor 548 1207> mark @top;
+      pos base uni1D74
+          <anchor 512 -75> mark @bottom
+          <anchor 547 1207> mark @top;
+      pos base uni1D75
+          <anchor 625 -75> mark @bottom;
+      pos base uni1D77
+          <anchor 526 1207> mark @top;
+      pos base uni1D78
+          <anchor 512 1207> mark @top;
+      pos base uni1D79
+          <anchor 487 1207> mark @top;
+      pos base uni1D7B
+          <anchor 511 1207> mark @top;
+      pos base uni1D7C
+          <anchor 566 1207> mark @top;
+      pos base uni1D7E
+          <anchor 512 -75> mark @bottom;
+      pos base uni1D7F
+          <anchor 512 1207> mark @top;
+      pos base A.alt01
+          <anchor 512 1565> mark @top;
+      pos base B.alt01
+          <anchor 470 1565> mark @top;
+      pos base C.alt01
+          <anchor 557 1565> mark @top;
+      pos base D.alt01
+          <anchor 500 1565> mark @top;
+      pos base E.alt01
+          <anchor 541 1565> mark @top;
+      pos base F.alt01
+          <anchor 576 1565> mark @top;
+      pos base G.alt01
+          <anchor 514 1565> mark @top;
+      pos base H.alt01
+          <anchor 512 1565> mark @top;
+      pos base I.alt01
+          <anchor 511 1565> mark @top;
+      pos base J.alt01
+          <anchor 481 1565> mark @top;
+      pos base K.alt01
+          <anchor 589 1565> mark @top;
+      pos base L.alt01
+          <anchor 590 1565> mark @top;
+      pos base M.alt01
+          <anchor 512 1565> mark @top;
+      pos base N.alt01
+          <anchor 512 1565> mark @top;
+      pos base O.alt01
+          <anchor 512 1565> mark @top;
+      pos base P.alt01
+          <anchor 565 1565> mark @top;
+      pos base Q.alt01
+          <anchor 512 -75> mark @bottom;
+      pos base R.alt01
+          <anchor 556 1565> mark @top;
+      pos base S.alt01
+          <anchor 512 1565> mark @top;
+      pos base T.alt01
+          <anchor 512 1565> mark @top;
+      pos base U.alt01
+          <anchor 512 1565> mark @top;
+      pos base V.alt01
+          <anchor 512 -75> mark @bottom;
+      pos base W.alt01
+          <anchor 512 1565> mark @top;
+      pos base X.alt01
+          <anchor 512 -75> mark @bottom;
+      pos base Y.alt01
+          <anchor 512 1565> mark @top;
+      pos base Z.alt01
+          <anchor 531 1565> mark @top;
+      pos base A.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base B.alt03
+          <anchor 531 -75> mark @bottom;
+      pos base C.alt03
+          <anchor 555 -75> mark @bottom;
+      pos base D.alt03
+          <anchor 548 -75> mark @bottom;
+      pos base E.alt03
+          <anchor 541 -75> mark @bottom;
+      pos base F.alt03
+          <anchor 576 -75> mark @bottom;
+      pos base G.alt03
+          <anchor 514 -75> mark @bottom;
+      pos base H.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base I.alt03
+          <anchor 511 -75> mark @bottom;
+      pos base J.alt03
+          <anchor 481 -75> mark @bottom;
+      pos base K.alt03
+          <anchor 589 -75> mark @bottom;
+      pos base L.alt03
+          <anchor 590 -75> mark @bottom;
+      pos base M.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base N.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base O.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base P.alt03
+          <anchor 565 -75> mark @bottom;
+      pos base R.alt03
+          <anchor 556 -75> mark @bottom;
+      pos base S.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base T.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base U.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base V.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base W.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base X.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base Y.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base Z.alt03
+          <anchor 531 -75> mark @bottom;
+      pos base ten.alt03
+          <anchor 512 -75> mark @bottom;
+      pos base A.poker
+          <anchor 514 -75> mark @bottom;
+      pos base B.poker
+          <anchor 659 -75> mark @bottom;
+      pos base C.poker
+          <anchor 683 -75> mark @bottom;
+      pos base D.poker
+          <anchor 675 -75> mark @bottom;
+      pos base E.poker
+          <anchor 668 -75> mark @bottom;
+      pos base F.poker
+          <anchor 703 -75> mark @bottom;
+      pos base G.poker
+          <anchor 641 -75> mark @bottom;
+      pos base H.poker
+          <anchor 512 -75> mark @bottom;
+      pos base I.poker
+          <anchor 639 -75> mark @bottom;
+      pos base J.poker
+          <anchor 609 -75> mark @bottom;
+      pos base K.poker
+          <anchor 717 -75> mark @bottom;
+      pos base L.poker
+          <anchor 718 -75> mark @bottom;
+      pos base M.poker
+          <anchor 639 -75> mark @bottom;
+      pos base N.poker
+          <anchor 639 -75> mark @bottom;
+      pos base O.poker
+          <anchor 639 -75> mark @bottom;
+      pos base P.poker
+          <anchor 693 -75> mark @bottom;
+      pos base Q.poker
+          <anchor 639 -75> mark @bottom;
+      pos base R.poker
+          <anchor 684 -75> mark @bottom;
+      pos base S.poker
+          <anchor 639 -75> mark @bottom;
+      pos base T.poker
+          <anchor 639 -75> mark @bottom;
+      pos base U.poker
+          <anchor 639 -75> mark @bottom;
+      pos base V.poker
+          <anchor 639 -75> mark @bottom;
+      pos base W.poker
+          <anchor 639 -75> mark @bottom;
+      pos base X.poker
+          <anchor 639 -75> mark @bottom;
+      pos base Y.poker
+          <anchor 639 -75> mark @bottom;
+      pos base Z.poker
+          <anchor 659 -75> mark @bottom;
+      pos base uniF580.alt01
+          <anchor 581 1207> mark @top;
+      pos base uniF581.alt01
+          <anchor 443 1207> mark @top;
+      pos base Amathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Bmathserifbold
+          <anchor 551 -75> mark @bottom;
+      pos base Cmathserifbold
+          <anchor 555 -75> mark @bottom;
+      pos base Dmathserifbold
+          <anchor 548 -75> mark @bottom;
+      pos base Emathserifbold
+          <anchor 541 -75> mark @bottom;
+      pos base Fmathserifbold
+          <anchor 576 -75> mark @bottom;
+      pos base Gmathserifbold
+          <anchor 514 -75> mark @bottom;
+      pos base Hmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Imathserifbold
+          <anchor 511 -75> mark @bottom;
+      pos base Jmathserifbold
+          <anchor 481 -75> mark @bottom;
+      pos base Kmathserifbold
+          <anchor 589 -75> mark @bottom;
+      pos base Lmathserifbold
+          <anchor 590 -75> mark @bottom;
+      pos base Mmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Nmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Omathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Pmathserifbold
+          <anchor 565 -75> mark @bottom;
+      pos base Qmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Rmathserifbold
+          <anchor 556 -75> mark @bottom;
+      pos base Smathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Tmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Umathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Vmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Wmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Xmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Ymathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base Zmathserifbold
+          <anchor 531 -75> mark @bottom;
+      pos base amathserifbold
+          <anchor 474 -75> mark @bottom
+          <anchor 463 1207> mark @top;
+      pos base bmathserifbold
+          <anchor 545 -75> mark @bottom;
+      pos base cmathserifbold
+          <anchor 548 -75> mark @bottom
+          <anchor 548 1207> mark @top;
+      pos base dmathserifbold
+          <anchor 497 -75> mark @bottom;
+      pos base emathserifbold
+          <anchor 526 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base fmathserifbold
+          <anchor 550 -75> mark @bottom;
+      pos base gmathserifbold
+          <anchor 525 1207> mark @top;
+      pos base hmathserifbold
+          <anchor 517 -75> mark @bottom;
+      pos base imathserifbold
+          <anchor 521 -75> mark @bottom;
+      pos base kmathserifbold
+          <anchor 557 -75> mark @bottom;
+      pos base lmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base mmathserifbold
+          <anchor 512 -75> mark @bottom;
+      pos base nmathserifbold
+          <anchor 517 -75> mark @bottom
+          <anchor 569 1207> mark @top;
+      pos base omathserifbold
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base pmathserifbold
+          <anchor 551 1207> mark @top;
+      pos base qmathserifbold
+          <anchor 472 1207> mark @top;
+      pos base rmathserifbold
+          <anchor 602 -75> mark @bottom
+          <anchor 602 1207> mark @top;
+      pos base smathserifbold
+          <anchor 512 -75> mark @bottom
+          <anchor 547 1207> mark @top;
+      pos base tmathserifbold
+          <anchor 606 -75> mark @bottom;
+      pos base umathserifbold
+          <anchor 502 -75> mark @bottom
+          <anchor 502 1207> mark @top;
+      pos base vmathserifbold
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base wmathserifbold
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base xmathserifbold
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base ymathserifbold
+          <anchor 512 1207> mark @top;
+      pos base zmathserifbold
+          <anchor 531 -75> mark @bottom
+          <anchor 531 1207> mark @top;
+      pos base Amathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Bmathserifitalic
+          <anchor 415 -75> mark @bottom;
+      pos base Cmathserifitalic
+          <anchor 420 -75> mark @bottom;
+      pos base Dmathserifitalic
+          <anchor 412 -75> mark @bottom;
+      pos base Emathserifitalic
+          <anchor 406 -75> mark @bottom;
+      pos base Fmathserifitalic
+          <anchor 440 -75> mark @bottom;
+      pos base Gmathserifitalic
+          <anchor 379 -75> mark @bottom;
+      pos base Hmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Imathserifitalic
+          <anchor 376 -75> mark @bottom;
+      pos base Jmathserifitalic
+          <anchor 346 -75> mark @bottom;
+      pos base Kmathserifitalic
+          <anchor 454 -75> mark @bottom;
+      pos base Lmathserifitalic
+          <anchor 455 -75> mark @bottom;
+      pos base Mmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Nmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Omathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Pmathserifitalic
+          <anchor 430 -75> mark @bottom;
+      pos base Qmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Rmathserifitalic
+          <anchor 421 -75> mark @bottom;
+      pos base Smathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Tmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Umathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Vmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Wmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Xmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Ymathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base Zmathserifitalic
+          <anchor 396 -75> mark @bottom;
+      pos base amathserifitalic
+          <anchor 494 -75> mark @bottom
+          <anchor 482 1207> mark @top;
+      pos base bmathserifitalic
+          <anchor 396 -75> mark @bottom;
+      pos base cmathserifitalic
+          <anchor 432 -75> mark @bottom
+          <anchor 432 1207> mark @top;
+      pos base dmathserifitalic
+          <anchor 376 -75> mark @bottom;
+      pos base emathserifitalic
+          <anchor 391 -75> mark @bottom
+          <anchor 377 1207> mark @top;
+      pos base fmathserifitalic
+          <anchor 434 -75> mark @bottom;
+      pos base gmathserifitalic
+          <anchor 389 1207> mark @top;
+      pos base hmathserifitalic
+          <anchor 382 -75> mark @bottom;
+      pos base imathserifitalic
+          <anchor 385 -75> mark @bottom;
+      pos base kmathserifitalic
+          <anchor 422 -75> mark @bottom;
+      pos base lmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base mmathserifitalic
+          <anchor 377 -75> mark @bottom;
+      pos base nmathserifitalic
+          <anchor 382 -75> mark @bottom
+          <anchor 434 1207> mark @top;
+      pos base omathserifitalic
+          <anchor 377 -75> mark @bottom
+          <anchor 377 1207> mark @top;
+      pos base pmathserifitalic
+          <anchor 401 1207> mark @top;
+      pos base qmathserifitalic
+          <anchor 352 1207> mark @top;
+      pos base rmathserifitalic
+          <anchor 467 -75> mark @bottom
+          <anchor 467 1207> mark @top;
+      pos base smathserifitalic
+          <anchor 377 -75> mark @bottom
+          <anchor 412 1207> mark @top;
+      pos base tmathserifitalic
+          <anchor 470 -75> mark @bottom;
+      pos base umathserifitalic
+          <anchor 367 -75> mark @bottom
+          <anchor 367 1207> mark @top;
+      pos base vmathserifitalic
+          <anchor 377 1207> mark @top;
+      pos base wmathserifitalic
+          <anchor 377 -75> mark @bottom
+          <anchor 377 1207> mark @top;
+      pos base xmathserifitalic
+          <anchor 377 -75> mark @bottom
+          <anchor 377 1207> mark @top;
+      pos base ymathserifitalic
+          <anchor 377 1207> mark @top;
+      pos base zmathserifitalic
+          <anchor 396 -75> mark @bottom
+          <anchor 396 1207> mark @top;
+      pos base Amathserifiboldit
+          <anchor 512 -75> mark @bottom;
+      pos base Bmathserifiboldit
+          <anchor 551 -75> mark @bottom;
+      pos base Cmathserifiboldit
+          <anchor 555 -75> mark @bottom;
+      pos base Dmathserifiboldit
+          <anchor 412 -75> mark @bottom;
+      pos base Emathserifiboldit
+          <anchor 406 -75> mark @bottom;
+      pos base Fmathserifiboldit
+          <anchor 440 -75> mark @bottom;
+      pos base Gmathserifiboldit
+          <anchor 379 -75> mark @bottom;
+      pos base Hmathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Imathserifiboldit
+          <anchor 376 -75> mark @bottom;
+      pos base Jmathserifiboldit
+          <anchor 346 -75> mark @bottom;
+      pos base Kmathserifiboldit
+          <anchor 454 -75> mark @bottom;
+      pos base Lmathserifiboldit
+          <anchor 455 -75> mark @bottom;
+      pos base Mmathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Nmathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Omathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Pmathserifiboldit
+          <anchor 430 -75> mark @bottom;
+      pos base Qmathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Rmathserifiboldit
+          <anchor 421 -75> mark @bottom;
+      pos base Smathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Tmathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Umathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Vmathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Wmathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Xmathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Ymathserifiboldit
+          <anchor 377 -75> mark @bottom;
+      pos base Zmathserifiboldit
+          <anchor 396 -75> mark @bottom;
+      pos base amathserifiboldit
+          <anchor 474 -75> mark @bottom
+          <anchor 463 1207> mark @top;
+      pos base bmathserifiboldit
+          <anchor 545 -75> mark @bottom;
+      pos base cmathserifiboldit
+          <anchor 548 -75> mark @bottom
+          <anchor 548 1207> mark @top;
+      pos base dmathserifiboldit
+          <anchor 497 -75> mark @bottom;
+      pos base emathserifiboldit
+          <anchor 526 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base fmathserifiboldit
+          <anchor 550 -75> mark @bottom;
+      pos base gmathserifiboldit
+          <anchor 525 1207> mark @top;
+      pos base hmathserifiboldit
+          <anchor 517 -75> mark @bottom;
+      pos base imathserifiboldit
+          <anchor 521 -75> mark @bottom;
+      pos base kmathserifiboldit
+          <anchor 557 -75> mark @bottom;
+      pos base lmathserifiboldit
+          <anchor 512 -75> mark @bottom;
+      pos base mmathserifiboldit
+          <anchor 512 -75> mark @bottom;
+      pos base nmathserifiboldit
+          <anchor 517 -75> mark @bottom
+          <anchor 569 1207> mark @top;
+      pos base omathserifiboldit
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base pmathserifiboldit
+          <anchor 551 1207> mark @top;
+      pos base qmathserifiboldit
+          <anchor 472 1207> mark @top;
+      pos base rmathserifiboldit
+          <anchor 602 -75> mark @bottom
+          <anchor 602 1207> mark @top;
+      pos base smathserifiboldit
+          <anchor 512 -75> mark @bottom
+          <anchor 547 1207> mark @top;
+      pos base tmathserifiboldit
+          <anchor 606 -75> mark @bottom;
+      pos base umathserifiboldit
+          <anchor 502 -75> mark @bottom
+          <anchor 502 1207> mark @top;
+      pos base vmathserifiboldit
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base wmathserifiboldit
+          <anchor 377 -75> mark @bottom
+          <anchor 377 1207> mark @top;
+      pos base xmathserifiboldit
+          <anchor 377 -75> mark @bottom
+          <anchor 377 1207> mark @top;
+      pos base ymathserifiboldit
+          <anchor 377 1207> mark @top;
+      pos base zmathserifiboldit
+          <anchor 396 -75> mark @bottom
+          <anchor 396 1207> mark @top;
+      pos base amathfraktur
+          <anchor 497 1207> mark @top;
+      pos base cmathfraktur
+          <anchor 497 1207> mark @top;
+      pos base fmathfraktur
+          <anchor 588 -75> mark @bottom;
+      pos base imathfraktur
+          <anchor 530 -75> mark @bottom;
+      pos base lmathfraktur
+          <anchor 530 -75> mark @bottom;
+      pos base rmathfraktur
+          <anchor 582 -75> mark @bottom
+          <anchor 582 1207> mark @top;
+      pos base tmathfraktur
+          <anchor 625 -75> mark @bottom;
+      pos base umathfraktur
+          <anchor 499 -75> mark @bottom
+          <anchor 499 1207> mark @top;
+      pos base amathboldfraktur
+          <anchor 497 1207> mark @top;
+      pos base imathboldfraktur
+          <anchor 542 -75> mark @bottom;
+      pos base lmathboldfraktur
+          <anchor 542 -75> mark @bottom;
+      pos base rmathboldfraktur
+          <anchor 582 -75> mark @bottom
+          <anchor 582 1207> mark @top;
+      pos base tmathboldfraktur
+          <anchor 628 -75> mark @bottom;
+      pos base Amathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Bmathsans
+          <anchor 531 -75> mark @bottom;
+      pos base Cmathsans
+          <anchor 555 -75> mark @bottom;
+      pos base Dmathsans
+          <anchor 548 -75> mark @bottom;
+      pos base Emathsans
+          <anchor 541 -75> mark @bottom;
+      pos base Fmathsans
+          <anchor 576 -75> mark @bottom;
+      pos base Gmathsans
+          <anchor 514 -75> mark @bottom;
+      pos base Hmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Imathsans
+          <anchor 511 -75> mark @bottom;
+      pos base Jmathsans
+          <anchor 481 -75> mark @bottom;
+      pos base Kmathsans
+          <anchor 589 -75> mark @bottom;
+      pos base Lmathsans
+          <anchor 590 -75> mark @bottom;
+      pos base Mmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Nmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Omathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Pmathsans
+          <anchor 565 -75> mark @bottom;
+      pos base Qmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Rmathsans
+          <anchor 556 -75> mark @bottom;
+      pos base Smathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Tmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Umathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Vmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Wmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Xmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Ymathsans
+          <anchor 512 -75> mark @bottom;
+      pos base Zmathsans
+          <anchor 531 -75> mark @bottom;
+      pos base amathsans
+          <anchor 494 -75> mark @bottom
+          <anchor 482 1207> mark @top;
+      pos base bmathsans
+          <anchor 522 -75> mark @bottom;
+      pos base cmathsans
+          <anchor 567 -75> mark @bottom
+          <anchor 567 1207> mark @top;
+      pos base dmathsans
+          <anchor 521 -75> mark @bottom;
+      pos base emathsans
+          <anchor 526 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base fmathsans
+          <anchor 588 -75> mark @bottom;
+      pos base gmathsans
+          <anchor 525 1207> mark @top;
+      pos base hmathsans
+          <anchor 517 -75> mark @bottom;
+      pos base imathsans
+          <anchor 521 -75> mark @bottom;
+      pos base kmathsans
+          <anchor 557 -75> mark @bottom;
+      pos base lmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base mmathsans
+          <anchor 512 -75> mark @bottom;
+      pos base nmathsans
+          <anchor 517 -75> mark @bottom
+          <anchor 569 1207> mark @top;
+      pos base omathsans
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base pmathsans
+          <anchor 526 1207> mark @top;
+      pos base qmathsans
+          <anchor 497 1207> mark @top;
+      pos base rmathsans
+          <anchor 582 -75> mark @bottom
+          <anchor 582 1207> mark @top;
+      pos base smathsans
+          <anchor 512 -75> mark @bottom
+          <anchor 547 1207> mark @top;
+      pos base tmathsans
+          <anchor 625 -75> mark @bottom;
+      pos base umathsans
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base vmathsans
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base wmathsans
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base xmathsans
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base ymathsans
+          <anchor 512 1207> mark @top;
+      pos base zmathsans
+          <anchor 531 -75> mark @bottom
+          <anchor 531 1207> mark @top;
+      pos base zmathsansitalic
+          <anchor 396 -75> mark @bottom
+          <anchor 565 1207> mark @top;
+      pos base Amathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Bmathmono
+          <anchor 531 -75> mark @bottom;
+      pos base Cmathmono
+          <anchor 555 -75> mark @bottom;
+      pos base Dmathmono
+          <anchor 548 -75> mark @bottom;
+      pos base Emathmono
+          <anchor 541 -75> mark @bottom;
+      pos base Fmathmono
+          <anchor 576 -75> mark @bottom;
+      pos base Gmathmono
+          <anchor 514 -75> mark @bottom;
+      pos base Hmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Imathmono
+          <anchor 511 -75> mark @bottom;
+      pos base Jmathmono
+          <anchor 481 -75> mark @bottom;
+      pos base Kmathmono
+          <anchor 589 -75> mark @bottom;
+      pos base Lmathmono
+          <anchor 590 -75> mark @bottom;
+      pos base Mmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Nmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Omathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Pmathmono
+          <anchor 565 -75> mark @bottom;
+      pos base Qmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Rmathmono
+          <anchor 556 -75> mark @bottom;
+      pos base Smathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Tmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Umathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Vmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Wmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Xmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Ymathmono
+          <anchor 512 -75> mark @bottom;
+      pos base Zmathmono
+          <anchor 531 -75> mark @bottom;
+      pos base amathmono
+          <anchor 494 -75> mark @bottom
+          <anchor 482 1207> mark @top;
+      pos base bmathmono
+          <anchor 522 -75> mark @bottom;
+      pos base cmathmono
+          <anchor 567 -75> mark @bottom
+          <anchor 567 1207> mark @top;
+      pos base dmathmono
+          <anchor 521 -75> mark @bottom;
+      pos base emathmono
+          <anchor 526 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base fmathmono
+          <anchor 588 -75> mark @bottom;
+      pos base gmathmono
+          <anchor 525 1207> mark @top;
+      pos base hmathmono
+          <anchor 517 -75> mark @bottom;
+      pos base imathmono
+          <anchor 521 -75> mark @bottom;
+      pos base kmathmono
+          <anchor 557 -75> mark @bottom;
+      pos base lmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base mmathmono
+          <anchor 512 -75> mark @bottom;
+      pos base nmathmono
+          <anchor 517 -75> mark @bottom
+          <anchor 569 1207> mark @top;
+      pos base omathmono
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base pmathmono
+          <anchor 526 1207> mark @top;
+      pos base qmathmono
+          <anchor 497 1207> mark @top;
+      pos base rmathmono
+          <anchor 582 -75> mark @bottom
+          <anchor 582 1207> mark @top;
+      pos base smathmono
+          <anchor 512 -75> mark @bottom
+          <anchor 547 1207> mark @top;
+      pos base tmathmono
+          <anchor 625 -75> mark @bottom;
+      pos base umathmono
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base vmathmono
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base wmathmono
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base xmathmono
+          <anchor 512 -75> mark @bottom
+          <anchor 512 1207> mark @top;
+      pos base ymathmono
+          <anchor 512 1207> mark @top;
+      pos base zmathmono
+          <anchor 531 -75> mark @bottom
+          <anchor 531 1207> mark @top;
+      pos base imath
+          <anchor 385 -75> mark @bottom;
+      pos base Iotamb
+          <anchor 511 -75> mark @bottom;
+      pos base Alphami
+          <anchor 377 -75> mark @bottom;
+      pos base Betami
+          <anchor 415 -75> mark @bottom;
+      pos base Epsilonmi
+          <anchor 406 -75> mark @bottom;
+      pos base Zetami
+          <anchor 396 -75> mark @bottom;
+      pos base Etami
+          <anchor 377 -75> mark @bottom;
+      pos base Iotami
+          <anchor 376 -75> mark @bottom;
+      pos base Kappami
+          <anchor 454 -75> mark @bottom;
+      pos base Mumi
+          <anchor 377 -75> mark @bottom;
+      pos base Numi
+          <anchor 377 -75> mark @bottom;
+      pos base Omicronmi
+          <anchor 377 -75> mark @bottom;
+      pos base Rhomi
+          <anchor 430 -75> mark @bottom;
+      pos base Taumi
+          <anchor 377 -75> mark @bottom;
+      pos base Chimi
+          <anchor 377 -75> mark @bottom;
+      pos base omicronmi
+          <anchor 377 -75> mark @bottom
+          <anchor 377 1207> mark @top;
+      pos base Digamma
+          <anchor 576 -75> mark @bottom;
+      pos base bcomb
+          <anchor 726 1225> mark @bottom;
+      pos base fcomb
+          <anchor 778 1225> mark @bottom;
+      pos base gcomb
+          <anchor 724 2507> mark @top;
+      pos base kcomb
+          <anchor 743 1225> mark @bottom;
+      pos base lcomb
+          <anchor 724 1225> mark @bottom;
+      pos base ncomb
+          <anchor 729 1225> mark @bottom
+          <anchor 781 2507> mark @top;
+      pos base pcomb
+          <anchor 730 2507> mark @top;
+      pos base qcomb
+          <anchor 718 2507> mark @top;
+      pos base scomb
+          <anchor 716 1225> mark @bottom
+          <anchor 751 2507> mark @top;
+      pos base wcomb
+          <anchor 725 1225> mark @bottom
+          <anchor 725 2507> mark @top;
+      pos base ycomb
+          <anchor 723 2507> mark @top;
+      pos base zcomb
+          <anchor 732 1225> mark @bottom
+          <anchor 732 2507> mark @top;
+  } markLTR;
+
+  lookup markLTR;
+} mark;
