@@ -14,6 +14,7 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
 # IN THE SOFTWARE.
 
+# v0.0.59 added microsecond calt
 # v0.0.58 merged liga into calt
 # v0.0.57 cleanup
 # v0.0.56 optimized triples in < block
@@ -735,6 +736,7 @@ lookup clig_cleanup {
     sub v00 [slash_slash slash_equal slash_asterisk]' [slash_slash_slash slash_equal_equal slash_asterisk_asterisk] by v00; # trailing substitutions for clig_slash
 } clig_cleanup;
 
+
 ######################################################################################################
 
 lookup liga_arab_1 {
@@ -768,6 +770,12 @@ lookup clig_existential {
     sub existential exclam by existentialexclam;
     sub theredoesnotexist exclam by notexistentialexclam;
 } clig_existential;
+
+lookup clig_microsecond {
+sub @digits space u' s by mumi;
+sub @digits space u s' by smathserifitalic;
+} clig_microsecond;
+
 
 #lookup kern_while_fix_i {
 #   pos w h i' l e <200 0 0 0>;
@@ -806,6 +814,7 @@ feature calt {
      lookup clig_ballot;         # imported from liga
      lookup clig_existential;    # imported from liga
 #    lookup kern_while_fix_i;    # test contextual positions
+     lookup clig_microsecond     # microsecond
 
      script arab;
      lookup liga_arab_1;
