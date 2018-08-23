@@ -1,3 +1,17 @@
+# Languagesystem definitions
+
+languagesystem DFLT dflt; # Default default
+languagesystem latn dflt; # Latin default
+languagesystem arab dflt; # Arabic default
+languagesystem bopo dflt; # Bopomofo default
+languagesystem brai dflt; # Braille default
+languagesystem grek dflt; # Greek default
+languagesystem cyrl dflt; # Cyrillic default
+languagesystem hebr dflt; # Hebrew default
+languagesystem math dflt; # Mathematical Alphanumeric Symbols default
+languagesystem zinh dflt;
+languagesystem zyyy dflt;
+
 # Copyright 2018 kelas <me@kel.as>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
@@ -84,18 +98,18 @@ lookup drop_if_next_is {
 @ampersand_heads = [ampersand percent asterisk plus hyphen slash equal greater];
 @ampersand_tails = [ampersand_ampersand ampersand_percent ampersand_asterisk ampersand_plus ampersand_hyphen ampersand_slash ampersand_equal ampersand_greater];
 
-@less_heads = [less greater dollar asterisk plus equal bar exclam at numbersign percent asciicircum ampersand question
+@less_heads = [less greater dollar asterisk plus equal bar exclam at numbersign percent asciicircum ampersand question 
     period slash backslash quotedbl colon asciitilde hyphen];
 
 @less_doubles = [less_less less_greater less_dollar less_asterisk less_plus less_equal less_bar less_exclam less_at less_numbersign
-    less_percent less_asciicircum less_ampersand less_question less_period less_slash less_backslash less_quotedbl less_colon
+    less_percent less_asciicircum less_ampersand less_question less_period less_slash less_backslash less_quotedbl less_colon 
     less_asciitilde less_hyphen];
 
-@less_triples = [less_dollar_greater less_asterisk_greater less_plus_greater less_equal_greater less_bar_greater
-    less_exclam_greater less_at_greater less_numbersign_greater less_percent_greater less_asciicircum_greater
-    less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater
-    less_quotedbl_greater less_colon_greater less_asciitilde_greater less_hyphen_greater less_less_less less_less_equal
-    less_less_hyphen less_less_asciitilde less_less_asciicircum less_less_bar less_equal_less less_asciitilde_asciitilde
+@less_triples = [less_dollar_greater less_asterisk_greater less_plus_greater less_equal_greater less_bar_greater 
+    less_exclam_greater less_at_greater less_numbersign_greater less_percent_greater less_asciicircum_greater 
+    less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater 
+    less_quotedbl_greater less_colon_greater less_asciitilde_greater less_hyphen_greater less_less_less less_less_equal 
+    less_less_hyphen less_less_asciitilde less_less_asciicircum less_less_bar less_equal_less less_asciitilde_asciitilde 
     less_hyphen_hyphen less_bar_hyphen less_bar_bar less_hyphen_less less_equal_equal];
 
 @hyphen_heads =   [hyphen less greater equal];
@@ -114,7 +128,7 @@ lookup drop_if_next_is {
 @colon_heads = [colon equal equivalence greater parenleft parenright three D P slash backslash];
 @colon_tails = [colon_colon colon_equal colon_equivalence colon_greater colon_parenleft colon_parenright colon_three colon_D colon_P colon_slash colon_backslash];
 
-# == => =~
+# == => =~ 
 @equal_heads = [equal greater asciitilde];
 @equal_tails = [equal_equal equal_greater equal_asciitilde];
 
@@ -130,7 +144,7 @@ lookup drop_if_next_is {
 @bar_heads = [equal bar greater hyphen];
 @bar_tails = [bar_equal bar_bar bar_greater bar_hyphen];
 
-# ~= ~>
+# ~= ~> 
 @asciitilde_heads = [equal greater];
 @asciitilde_tails = [asciitilde_equal asciitilde_greater];
 
@@ -138,7 +152,7 @@ lookup drop_if_next_is {
 @asciicircum_heads = [equal period question greater];
 @asciicircum_tails = [asciicircum_equal asciicircum_period asciicircum_question asciicircum_greater];
 
-# \\ \>
+# \\ \> 
 @backslash_heads = [backslash greater];
 @backslash_tails = [backslash_backslash backslash_greater];
 
@@ -189,7 +203,7 @@ lookup clig_period_tail_period_less {
 } clig_period_tail_period_less;
 
 lookup clig_greater_tail_greater_greater {
-    sub [greater hyphen equal asciicircum bar] by
+    sub [greater hyphen equal asciicircum bar] by 
         [greater_greater_greater greater_greater_hyphen greater_greater_equal greater_greater_asciicircum greater_greater_bar];
 } clig_greater_tail_greater_greater;
 
@@ -261,7 +275,7 @@ lookup clig_greater_tail_eq_gt {
 lookup clig_greater_tail_hyphen_gt {
     sub greater by greater_hyphen_greater; # >->
 } clig_greater_tail_hyphen_gt;
-
+ 
 lookup clig_asciitilde_tail_gt {
     sub greater by asciitilde_asciitilde_greater; # ~~>
 } clig_asciitilde_tail_gt;
@@ -309,11 +323,11 @@ lookup clig_exclam_tails {
 } clig_exclam_tails;
 
 lookup clig_numbersign_tails {
-    sub @numbersign_heads' by @numbersign_tails; # #_  #(  #{  #?  #>
+    sub @numbersign_heads' by @numbersign_tails; # #_  #(  #{  #?  #> 
 } clig_numbersign_tails;
 
 lookup clig_ampersand_tails {
-    sub @ampersand_heads' by @ampersand_tails; # &% && &* &+ &- &/ &= &>
+    sub @ampersand_heads' by @ampersand_tails; # &% && &* &+ &- &/ &= &> 
 } clig_ampersand_tails;
 
 lookup clig_percent_tails {
@@ -330,7 +344,7 @@ lookup clig_plus_tails {
 } clig_plus_tails;
 
 lookup clig_slash_tails_final {
-    sub [slash equal asterisk]
+    sub [slash equal asterisk] 
         by [slash_slash_slash slash_equal_equal slash_asterisk_asterisk]; # /// /== /**
 } clig_slash_tails_final;
 
@@ -341,43 +355,43 @@ lookup clig_slash_tails_3 {
 } clig_slash_tails_3;
 
 lookup clig_period_tails {
-    sub @period_heads' by @period_tails;
+    sub @period_heads' by @period_tails;    
 } clig_period_tails;
 
 lookup clig_slash_tails {
-    sub @slash_heads' by @slash_tails;
+    sub @slash_heads' by @slash_tails;  
 } clig_slash_tails;
 
 lookup clig_colon_tails {
-    sub @colon_heads' by @colon_tails;
+    sub @colon_heads' by @colon_tails;  
 } clig_colon_tails;
 
 lookup clig_equal_tails {
-    sub @equal_heads' by @equal_tails;
+    sub @equal_heads' by @equal_tails;  
 } clig_equal_tails;
 
 lookup clig_greater_tails {
-    sub @greater_heads' by @greater_tails;
+    sub @greater_heads' by @greater_tails;  
 } clig_greater_tails;
 
 lookup clig_question_tails {
-    sub @question_heads' by @question_tails;
+    sub @question_heads' by @question_tails;    
 } clig_question_tails;
 
 lookup clig_bar_tails {
-    sub @bar_heads' by @bar_tails;
+    sub @bar_heads' by @bar_tails;  
 } clig_bar_tails;
 
 lookup clig_asciitilde_tails {
-    sub @asciitilde_heads' by @asciitilde_tails;
+    sub @asciitilde_heads' by @asciitilde_tails;    
 } clig_asciitilde_tails;
 
 lookup clig_asciicircum_tails {
-    sub @asciicircum_heads' by @asciicircum_tails;
+    sub @asciicircum_heads' by @asciicircum_tails;  
 } clig_asciicircum_tails;
 
 lookup clig_backslash_tails {
-    sub @backslash_heads' by @backslash_tails;
+    sub @backslash_heads' by @backslash_tails;  
 } clig_backslash_tails;
 
 lookup clig_equivalence_tails {
@@ -407,8 +421,8 @@ lookup clig_less_long_less_eq_eq {
 } clig_less_long_less_eq_eq;
 
 lookup clig_less_tails_2 {
-    # << <> <$ <* <+ <= <| <! <@ <# <% <^ <& <? <. </ <\ <" <: <~ <-
-    sub @less_heads by @less_doubles;
+    # << <> <$ <* <+ <= <| <! <@ <# <% <^ <& <? <. </ <\ <" <: <~ <-   
+    sub @less_heads by @less_doubles; 
 } clig_less_tails_2;
 
 #@less_doubles_end_greater = [less_dollar less_asterisk less_plus less_bar less_exclam less_at less_numbersign less_percent less_asciicircum less_ampersand less_question less_period less_slash less_backslash less_quotedbl less_colon less_asciitilde];
@@ -446,7 +460,7 @@ lookup clig_less_tails_3 {
     sub less_hyphen [less hyphen greater]' by [less_hyphen_less less_hyphen_hyphen less_hyphen_greater];
 
     # <<<  <<=  <<-  <<~  <<^  <<|
-    sub less_less [less equal hyphen asciitilde asciicircum bar]' by
+    sub less_less [less equal hyphen asciitilde asciicircum bar]' by 
         [less_less_less less_less_equal less_less_hyphen less_less_asciitilde less_less_asciicircum less_less_bar];
 
     # <~~  <~>
@@ -483,7 +497,7 @@ lookup clig_bar {
     sub bar'            lookup drop_if_next_is greater'             lookup drop_if_next_is [greater hyphen]' lookup clig_bar_tail_greater_hyphen; # |>> |>-
     sub bar'            lookup drop_if_next_is plus'                lookup drop_if_next_is bar' lookup clig_bar_tail_bar_less;  #        |+|
     sub bar'            lookup drop_if_next_is less'                lookup drop_if_next_is less' lookup clig_bar_tail_bar_less; #        |<<
-    sub bar'            lookup drop_if_next_is @bar_heads'          lookup clig_bar_tails;          #                                    |= || |>
+    sub bar'            lookup drop_if_next_is @bar_heads'          lookup clig_bar_tails;          #                                    |= || |> 
 } clig_bar;
 
 lookup clig_less {
@@ -519,15 +533,15 @@ lookup clig_hyphen {
     #ignore sub less exclam hyphen' hyphen'; # precedence exception
     #ignore sub less hyphen' [hyphen greater]'; # precedence exception
     ignore sub greater hyphen' greater; # precedence exception >->
-    ignore sub less hyphen hyphen hyphen' [greater less]; # disable <---> <---<
-    ignore sub less hyphen' hyphen hyphen [greater less]; # disable <---> <---<
-    ignore sub less hyphen' hyphen [greater less]; # disable <--> <--<
-    ignore sub less hyphen hyphen' [greater less]; # disable <--> <--<
-    ignore sub hyphen hyphen hyphen' [greater less]; # disable --------< --------->
-    ignore sub hyphen' hyphen hyphen [greater less]; # disable --------< --------->
+    ignore sub less hyphen hyphen hyphen' [greater less]; # disable <---> <---< 
+    ignore sub less hyphen' hyphen hyphen [greater less]; # disable <---> <---< 
+    ignore sub less hyphen' hyphen [greater less]; # disable <--> <--< 
+    ignore sub less hyphen hyphen' [greater less]; # disable <--> <--< 
+    ignore sub hyphen hyphen hyphen' [greater less]; # disable --------< ---------> 
+    ignore sub hyphen' hyphen hyphen [greater less]; # disable --------< ---------> 
 
-    sub hyphen' lookup drop_if_next_is backslash' lookup drop_if_next_is slash' lookup clig_hyphen_tail_backsl_slash; #  -\/
-    sub hyphen' lookup drop_if_next_is plus' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_plus_hyphen; #  -+-
+    sub hyphen' lookup drop_if_next_is backslash' lookup drop_if_next_is slash' lookup clig_hyphen_tail_backsl_slash; #  -\/ 
+    sub hyphen' lookup drop_if_next_is plus' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_plus_hyphen; #  -+- 
     sub hyphen' lookup drop_if_next_is less' lookup drop_if_next_is less' lookup clig_hyphen_tail_less_less;#   -<<
     sub hyphen' lookup drop_if_next_is bar' lookup drop_if_next_is greater' lookup clig_hyphen_tail_bar_greater; # -|>
     sub hyphen' lookup drop_if_next_is @hyphen_heads' lookup clig_hyphen_tails;    # -- -< -= ->
@@ -551,7 +565,7 @@ lookup clig_colon {
     sub colon'          lookup drop_if_next_is less'                lookup drop_if_next_is colon' lookup clig_colon_tail_greater_colon; # :<:
     sub colon'          lookup drop_if_next_is greater'             lookup drop_if_next_is colon' lookup clig_colon_tail_gt; #            :::
     sub colon'          lookup drop_if_next_is colon'               lookup drop_if_next_is colon' lookup clig_colon_tail_col_col; #       :>:
-    sub colon'          lookup drop_if_next_is @colon_heads'        lookup clig_colon_tails;        #                                     :: := :≡ :> :( :) :3 :D :P
+    sub colon'          lookup drop_if_next_is @colon_heads'        lookup clig_colon_tails;        #                                     :: := :≡ :> :( :) :3 :D :P 
 } clig_colon;
 
 lookup clig_exclam {
@@ -564,17 +578,17 @@ lookup clig_exclam {
 } clig_exclam;
 
 lookup clig_plus {
-    ignore sub plus plus plus plus; # four pluses in a row are no-op
+    ignore sub plus plus plus plus; # four pluses in a row are no-op    
     ignore sub plus plus' plus; # further pluses are no-op
     sub plus'             lookup drop_if_next_is plus'               lookup drop_if_next_is [plus equal]' lookup clig_plus_tail_plus_or_eq; # +++
-    sub plus'             lookup drop_if_next_is @plus_heads'        lookup clig_plus_tails; # ++ += +>
+    sub plus'             lookup drop_if_next_is @plus_heads'        lookup clig_plus_tails; # ++ += +>                    
 } clig_plus;
 
 lookup clig_ampersand {
     ignore sub ampersand ampersand ampersand ampersand; # four amps in a row are no-op
     ignore sub ampersand ampersand' ampersand; # further amps are no-op
     sub ampersand'        lookup drop_if_next_is ampersand'           lookup drop_if_next_is ampersand' lookup clig_ampersand_tail_amp_amp; # &&&
-    sub ampersand'        lookup drop_if_next_is @ampersand_heads'    lookup clig_ampersand_tails; # &% && &* &+ &- &/ &= &>
+    sub ampersand'        lookup drop_if_next_is @ampersand_heads'    lookup clig_ampersand_tails; # &% && &* &+ &- &/ &= &> 
 } clig_ampersand;
 
 lookup clig_greater {
@@ -593,13 +607,13 @@ lookup clig_asterisk {
     ignore sub asterisk asterisk asterisk asterisk; # four asts in a row are no-op
     ignore sub asterisk asterisk' asterisk; # further asts are no-op
     sub asterisk'       lookup drop_if_next_is asterisk'            lookup drop_if_next_is asterisk' lookup clig_asterisk_tail_asterisk; # ***
-    sub asterisk'       lookup drop_if_next_is @asterisk_heads'     lookup clig_asterisk_tails;     #                                    *= */  *>
+    sub asterisk'       lookup drop_if_next_is @asterisk_heads'     lookup clig_asterisk_tails;     #                                    *= */  *>  
 } clig_asterisk;
 
 lookup clig_period {
     ignore sub period period period period; # four dots in a row are no-op
     ignore sub period period' period; # further dots are no-op
-    sub period'         lookup drop_if_next_is period'              lookup drop_if_next_is [period less]' lookup clig_period_tail_period_less; # ... ..<
+    sub period'         lookup drop_if_next_is period'              lookup drop_if_next_is [period less]' lookup clig_period_tail_period_less; # ... ..< 
     sub period'         lookup drop_if_next_is @period_heads'       lookup clig_period_tails;       #                                    .. .> .~ .=
 } clig_period;
 
@@ -607,7 +621,7 @@ lookup clig_question {
     ignore sub question question question question; # four asks in a row are no-op
     ignore sub question question' question; # further asks are no-op
     sub question'       lookup drop_if_next_is question'            lookup drop_if_next_is question' lookup clig_question_tail_que_que;# ???
-    sub question'       lookup drop_if_next_is @question_heads'     lookup clig_question_tails;     #                                    ?? ?~ ?= ?> ?.
+    sub question'       lookup drop_if_next_is @question_heads'     lookup clig_question_tails;     #                                    ?? ?~ ?= ?> ?. 
 } clig_question;
 
 lookup clig_bracketleft {
@@ -625,13 +639,13 @@ lookup clig_bracketright {
 lookup clig_backslash {
     ignore sub backslash backslash backslash;
     ignore sub backslash backslash' backslash;
-    sub backslash'      lookup drop_if_next_is slash' lookup drop_if_next_is hyphen' lookup clig_backslash_tail_slash_hyphen; #  \/-
-    sub backslash'      lookup drop_if_next_is @backslash_heads'    lookup clig_backslash_tails;    #                                    \\ \>
+    sub backslash'      lookup drop_if_next_is slash' lookup drop_if_next_is hyphen' lookup clig_backslash_tail_slash_hyphen; #  \/- 
+    sub backslash'      lookup drop_if_next_is @backslash_heads'    lookup clig_backslash_tails;    #                                    \\ \> 
 } clig_backslash;
 
 lookup clig_percent {
     sub percent'        lookup drop_if_next_is less'                lookup drop_if_next_is percent' lookup clig_percent_tail_less_percent; # %<%
-    sub percent'        lookup drop_if_next_is @percent_heads'      lookup clig_percent_tails;      # %>%                                %= %>
+    sub percent'        lookup drop_if_next_is @percent_heads'      lookup clig_percent_tails;      # %>%                                %= %> 
 } clig_percent;
 
 lookup clig_asciicircum {
@@ -681,13 +695,13 @@ lookup clig_equal {
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is [equal greater]' lookup clig_equal_tail_equal_greater; # ===  ==>
     sub equal'          lookup drop_if_next_is slash'               lookup drop_if_next_is equal'   lookup clig_equal_tail_eq_le_gt; #   =/=
     sub equal'          lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_equal_tail_eq_le_gt; #   =<<
-    sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~ =<
+    sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~ =<   
 } clig_equal;
 
 lookup clig_asciitilde {
     sub asciitilde'     lookup drop_if_next_is asciitilde'          lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt; #    ~~>
     sub asciitilde'     lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt_gt; # ~>>
-    sub asciitilde'     lookup drop_if_next_is @asciitilde_heads'   lookup clig_asciitilde_tails;   #                                    ~= ~>
+    sub asciitilde'     lookup drop_if_next_is @asciitilde_heads'   lookup clig_asciitilde_tails;   #                                    ~= ~> 
 } clig_asciitilde;
 
 lookup clig_underscore {
@@ -732,7 +746,7 @@ lookup clig_tags {
 
 lookup clig_cleanup {
     sub v00 @hyphen_doubles' @hyphen_triples by v00;
-    sub v00 @less_doubles' @less_triples by v00;
+    sub v00 @less_doubles' @less_triples by v00;        
     sub v00 [slash_slash slash_equal slash_asterisk]' [slash_slash_slash slash_equal_equal slash_asterisk_asterisk] by v00; # trailing substitutions for clig_slash
 } clig_cleanup;
 
@@ -758,12 +772,12 @@ lookup liga_arab_1 {
 } liga_arab_1;
 
 lookup clig_ballot {
-    sub space space bracketleft space bracketright by ballotBox;
-    sub space space bracketleft hyphen bracketright by ballotBoxWithMinus;
-    sub space space bracketleft V bracketright by ballotBoxWithCheck;
-    sub space space bracketleft X bracketright by ballotBoxWithX;
-    sub space space bracketleft v bracketright by ballotBoxWithCheck;
-    sub space space bracketleft x bracketright by ballotBoxWithX;
+    sub hyphen space bracketleft space bracketright by ballotBox;
+    sub hyphen space bracketleft hyphen bracketright by ballotBoxWithMinus;
+    sub hyphen space bracketleft V bracketright by ballotBoxWithCheck;
+    sub hyphen space bracketleft X bracketright by ballotBoxWithX;
+    sub hyphen space bracketleft v bracketright by ballotBoxWithCheck;
+    sub hyphen space bracketleft x bracketright by ballotBoxWithX;
 } clig_ballot;
 
 lookup clig_existential {
@@ -776,10 +790,159 @@ sub @frac1 space u' s by mumi;
 sub @frac1 space u s' by smathserifitalic;
 } clig_microsecond;
 
+lookup ker {
+   pos a s' m <-30 0 0 0>;
+   pos a b' s t r a c t <60 0 0 0>;
+   pos a b s' t r a c t <60 0 0 0>;
+   pos a b s t' r a c t <30 0 0 0>;
+   pos a b s t r' a c t <30 0 0 0>;
+   pos a s' s e r t <40 0 0 0>;
+   pos a s s' e r t <30 0 0 0>;
+   pos a s s e' r t <50 0 0 0>;
+   pos a s s e r' t <70 0 0 0>;
+   pos b o' o l <40 0 0 0>;
+   pos b o o' l <70 0 0 0>;
+   pos b r' e a k <30 0 0 0>;
+   pos b r e' a k <-40 0 0 0>;
+   pos b r e a' k <-10 0 0 0>;
+   pos c a' t c h <60 0 0 0>;
+   pos c a t' c h <40 0 0 0>;
+   pos c a t c' h <-40 0 0 0>;
+   pos c h a' r <40 0 0 0>;
+   pos c o' n t i n u e <30 0 0 0>;
+   pos c o n' t i n u e <50 0 0 0>;
+   pos c o n t' i n u e <60 0 0 0>;
+   pos c o n t i n' u e <-50 0 0 0>;
+   pos c o n t i n u' e <-30 0 0 0>;
+   pos d e' f a u l t <50 0 0 0>;   
+   pos d e f a' u l t <-20 0 0 0>;
+   pos d e f a u' l t <40 0 0 0>;
+   pos d e f a u l' t <80 0 0 0>;
+   pos d e' l e t e <50 0 0 0>;
+   pos d e l e' t e <-40 0 0 0>;
+   pos d e l e t' e <-30 0 0 0>;
+   pos d o u b' l e <120 0 0 0>;
+   pos d o u b l' e <70 0 0 0>;
+   pos e n' u m <-20 0 0 0>;
+   pos e n u' m <-40 0 0 0>;
+   pos e x t e' n d s <-50 0 0 0>;
+   pos e x t e n' d s <-30 0 0 0>;
+   pos f i n' a l l y <10 0 0 0>;
+   pos f i n a' l l y <120 0 0 0>;
+   pos f i n a l' l y <120 0 0 0>;
+   pos f i n a l l' y <50 0 0 0>;
+   pos f i' n a l <-50 0 0 0>;
+   pos f i n' a l <-60 0 0 0>;
+   pos f l' o a t <-10 0 0 0>;
+   pos f l o' a t <-60 0 0 0>;
+   pos f r i' e n d <-60 0 0 0>;
+   pos f r i e' n d <-120 0 0 0>;
+   pos f r i e n' d <-60 0 0 0>;
+   pos g o' t o <70 0 0 0>;
+   pos g o t' o <50 0 0 0>;
+   pos i m p' l e m e n t s <80 0 0 0>;
+   pos i m p l e' m e n t s <-80 0 0 0>;
+   pos i m p l e m' e n t s <-60 0 0 0>;
+   pos i m p l e m e' n t s <-30 0 0 0>;
+   pos i m p' o r t <70 0 0 0>;
+   pos i m p o' r t <90 0 0 0>;
+   pos i m p o r' t <50 0 0 0>;
+   pos i n s t' a n c e o f <-30 0 0 0>;
+   pos i n s t a' n c e o f <-40 0 0 0>;
+   pos i n s t a n c e' o f <-30 0 0 0>;
+   pos l e' a n <-70 0 0 0>;
+   pos l e a' n <-40 0 0 0>;
+   pos l o' n g <-80 0 0 0>;
+   pos l o n' g <-40 0 0 0>;
+   pos l s' e <-40 0 0 0>;
+   pos m u' t a b l e <20 0 0 0>;
+   pos m u t a b' l e <90 0 0 0>;
+   pos m u t a b l' e <50 0 0 0>;
+   pos n a' t i v e <70 0 0 0>;
+   pos n a t' i v e <70 0 0 0>;
+   pos n a t i' v e <20 0 0 0>;
+   pos n a t i v' e <-40 0 0 0>;
+   pos p a' c k a g e <30 0 0 0>;
+   pos p a c' k a g e <-20 0 0 0>;
+   pos p a c k' a g e <-45 0 0 0>;
+   pos p a c k a' g e <-50 0 0 0>;
+   pos p a c k a g' e <-30 0 0 0>;
+   pos p r' i v a t e <30 0 0 0>;
+   pos p r i' v a t e <-30 0 0 0>;
+   pos p r i v' a t e <-70 0 0 0>;
+   pos p r' o t e c t e d <60 0 0 0>;
+   pos p r o' t e c t e d <30 0 0 0>;
+   pos p r o t e c t e' d <-40 0 0 0>;
+   pos p u' b l i c <80 0 0 0>;
+   pos p u b' l i c <190 0 0 0>;
+   pos p u b l' i c <150 0 0 0>;
+   pos p u b l i' c <90 0 0 0>;
+   pos r e' g i s t e r <-30 0 0 0>;
+   pos r e g i' s t e r <70 0 0 0>;
+   pos r e g i s' t e r <20 0 0 0>;
+   pos r e' t u r n <-20 0 0 0>;
+   pos r e t' u r n <-40 0 0 0>;
+   pos r e t u' r n <-20 0 0 0>;
+   pos s h' o r t <30 0 0 0>;
+   pos s h o' r t <50 0 0 0>;
+   pos s h o r' t <30 0 0 0>;
+   pos s i' g n e d <-40 0 0 0>;
+   pos s i g' n e d <-70 0 0 0>;
+   pos s y n' c h r o n i z e d <20 0 0 0>;
+   pos s y n c h r o' n i z e d <-40 0 0 0>;
+   pos s y n c h r o n i z' e d <-40 0 0 0>;
+   pos s y n c h r o n i z e' d <-20 0 0 0>;
+   pos s i' z e o f <-30 0 0 0>;
+   pos s i z' e o f <-90 0 0 0>;
+   pos s i z e' o f <-60 0 0 0>;
+   pos s t r i' c t f p <-60 0 0 0>;
+   pos s t r i c' t f p <-120 0 0 0>;
+   pos s t r i c t' f p <-80 0 0 0>;
+   pos s t r i c t f' p <-70 0 0 0>;
+   pos s w' i t c h <60 0 0 0>;
+   pos s w i' t c h <60 0 0 0>;
+   pos s w i t' c h <-30 0 0 0>;
+   pos s w i t c' h <-50 0 0 0>;
+   pos t e' m p l a t e <-40 0 0 0>;
+   pos t e m' p l a t e <20 0 0 0>;
+   pos t e m p' l a t e <140 0 0 0>;
+   pos t e m p l' a t e <80 0 0 0>;
+   pos t e m p l a' t e <30 0 0 0>;
+   pos t h' i s <90 0 0 0>;
+   pos t h i' s <90 0 0 0>;
+   pos t h' r o w <50 0 0 0>;
+   pos t h r' o w <50 0 0 0>;
+   pos t h r o' w <-40 0 0 0>;
+   pos t r a' n s i e n t <-40 0 0 0>;
+   pos t r a n s i' e n t <-30 0 0 0>;
+   pos t r a n s i e' n t <-90 0 0 0>;
+   pos t r' u e <-10 0 0 0>;
+   pos t r u' e <-30 0 0 0>;
+   pos t y p' e i d <40 0 0 0>;
+   pos t y p e' i d <100 0 0 0>;
+   pos t y p e i' d <70 0 0 0>;
+   pos u n' i o n <50 0 0 0>;
+   pos u n i o' n <-60 0 0 0>;
+   pos u n' s i g n e d <20 0 0 0>;
+   pos u s i' n g <-40 0 0 0>;
+   pos u s i n' g <-60 0 0 0>;
+   pos v i r' t u a l <-80 0 0 0>;
+   pos v i r t' u a l <-80 0 0 0>;
+   pos v i r t u' a l <-50 0 0 0>;
+   pos v i r t u a' l <20 0 0 0>;
+   pos v o' i d <60 0 0 0>;
+   pos v o i' d <40 0 0 0>;
+   pos v o' l a t i l e <60 0 0 0>;
+   pos v o l a t' i l e <30 0 0 0>;
+   pos v o l a t i' l e <60 0 0 0>;
+   pos v o l a t i l' e <50 0 0 0>;
+   pos w h' i l e <120 0 0 0>;   
+   pos w h i' l e <130 0 0 0>;   
+   pos w h i l' e <80 0 0 0>;
+} ker;
 
-#lookup kern_while_fix_i {
-#   pos w h i' l e <200 0 0 0>;
-#} kern_while_fix_i;
+
+
 
 ######################################################################################################
 
@@ -813,7 +976,7 @@ feature calt {
      lookup clig_cleanup;        # replace artifacts with v00
      lookup clig_ballot;         # imported from liga
      lookup clig_existential;    # imported from liga
-#    lookup kern_while_fix_i;    # test contextual positions
+     lookup ker;                 # test contextual positions
      lookup clig_microsecond     # microsecond
 
      script arab;
