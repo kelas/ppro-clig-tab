@@ -21,13 +21,13 @@ lookup ker {
    pos c h a' <40 0 0 0> r;
    
    # continue
-#   pos c o' <30 0 0 0> n' <50 0 0 0> t' <60 0 0 0> i n' <-50 0 0 0> u' <-30 0 0 0> e;
+#   pos c o' <30 0 0 0> n' <50 0 0 0> t' <60 0 0 0> i' n' <-50 0 0 0> u' <-30 0 0 0> e;
    
    # default
-#   pos d e' <50 0 0 0> f a' <-20 0 0 0> u' <40 0 0 0> l' <80 0 0 0> t;
+   pos d e' <50 0 0 0> f' a' <-20 0 0 0> u' <40 0 0 0> l' <80 0 0 0> t;
    
    # delete
-#   pos d e' <50 0 0 0> l e' <-40 0 0 0> t' <-30 0 0 0> e;
+   pos d e' <50 0 0 0> l' e' <-40 0 0 0> t' <-30 0 0 0> e;
    
    # double
    pos d o u b' <120 0 0 0> l' <70 0 0 0> e;
@@ -57,13 +57,13 @@ lookup ker {
    pos g o' <70 0 0 0> t' <50 0 0 0> o;
    
    # implements
-#   pos i m p' <80 0 0 0> l e' <-80 0 0 0> m' <-60 0 0 0> e' <-30 0 0 0> n t s;
+   pos i m p' <80 0 0 0> l' e' <-80 0 0 0> m' <-60 0 0 0> e' <-30 0 0 0> n t s;
    
    # import
    pos i m p' <70 0 0 0> o' <90 0 0 0> r' <50 0 0 0> t;
    
    # instanceof
-#   pos i n s t' <-30 0 0 0> a' <-40 0 0 0> n c e' <-30 0 0 0> o f;
+   pos i n s t' <-30 0 0 0> a' <-40 0 0 0> n' c' e' <-30 0 0 0> o f;
    
    # (boo)lean
    pos l e' <-70 0 0 0> a' <-40 0 0 0> n;
@@ -72,7 +72,7 @@ lookup ker {
    pos l o' <-80 0 0 0> n' <-40 0 0 0> g;
    
    # mutable
-#   pos m u' <20 0 0 0> t a b' <90 0 0 0> l' <50 0 0 0> e;
+   pos m u' <20 0 0 0> t' a' b' <90 0 0 0> l' <50 0 0 0> e;
    
    # native
    pos n a' <70 0 0 0> t' <70 0 0 0> i' <20 0 0 0> v' <-40 0 0 0> e;
@@ -84,13 +84,13 @@ lookup ker {
    pos p r' <30 0 0 0> i' <-30 0 0 0> v' <-70 0 0 0> a t e;
    
    # protected
-#   pos p r' <60 0 0 0> o' <30 0 0 0> t e c t e' <-40 0 0 0> d;
+   pos p r' <60 0 0 0> o' <30 0 0 0> t' e' c' t' e' <-40 0 0 0> d;
    
    # public
    pos p u' <80 0 0 0> b' <190 0 0 0> l' <150 0 0 0> i' <90 0 0 0> c;
    
    # register
-#   pos r e' <-30 0 0 0> g i' <70 0 0 0> s' <20 0 0 0> t e r;
+   pos r e' <-30 0 0 0> g' i' <70 0 0 0> s' <20 0 0 0> t e r;
    
    # return
    pos r e' <-20 0 0 0> t' <-40 0 0 0> u' <-20 0 0 0> r n;
@@ -102,7 +102,7 @@ lookup ker {
    pos s i' <-40 0 0 0> g' <-70 0 0 0> n e d;
    
    # synchronized
-#   pos s y n' <20 0 0 0> c h r o' <-40 0 0 0> n i z' <-40 0 0 0> e' <-20 0 0 0> d;
+   pos s y n' <20 0 0 0> c' h' r' o' <-40 0 0 0> n' i' z' <-40 0 0 0> e' <-20 0 0 0> d;
    
    # sizeof
    pos s i' <-30 0 0 0> z' <-90 0 0 0> e' <-60 0 0 0> o f;
@@ -123,7 +123,7 @@ lookup ker {
    pos t h' <50 0 0 0> r' <50 0 0 0> o' <-40 0 0 0> w;
    
    # transient
-#   pos t r a' <-40 0 0 0> n s i' <-30 0 0 0> e' <-90 0 0 0> n t;
+   pos t r a' <-40 0 0 0> n' s' i' <-30 0 0 0> e' <-90 0 0 0> n t;
    
    # true
    pos t r' <-10 0 0 0> u' <-30 0 0 0> e;
@@ -132,7 +132,7 @@ lookup ker {
    pos t y p' <40 0 0 0> e' <100 0 0 0> i' <70 0 0 0> d;
    
    # union
-#   pos u n' <50 0 0 0> i o' <-60 0 0 0> n;
+   pos u n' <50 0 0 0> i' o' <-60 0 0 0> n;
    
    # unsigned
    pos u n' <20 0 0 0> s i g n e d;
@@ -147,7 +147,7 @@ lookup ker {
    pos v o' <60 0 0 0> i' <40 0 0 0> d;
    
    # volatile
-#   pos v o' <60 0 0 0> l a t' <30 0 0 0> i' <60 0 0 0> l' <50 0 0 0> e;
+   pos v o' <60 0 0 0> l' a' t' <30 0 0 0> i' <60 0 0 0> l' <50 0 0 0> e;
    
    # while
    pos w h' <120 0 0 0> i' <130 0 0 0> l' <80 0 0 0> e;
