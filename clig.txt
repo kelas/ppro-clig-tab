@@ -28,6 +28,7 @@ languagesystem zyyy dflt;
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# v0.0.60 changed mu into mumi
 # v0.0.59 added microsecond calt
 # v0.0.58 merged liga into calt
 # v0.0.57 cleanup
@@ -787,7 +788,7 @@ lookup clig_existential {
 
 lookup clig_microsecond {
 sub @frac1 space u' s by mumi;
-sub @frac1 space u s' by smathserifitalic;
+sub @frac1 space mumi s' by smathserifitalic;
 } clig_microsecond;
 
 lookup ker {
