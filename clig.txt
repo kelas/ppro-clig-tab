@@ -28,6 +28,7 @@ languagesystem zyyy dflt;
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# v0.0.61 microsecond space is optional 
 # v0.0.60 changed mu into mumi
 # v0.0.59 added microsecond calt
 # v0.0.58 merged liga into calt
@@ -787,8 +788,10 @@ lookup clig_existential {
 } clig_existential;
 
 lookup clig_microsecond {
-sub @frac1 space u' s by mumi;
-sub @frac1 space mumi s' by smathserifitalic;
+   sub @digit space u' s by mumi;
+   sub @digit space mumi s' by smathserifitalic;
+   sub @digit u' s by mumi;
+   sub @digit mumi s' by smathserifitalic;
 } clig_microsecond;
 
 lookup ker {
@@ -978,7 +981,7 @@ feature calt {
      lookup clig_ballot;         # imported from liga
      lookup clig_existential;    # imported from liga
      lookup ker;                 # test contextual positions
-     lookup clig_microsecond     # microsecond
+     lookup clig_microsecond     # microsecond us -> μs italic
 
      script arab;
      lookup liga_arab_1;
