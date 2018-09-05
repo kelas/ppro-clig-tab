@@ -3,7 +3,7 @@
 @digit = [zero one two three four five six seven eight nine];
 
 lookup kern_keywords useExtension {
-   ignore pos [@upper @lower @digit] [a b c d e f g i l m n p r s t u v w]';
+   ignore pos [@upper @lower @digit] @lower';
 
    # java:
    pos a' b' <60 0 0 0> s' <60 0 0 0> t' <30 0 0 0> r' <30 0 0 0> a c t;    # abstract
