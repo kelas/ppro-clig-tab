@@ -1,3 +1,4 @@
+lookup ker {
    pos a s' 30 m;                                  # asm
    pos a b' 60 s' 60 t' 30 r' 30 a c t;            # abstract
    pos a s' 40 s' 30 e' 50 r' 70 t;                # assert
@@ -49,4 +50,4 @@
    pos v o' 60 i' 40 d;                            # void
    pos v o' 60 l a t' 30 i' 60 l' 50 e;            # volatile
    pos w h' 120 i' 130 l' 80 e;                    # while
-
+} ker;
