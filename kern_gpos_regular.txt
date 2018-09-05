@@ -1,5 +1,5 @@
 lookup ker {
-   pos a s' 30 m;                                  # asm
+   pos a s' -30 m;                                 # asm
    pos a b' 60 s' 60 t' 30 r' 30 a c t;            # abstract
    pos a s' 40 s' 30 e' 50 r' 70 t;                # assert
    pos b o' 40 o' 70 l;                            # bool
