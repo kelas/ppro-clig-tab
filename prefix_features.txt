@@ -1,3 +1,8 @@
+@upper = [A - Z];
+@lower = [a - z];
+@digit = [zero one two three four five six seven eight nine];
+
+
 # Languagesystem definitions
 
 languagesystem DFLT dflt; # Default default
@@ -13,7 +18,6 @@ languagesystem zinh dflt;
 languagesystem zyyy dflt;
 
 # Copyright 2018 kelas <me@kel.as>
-
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 # documentation files (the "Software"), to deal in the Software without restriction, including without limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
@@ -66,7 +70,7 @@ languagesystem zyyy dflt;
 
 #############################################################
 # a simple predicate used in most substitution chains.
-# replaces the matched glyph with v00 if the rest of the
+# replaces the matched glyph with v00 if the rest of the 
 # chain is a match.
 
 lookup drop_if_next_is {
@@ -773,216 +777,85 @@ lookup liga_arab_1 {
     sub Lam.init Lam.medi by LamLam.init;
 } liga_arab_1;
 
-lookup clig_ballot {
-    sub hyphen space bracketleft space bracketright by ballotBox;
-    sub hyphen space bracketleft hyphen bracketright by ballotBoxWithMinus;
-    sub hyphen space bracketleft V bracketright by ballotBoxWithCheck;
-    sub hyphen space bracketleft X bracketright by ballotBoxWithX;
-    sub hyphen space bracketleft v bracketright by ballotBoxWithCheck;
-    sub hyphen space bracketleft x bracketright by ballotBoxWithX;
-} clig_ballot;
+lookup kern_keywords useExtension {
+   ignore pos [@upper @lower @digit] @lower';
 
-lookup clig_existential {
-    sub existential exclam by existentialexclam;
-    sub theredoesnotexist exclam by notexistentialexclam;
-} clig_existential;
+   # java:
+   pos a' b' <60 0 0 0> s' <60 0 0 0> t' <30 0 0 0> r' <30 0 0 0> a c t;    # abstract
+   pos a' s' <40 0 0 0> s' <30 0 0 0> e' <50 0 0 0> r' <70 0 0 0> t;        # assert
+   pos b' o' <40 0 0 0> o' <70 0 0 0> l' e' <-70 0 0 0> a' <-40 0 0 0> n;   # boolean
+   pos e' x' t' e' <-50 0 0 0> n' <-30 0 0 0> d s;                          # extends
+   pos f' i' n' <10 0 0 0> a' <120 0 0 0> l' <120 0 0 0> l' <50 0 0 0> y;   # finally
+   pos f' i' <-50 0 0 0> n' <-60 0 0 0> a l;                                # final
+   pos i' m' p' <80 0 0 0> l' e' <-80 0 0 0> m' <-60 0 0 0> e' <-30 0 0 0> n t s; # implements
+   pos i' m' p' <70 0 0 0> o' <90 0 0 0> r' <50 0 0 0> t;                   # import
+   pos i' n' s' t' <-30 0 0 0> a' <-40 0 0 0> n' c' e' <-30 0 0 0> o f;     # instanceof
+   pos n' a' <70 0 0 0> t' <70 0 0 0> i' <20 0 0 0> v' <-40 0 0 0> e;       # native
+   pos p' a' c' <-20 0 0 0> k' <-45 0 0 0> a' <-50 0 0 0> g' <-30 0 0 0> e; # package
+   pos s' y' n' <20 0 0 0> c' h' r' o' <-40 0 0 0> n' i' z' <-40 0 0 0> e' <-20 0 0 0> d; # synchronized
+   pos s' t' r' i' <-60 0 0 0> c' <-120 0 0 0> t' <-80 0 0 0> f' <-70 0 0 0> p; # strictfp
+   pos t' r' a' <-40 0 0 0> n' s' i' <-30 0 0 0> e' <-90 0 0 0> n t;        # transient
 
-lookup clig_microsecond {
-   sub @digit space u' s by mumi;
-   sub @digit space mumi s' by smathserifitalic;
-   sub @digit u' s by mumi;
-   sub @digit mumi s' by smathserifitalic;
-} clig_microsecond;
+   # ansi c:
+   # auto       +break    case     +char   const      +continue
+   # +default   do        +double  +else   +enum      extern
+   # +float     for       +goto    if      int        +long
+   # +register  +return   +short   +signed +sizeof    static
+   # struct     +switch   typedef  +union  +unsigned  +void
+   # +volatile  +while
+   pos b' r' <30 0 0 0> e' <-40 0 0 0> a' <-10 0 0 0> k;                       # break
+   pos c' h' a' <40 0 0 0> r;                                                  # char
+   pos c' o' n' <50 0 0 0> t' <60 0 0 0> i' n' <-50 0 0 0> u' <-30 0 0 0> e;   # continue
+   pos d' e' <50 0 0 0> f' a' <-20 0 0 0> u' <40 0 0 0> l' <80 0 0 0> t;       # default
+   pos d' o' u' b' <120 0 0 0> l' <70 0 0 0> e;                                # double
+   pos e' l' s' <-40 0 0 0> e;                                                 # else
+   pos e' n' <-20 0 0 0> u' <-40 0 0 0> m;                                     # enum
+   pos f' l' <-10 0 0 0> o' <-60 0 0 0> a t;                                   # float
+   pos g' o' <70 0 0 0> t' <50 0 0 0> o;                                       # goto
+   pos l' o' <-80 0 0 0> n' <-40 0 0 0> g;                                     # long
+   pos r' e' <-30 0 0 0> g' i' <70 0 0 0> s' <20 0 0 0> t e r;                 # register
+   pos r' e' <-20 0 0 0> t' <-40 0 0 0> u' <-20 0 0 0> r n;                    # return
+   pos s' h' <30 0 0 0> o' <50 0 0 0> r' <30 0 0 0> t;                         # short
+   pos s' i' <-40 0 0 0> g' <-70 0 0 0> n e d;                                 # signed
+   pos s' i' <-30 0 0 0> z' <-90 0 0 0> e' <-60 0 0 0> o f;                    # sizeof
+   pos s' w' <60 0 0 0> i' <60 0 0 0> t' <-30 0 0 0> c' <-50 0 0 0> h;         # switch
+   pos u' n' <50 0 0 0> i' o' <-60 0 0 0> n;                                   # union
+   pos u' n' <20 0 0 0> s i g n e d;                                           # unsigned
+   pos v' o' <60 0 0 0> i' <40 0 0 0> d;                                       # void
+   pos v' o' <60 0 0 0> l' a' t' <30 0 0 0> i' <60 0 0 0> l' <50 0 0 0> e;     # volatile
+   pos w' h' <120 0 0 0> i' <130 0 0 0> l' <80 0 0 0> e;                       # while
 
-lookup ker {
-   pos a s' m <-30 0 0 0>;
-   pos a b' s t r a c t <60 0 0 0>;
-   pos a b s' t r a c t <60 0 0 0>;
-   pos a b s t' r a c t <30 0 0 0>;
-   pos a b s t r' a c t <30 0 0 0>;
-   pos a s' s e r t <40 0 0 0>;
-   pos a s s' e r t <30 0 0 0>;
-   pos a s s e' r t <50 0 0 0>;
-   pos a s s e r' t <70 0 0 0>;
-   pos b o' o l <40 0 0 0>;
-   pos b o o' l <70 0 0 0>;
-   pos b r' e a k <30 0 0 0>;
-   pos b r e' a k <-40 0 0 0>;
-   pos b r e a' k <-10 0 0 0>;
-   pos c a' t c h <60 0 0 0>;
-   pos c a t' c h <40 0 0 0>;
-   pos c a t c' h <-40 0 0 0>;
-   pos c h a' r <40 0 0 0>;
-   pos c o' n t i n u e <30 0 0 0>;
-   pos c o n' t i n u e <50 0 0 0>;
-   pos c o n t' i n u e <60 0 0 0>;
-   pos c o n t i n' u e <-50 0 0 0>;
-   pos c o n t i n u' e <-30 0 0 0>;
-   pos d e' f a u l t <50 0 0 0>;   
-   pos d e f a' u l t <-20 0 0 0>;
-   pos d e f a u' l t <40 0 0 0>;
-   pos d e f a u l' t <80 0 0 0>;
-   pos d e' l e t e <50 0 0 0>;
-   pos d e l e' t e <-40 0 0 0>;
-   pos d e l e t' e <-30 0 0 0>;
-   pos d o u b' l e <120 0 0 0>;
-   pos d o u b l' e <70 0 0 0>;
-   pos e n' u m <-20 0 0 0>;
-   pos e n u' m <-40 0 0 0>;
-   pos e x t e' n d s <-50 0 0 0>;
-   pos e x t e n' d s <-30 0 0 0>;
-   pos f i n' a l l y <10 0 0 0>;
-   pos f i n a' l l y <120 0 0 0>;
-   pos f i n a l' l y <120 0 0 0>;
-   pos f i n a l l' y <50 0 0 0>;
-   pos f i' n a l <-50 0 0 0>;
-   pos f i n' a l <-60 0 0 0>;
-   pos f l' o a t <-10 0 0 0>;
-   pos f l o' a t <-60 0 0 0>;
-   pos f r i' e n d <-60 0 0 0>;
-   pos f r i e' n d <-120 0 0 0>;
-   pos f r i e n' d <-60 0 0 0>;
-   pos g o' t o <70 0 0 0>;
-   pos g o t' o <50 0 0 0>;
-   pos i m p' l e m e n t s <80 0 0 0>;
-   pos i m p l e' m e n t s <-80 0 0 0>;
-   pos i m p l e m' e n t s <-60 0 0 0>;
-   pos i m p l e m e' n t s <-30 0 0 0>;
-   pos i m p' o r t <70 0 0 0>;
-   pos i m p o' r t <90 0 0 0>;
-   pos i m p o r' t <50 0 0 0>;
-   pos i n s t' a n c e o f <-30 0 0 0>;
-   pos i n s t a' n c e o f <-40 0 0 0>;
-   pos i n s t a n c e' o f <-30 0 0 0>;
-   pos l e' a n <-70 0 0 0>;
-   pos l e a' n <-40 0 0 0>;
-   pos l o' n g <-80 0 0 0>;
-   pos l o n' g <-40 0 0 0>;
-   pos l s' e <-40 0 0 0>;
-   pos m u' t a b l e <20 0 0 0>;
-   pos m u t a b' l e <90 0 0 0>;
-   pos m u t a b l' e <50 0 0 0>;
-   pos n a' t i v e <70 0 0 0>;
-   pos n a t' i v e <70 0 0 0>;
-   pos n a t i' v e <20 0 0 0>;
-   pos n a t i v' e <-40 0 0 0>;
-   pos p a' c k a g e <30 0 0 0>;
-   pos p a c' k a g e <-20 0 0 0>;
-   pos p a c k' a g e <-45 0 0 0>;
-   pos p a c k a' g e <-50 0 0 0>;
-   pos p a c k a g' e <-30 0 0 0>;
-   pos p r' i v a t e <30 0 0 0>;
-   pos p r i' v a t e <-30 0 0 0>;
-   pos p r i v' a t e <-70 0 0 0>;
-   pos p r' o t e c t e d <60 0 0 0>;
-   pos p r o' t e c t e d <30 0 0 0>;
-   pos p r o t e c t e' d <-40 0 0 0>;
-   pos p u' b l i c <80 0 0 0>;
-   pos p u b' l i c <190 0 0 0>;
-   pos p u b l' i c <150 0 0 0>;
-   pos p u b l i' c <90 0 0 0>;
-   pos r e' g i s t e r <-30 0 0 0>;
-   pos r e g i' s t e r <70 0 0 0>;
-   pos r e g i s' t e r <20 0 0 0>;
-   pos r e' t u r n <-20 0 0 0>;
-   pos r e t' u r n <-40 0 0 0>;
-   pos r e t u' r n <-20 0 0 0>;
-   pos s h' o r t <30 0 0 0>;
-   pos s h o' r t <50 0 0 0>;
-   pos s h o r' t <30 0 0 0>;
-   pos s i' g n e d <-40 0 0 0>;
-   pos s i g' n e d <-70 0 0 0>;
-   pos s y n' c h r o n i z e d <20 0 0 0>;
-   pos s y n c h r o' n i z e d <-40 0 0 0>;
-   pos s y n c h r o n i z' e d <-40 0 0 0>;
-   pos s y n c h r o n i z e' d <-20 0 0 0>;
-   pos s i' z e o f <-30 0 0 0>;
-   pos s i z' e o f <-90 0 0 0>;
-   pos s i z e' o f <-60 0 0 0>;
-   pos s t r i' c t f p <-60 0 0 0>;
-   pos s t r i c' t f p <-120 0 0 0>;
-   pos s t r i c t' f p <-80 0 0 0>;
-   pos s t r i c t f' p <-70 0 0 0>;
-   pos s w' i t c h <60 0 0 0>;
-   pos s w i' t c h <60 0 0 0>;
-   pos s w i t' c h <-30 0 0 0>;
-   pos s w i t c' h <-50 0 0 0>;
-   pos t e' m p l a t e <-40 0 0 0>;
-   pos t e m' p l a t e <20 0 0 0>;
-   pos t e m p' l a t e <140 0 0 0>;
-   pos t e m p l' a t e <80 0 0 0>;
-   pos t e m p l a' t e <30 0 0 0>;
-   pos t h' i s <90 0 0 0>;
-   pos t h i' s <90 0 0 0>;
-   pos t h' r o w <50 0 0 0>;
-   pos t h r' o w <50 0 0 0>;
-   pos t h r o' w <-40 0 0 0>;
-   pos t r a' n s i e n t <-40 0 0 0>;
-   pos t r a n s i' e n t <-30 0 0 0>;
-   pos t r a n s i e' n t <-90 0 0 0>;
-   pos t r' u e <-10 0 0 0>;
-   pos t r u' e <-30 0 0 0>;
-   pos t y p' e i d <40 0 0 0>;
-   pos t y p e' i d <100 0 0 0>;
-   pos t y p e i' d <70 0 0 0>;
-   pos u n' i o n <50 0 0 0>;
-   pos u n i o' n <-60 0 0 0>;
-   pos u n' s i g n e d <20 0 0 0>;
-   pos u s i' n g <-40 0 0 0>;
-   pos u s i n' g <-60 0 0 0>;
-   pos v i r' t u a l <-80 0 0 0>;
-   pos v i r t' u a l <-80 0 0 0>;
-   pos v i r t u' a l <-50 0 0 0>;
-   pos v i r t u a' l <20 0 0 0>;
-   pos v o' i d <60 0 0 0>;
-   pos v o i' d <40 0 0 0>;
-   pos v o' l a t i l e <60 0 0 0>;
-   pos v o l a t' i l e <30 0 0 0>;
-   pos v o l a t i' l e <60 0 0 0>;
-   pos v o l a t i l' e <50 0 0 0>;
-   pos w h' i l e <120 0 0 0>;   
-   pos w h i' l e <130 0 0 0>;   
-   pos w h i l' e <80 0 0 0>;
-} ker;
+   # c++, all of ansi c plus:
+   # +asm               +bool           +catch      class              const_cast
+   # +delete            dynamic_cast    explicit    false              +friend
+   # inline             +mutable        namespace   new                operator
+   # +private           +protected      +public     reinterpret_cast   static_cast
+   # +template          +this           +throw      +true              try
+   # +typeid            typename        +virtual    +using             wchar_t
+   pos a' s' <-30 0 0 0> m;                                                 # asm
+   pos b' o' <40 0 0 0> o' <70 0 0 0> l;                                    # bool
+   pos c' a' <60 0 0 0> t' <40 0 0 0> c' <-40 0 0 0> h;                     # catch
+   pos d' e' <50 0 0 0> l' e' <-40 0 0 0> t' <-30 0 0 0> e;                 # delete
+   pos f' r' i' <-60 0 0 0> e' <-120 0 0 0> n' <-60 0 0 0> d;               # friend
+   pos m' u' <20 0 0 0> t' a' b' <90 0 0 0> l' <50 0 0 0> e;                # mutable
+   pos p' r' <30 0 0 0> i' <-30 0 0 0> v' <-70 0 0 0> a t e;                # private
+   pos p' r' <60 0 0 0> o' <30 0 0 0> t' e' c' t' e' <-40 0 0 0> d;         # protected
+   pos p' u' <80 0 0 0> b' <190 0 0 0> l' <150 0 0 0> i' <90 0 0 0> c;      # public
+   pos t' e' m' <20 0 0 0> p' <140 0 0 0> l' <80 0 0 0> a' <30 0 0 0> t e;  # template
+   pos t' h' <90 0 0 0> i' <90 0 0 0> s;                                    # this
+   pos t' h' <50 0 0 0> r' <50 0 0 0> o' <-40 0 0 0> w;                     # throw
+   pos t' r' <-10 0 0 0> u' <-30 0 0 0> e;                                  # true
+   pos t' y' p' <40 0 0 0> e' <100 0 0 0> i' <70 0 0 0> d;                  # typeid
+   pos u' s' i' <-40 0 0 0> n' <-60 0 0 0> g;                               # using
+   pos v' i' r' <-80 0 0 0> t' <-80 0 0 0> u' <-50 0 0 0> a' <20 0 0 0> l;  # virtual
+
+} kern_keywords;
 
 
 
 
-######################################################################################################
+lookup calt_boxdrawings {
+   pos @boxdrawings @arrowsandco' <0 162 0 0>;
+   pos @arrowsandco' @boxdrawings <0 162 0 0>;
+} calt_boxdrawings;
 
-feature calt {
-     lookup clig_hyphen;         # sequences starting with -
-     lookup clig_slash;          # sequences starting with /
-     lookup clig_equal;          # sequences starting with =
-     lookup clig_less;           # sequences starting with <
-     lookup clig_colon;          # sequences starting with :
-     lookup clig_exclam;         # sequences starting with !
-     lookup clig_ampersand;      # sequences starting with &
-     lookup clig_plus;           # sequences starting with +
-     lookup clig_greater;        # sequences starting with >
-     lookup clig_bar;            # sequences starting with |
-     lookup clig_asterisk;       # sequences starting with *
-     lookup clig_period;         # sequences starting with .
-     lookup clig_question;       # sequences starting with ?
-     lookup clig_bracketright;   # sequences starting with ]
-     lookup clig_bracketleft;    # sequences starting with [
-     lookup clig_backslash;      # sequences starting with \
-     lookup clig_percent;        # sequences starting with %
-     lookup clig_asciitilde;     # sequences starting with ~
-     lookup clig_asciicircum;    # sequences starting with ^
-     lookup clig_dollar;         # sequences starting with $
-     lookup clig_at;             # sequences starting with @
-     lookup clig_quotedbl;       # sequences starting with "
-     lookup clig_numbersign;     # sequences starting with #
-     lookup clig_equivalence;    # sequences starting with ≡
-     lookup clig_underscore;     # sequences starting with _
-     lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
-     lookup clig_cleanup;        # replace artifacts with v00
-     lookup clig_ballot;         # imported from liga
-     lookup clig_existential;    # imported from liga
-     lookup ker;                 # test contextual positions
-     lookup clig_microsecond     # microsecond us -> μs italic
-
-     script arab;
-     lookup liga_arab_1;
-} calt;
