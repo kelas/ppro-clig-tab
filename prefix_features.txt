@@ -17,7 +17,7 @@ languagesystem math dflt; # Mathematical Alphanumeric Symbols default
 languagesystem zinh dflt;
 languagesystem zyyy dflt;
 
-# Copyright 2018 kelas <me@kel.as>
+# Copyright 2018-2019 kelas <me@kel.as>
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 # documentation files (the "Software"), to deal in the Software without restriction, including without limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
@@ -120,7 +120,7 @@ lookup drop_if_next_is {
 
 @hyphen_heads =   [hyphen less greater equal];
 @hyphen_doubles = [hyphen_hyphen hyphen_less hyphen_greater hyphen_equal];
-@hyphen_triples = [hyphen_bar_greater hyphen_hyphen_greater hyphen_hyphen_hyphen hyphen_less_bar hyphen_less_less hyphen_greater_greater];
+@hyphen_triples = [hyphen_bar_greater hyphen_hyphen_greater hyphen_hyphen_hyphen hyphen_less_bar hyphen_less_less hyphen_greater_greater hyphen_greater_hyphen];
 
 # .. .> .~ .=
 @period_heads = [period greater asciitilde equal];
@@ -203,6 +203,10 @@ lookup clig_hyphen_tail_less_less {
 lookup clig_hyphen_tail_plus_hyphen {
     sub hyphen by hyphen_plus_hyphen; # -+-
 } clig_hyphen_tail_plus_hyphen;
+
+lookup clig_hyphen_tail_greater_hyphen {
+    sub hyphen by hyphen_greater_hyphen; # ->-
+} clig_hyphen_tail_greater_hyphen;
 
 lookup clig_period_tail_period_less {
     sub [period less] by [period_period_period period_period_less]; # ... ..<
@@ -548,6 +552,7 @@ lookup clig_hyphen {
 
     sub hyphen' lookup drop_if_next_is backslash' lookup drop_if_next_is slash' lookup clig_hyphen_tail_backsl_slash; #  -\/ 
     sub hyphen' lookup drop_if_next_is plus' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_plus_hyphen; #  -+- 
+    sub hyphen' lookup drop_if_next_is greater' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_greater_hyphen; #  ->- 
     sub hyphen' lookup drop_if_next_is less' lookup drop_if_next_is less' lookup clig_hyphen_tail_less_less;#   -<<
     sub hyphen' lookup drop_if_next_is bar' lookup drop_if_next_is greater' lookup clig_hyphen_tail_bar_greater; # -|>
     sub hyphen' lookup drop_if_next_is @hyphen_heads' lookup clig_hyphen_tails;    # -- -< -= ->
