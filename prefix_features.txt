@@ -32,6 +32,7 @@ languagesystem zyyy dflt;
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# v0.0.62 first attempt of ligature chain by Fabrizio =>=
 # v0.0.61 microsecond space is optional 
 # v0.0.60 changed mu into mumi
 # v0.0.59 added microsecond calt
@@ -203,6 +204,10 @@ lookup clig_hyphen_tail_less_less {
 lookup clig_hyphen_tail_plus_hyphen {
     sub hyphen by hyphen_plus_hyphen; # -+-
 } clig_hyphen_tail_plus_hyphen;
+
+lookup clig_equal_tail_greater_equal {
+    sub equal by equal_greater_equal; # =>=
+} clig_equal_tail_greater_equal;
 
 lookup clig_hyphen_tail_greater_hyphen {
     sub hyphen by hyphen_greater_hyphen; # ->-
@@ -607,8 +612,9 @@ lookup clig_greater {
     ignore sub [asciitilde greater] greater' greater; # further gt's are no-op, precedence exception ~>>
     #ignore sub bar greater' [greater hyphen]; # precedence exceptions |>> |>-
     ignore sub equal greater' greater; # precedence exception ==>> =>>
+    ignore sub equal greater' equal; # precedence exception =>=
     sub greater'        lookup drop_if_next_is greater'             lookup drop_if_next_is [hyphen equal greater asciicircum bar]' lookup clig_greater_tail_greater_greater; # >>>  >>-  >>=  >>^ >>|
-    sub greater'        lookup drop_if_next_is hyphen'               lookup drop_if_next_is greater' lookup clig_greater_tail_hyphen_gt; #    >->
+    sub greater'        lookup drop_if_next_is hyphen'              lookup drop_if_next_is greater' lookup clig_greater_tail_hyphen_gt; #    >->
     sub greater'        lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_greater_tail_eq_gt; #    >=>
     sub greater'        lookup drop_if_next_is exclam'              lookup drop_if_next_is equal' lookup clig_greater_tail_eq_gt; #      >!=
     sub greater'        lookup drop_if_next_is @greater_heads'      lookup clig_greater_tails;      #                                    >- >= >>
@@ -702,10 +708,11 @@ lookup clig_equal {
     ignore sub less equal equal equal' greater; # disable <===>
     sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_equal_tail_eq_le_gt; #   =>>
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup drop_if_next_is greater' lookup clig_equal_tail_eq_gt_gt; # ==>>
-    sub equal'          lookup drop_if_next_is asciitilde'          lookup drop_if_next_is equal' lookup clig_equal_tail_tilde_equal; # =~=
+    sub equal'          lookup drop_if_next_is asciitilde'          lookup drop_if_next_is equal'   lookup clig_equal_tail_tilde_equal; # =~=
     sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is [equal greater]' lookup clig_equal_tail_equal_greater; # ===  ==>
     sub equal'          lookup drop_if_next_is slash'               lookup drop_if_next_is equal'   lookup clig_equal_tail_eq_le_gt; #   =/=
     sub equal'          lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_equal_tail_eq_le_gt; #   =<<
+    sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is equal'   lookup clig_equal_tail_greater_equal; #  =>=
     sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~ =<   
 } clig_equal;
 
