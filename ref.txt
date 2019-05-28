@@ -1,6 +1,19 @@
-ppro calt 0.0.54 
+ppro calt 0.0.62 
 
 /
+
+new in 0.828:                    ignore:
+->-   -<-   =>=  =<=                   
+// ERROR // DEBUG // INFO 
+// WARN // WARNING // ERR 
+// FATAL // TRACE // FIXME
+// TODO // BUG // NOTE
+// HACK // MARK 
+# ERROR # DEBUG # INFO 
+# WARN # WARNING # ERR 
+# FATAL # TRACE # FIXME
+# TODO # BUG # NOTE
+# HACK # MARK 
 
 new in 0.827:                    ignore:                                 
 |-    ||-   _|_  =~=             <--->  =~/   <||>
