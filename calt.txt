@@ -12,8 +12,6 @@ feature calt {
      lookup clig_asterisk;       # sequences starting with *
      lookup clig_period;         # sequences starting with .
      lookup clig_question;       # sequences starting with ?
-     lookup clig_bracketright;   # sequences starting with ]
-     lookup clig_bracketleft;    # sequences starting with [
      lookup clig_backslash;      # sequences starting with 
      lookup clig_percent;        # sequences starting with %
      lookup clig_asciitilde;     # sequences starting with ~
