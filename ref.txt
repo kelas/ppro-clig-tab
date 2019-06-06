@@ -2,15 +2,15 @@ ppro calt 0.0.62
 
 /
 
-new in 0.828:                    ignore:
+new in 0.828:              
 ->- -<- =>= =<=                   
 // ERROR // DEBUG // INFO 
-// WARN // WARNING // ERR 
+// WARN // WARNING // ERR // FAIL  
 // FATAL // TRACE // FIXME
 // TODO // BUG // NOTE
 // HACK // MARK 
 # ERROR # DEBUG # INFO 
-# WARN # WARNING # ERR 
+# WARN # WARNING # ERR # FAIL
 # FATAL # TRACE # FIXME
 # TODO # BUG # NOTE
 # HACK # MARK 
@@ -25,7 +25,7 @@ new in 0.827:                    ignore:
 $>      *** *= */  *>         ++ +++  += +> ++= 
 -- -<  -<< -= ->  ->> ---  --> -|> -<|  -+- -\/
 ..  ...  ..<   .>  .~  .=      /*  //   />  /=  /==  ///   /**
-::  :=  :≡ :>  :=>                          :/ :\ :::
+::  :=  :≡ :>  :=> :(  :-(  :) :-) :3 :D :P :>: :<: :/ :\ :::
 <$> <* <*> <+> <- << <<< <<= <= <=> <> <|>  <<- <~<  <==>
 <| <=< <~ <~~ <<~ <$ <+ 
 <!> <@> <#> <%> <^> <&> <?> <.> </> <\> <"> <:> <~> <**>
@@ -33,9 +33,9 @@ $>      *** *= */  *>         ++ +++  += +> ++=
 =/= =<< == === ==> => =~ =>>      >- >= >> >>- >>= >>> >=> >>^ >>| >!=
 ?? ?~ ?= ?>  ?   ???              ^= ^. ^? ^.. ^<< ^>> ^>
 \\ \> \/-        |= || |> ||| |+| |>- |<< ||> |>> |=> |-> |-->  |==>
-~= ~> ~~> ~>>    [[ ]] "> "       ≡≡ ≡≡≡ ≡:≡         @>
+~= ~> ~~> ~>>    ">        ≡≡ ≡≡≡ ≡:≡         @>
 
-[BUG] [DEBUG] [ERR] [ERROR] [FATAL] [FIXME] [WARN]
+[BUG] [DEBUG] [ERR] [ERROR] [FAIL] [FATAL] [FIXME] [WARN]
 [HACK] [INFO] [MARK] [NOTE] [TODO] [TRACE] [WARNING]
 
 doubles/triples/series:
