@@ -767,24 +767,7 @@ lookup clig_numbersign_TRACE { sub [E e] by numbersign_space_TRACE;} clig_number
 lookup clig_numbersign_WARNING { sub [G g] by numbersign_space_WARNING;} clig_numbersign_WARNING;
 lookup clig_numbersign_WARN { sub [N n] by numbersign_space_WARN;} clig_numbersign_WARN;
 
-lookup clig_slash_BUG { sub [G g] by slash_slash_space_BUG;} clig_slash_BUG; # // BUG
-lookup clig_slash_DEBUG { sub [G g] by slash_slash_space_DEBUG;} clig_slash_DEBUG;
-lookup clig_slash_ERR { sub [R r] by slash_slash_space_ERR;} clig_slash_ERR;
-lookup clig_slash_ERROR { sub [R r] by slash_slash_space_ERROR;} clig_slash_ERROR;
-lookup clig_slash_FAIL { sub [L l] by slash_slash_space_FAIL;} clig_slash_FAIL;
-lookup clig_slash_FATAL { sub [L l] by slash_slash_space_FATAL;} clig_slash_FATAL;
-lookup clig_slash_FIXME { sub [E e] by slash_slash_space_FIXME;} clig_slash_FIXME;
-lookup clig_slash_HACK { sub [K k] by slash_slash_space_HACK;} clig_slash_HACK;
-lookup clig_slash_INFO { sub [O o] by slash_slash_space_INFO;} clig_slash_INFO;
-lookup clig_slash_MARK { sub [K k] by slash_slash_space_MARK;} clig_slash_MARK;
-lookup clig_slash_NOTE { sub [E e] by slash_slash_space_NOTE;} clig_slash_NOTE;
-lookup clig_slash_TODO { sub [O o] by slash_slash_space_TODO;} clig_slash_TODO;
-lookup clig_slash_TRACE { sub [E e] by slash_slash_space_TRACE;} clig_slash_TRACE;
-lookup clig_slash_WARNING { sub [G g] by slash_slash_space_WARNING;} clig_slash_WARNING;
-lookup clig_slash_WARN { sub [N n] by slash_slash_space_WARN;} clig_slash_WARN;
-
-
-lookup next { sub [bracketleft slash numbersign space A B C D E F G H I K L M N O R T U W X a b c d e f g h i k l m n o r t u w x bracketright] by v00; } next;
+lookup next { sub [bracketleft numbersign space A B C D E F G H I K L M N O R T U W X a b c d e f g h i k l m n o r t u w x bracketright] by v00; } next;
 
 lookup clig_tags {
     sub bracketleft' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup next bracketright' lookup clig_BUG;
@@ -818,22 +801,6 @@ lookup clig_tags {
     sub numbersign' lookup next space' lookup next [T t]' lookup next [R r]' lookup next [A a]' lookup next [C c]' lookup next [E e]' lookup clig_numbersign_TRACE;
     sub numbersign' lookup next space' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next [I i]' lookup next [N n]' lookup next [G g]' lookup clig_numbersign_WARNING;
     sub numbersign' lookup next space' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup clig_numbersign_WARN;
-
-    sub slash' lookup next slash' lookup next space' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup clig_slash_BUG;
-    sub slash' lookup next slash' lookup next space' lookup next [D d]' lookup next [E e]' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup clig_slash_DEBUG;
-    sub slash' lookup next slash' lookup next space' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup next [O o]' lookup next [R r]' lookup clig_slash_ERROR;
-    sub slash' lookup next slash' lookup next space' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup clig_slash_ERR;
-    sub slash' lookup next slash' lookup next space' lookup next [F f]' lookup next [A a]' lookup next [I i]' lookup next [L l]' lookup clig_slash_FAIL;
-    sub slash' lookup next slash' lookup next space' lookup next [F f]' lookup next [A a]' lookup next [T t]' lookup next [A a]' lookup next [L l]' lookup clig_slash_FATAL;
-    sub slash' lookup next slash' lookup next space' lookup next [F f]' lookup next [I i]' lookup next [X x]' lookup next [M m]' lookup next [E e]' lookup clig_slash_FIXME;
-    sub slash' lookup next slash' lookup next space' lookup next [H h]' lookup next [A a]' lookup next [C c]' lookup next [K k]' lookup clig_slash_HACK;
-    sub slash' lookup next slash' lookup next space' lookup next [I i]' lookup next [N n]' lookup next [F f]' lookup next [O o]' lookup clig_slash_INFO;
-    sub slash' lookup next slash' lookup next space' lookup next [M m]' lookup next [A a]' lookup next [R r]' lookup next [K k]' lookup clig_slash_MARK;
-    sub slash' lookup next slash' lookup next space' lookup next [N n]' lookup next [O o]' lookup next [T t]' lookup next [E e]' lookup clig_slash_NOTE;
-    sub slash' lookup next slash' lookup next space' lookup next [T t]' lookup next [O o]' lookup next [D d]' lookup next [O o]' lookup clig_slash_TODO;
-    sub slash' lookup next slash' lookup next space' lookup next [T t]' lookup next [R r]' lookup next [A a]' lookup next [C c]' lookup next [E e]' lookup clig_slash_TRACE;
-    sub slash' lookup next slash' lookup next space' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next [I i]' lookup next [N n]' lookup next [G g]' lookup clig_slash_WARNING;
-    sub slash' lookup next slash' lookup next space' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup clig_slash_WARN;
 } clig_tags;
 
 
