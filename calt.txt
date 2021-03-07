@@ -1,10 +1,10 @@
 feature calt {
      lookup clig_hyphen;         # sequences starting with -
      lookup clig_slash;          # sequences starting with /
+     lookup clig_exclam;         # sequences starting with !
      lookup clig_equal;          # sequences starting with =
      lookup clig_less;           # sequences starting with <
      lookup clig_colon;          # sequences starting with :
-     lookup clig_exclam;         # sequences starting with !
      lookup clig_ampersand;      # sequences starting with &
      lookup clig_plus;           # sequences starting with +
      lookup clig_greater;        # sequences starting with >
@@ -12,56 +12,27 @@ feature calt {
      lookup clig_asterisk;       # sequences starting with *
      lookup clig_period;         # sequences starting with .
      lookup clig_question;       # sequences starting with ?
-     lookup clig_backslash;      # sequences starting with 
+     lookup clig_backslash;      # sequences starting with backslash
      lookup clig_percent;        # sequences starting with %
      lookup clig_asciitilde;     # sequences starting with ~
      lookup clig_asciicircum;    # sequences starting with ^
      lookup clig_dollar;         # sequences starting with $
-     lookup clig_at;             # sequences starting with @
-     lookup clig_quotedbl;       # sequences starting with "
      lookup clig_numbersign;     # sequences starting with #
      lookup clig_equivalence;    # sequences starting with ≡
      lookup clig_underscore;     # sequences starting with _
-     lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
      lookup clig_cleanup;        # replace artifacts with v00
+     lookup clig_tags;           # [WARN] [ERR] [HACK] etc.
      lookup kern_keywords;       # contextual positions
+     lookup kern_ligatures;
      lookup calt_boxdrawings;
-     
-#DONE sub hyphen greater hyphen by hyphen_greater_hyphen;
-#sub hyphen less hyphen by hyphen_less_hyphen;
-#sub equal greater equal by equal_greater_equal;
-#sub equal less equal by equal_less_equal;
-#sub slash slash space E R R O R by slash_slash_space_ERROR;
-#sub slash slash space D E B U G by slash_slash_space_DEBUG;
-#sub slash slash space I N F O by slash_slash_space_INFO;
-#sub slash slash space W A R N by slash_slash_space_WARN;
-#sub slash slash space W A R N I N G by slash_slash_space_WARNING;
-#sub slash slash space E R R by slash_slash_space_ERR;
-#sub slash slash space F A T A L by slash_slash_space_FATAL;
-#sub slash slash space T R A C E by slash_slash_space_TRACE;
-#sub slash slash space F I X M E by slash_slash_space_FIXME;
-#sub slash slash space T O D O by slash_slash_space_TODO;
-#sub slash slash space B U G by slash_slash_space_BUG;
-#sub slash slash space N O T E by slash_slash_space_NOTE;
-#sub slash slash space H A C K by slash_slash_space_HACK;
-#sub slash slash space M A R K by slash_slash_space_MARK;
-#sub numbersign space E R R O R by numbersign_space_ERROR;
-#sub numbersign space D E B U G by numbersign_space_DEBUG;
-#sub numbersign space I N F O by numbersign_space_INFO;
-#sub numbersign space W A R N by numbersign_space_WARN;
-#sub numbersign space W A R N I N G by numbersign_space_WARNING;
-#sub numbersign space E R R by numbersign_space_ERR;
-#sub numbersign space F A T A L by numbersign_space_FATAL;
-#sub numbersign space T R A C E by numbersign_space_TRACE;
-#sub numbersign space F I X M E by numbersign_space_FIXME;
-#sub numbersign space T O D O by numbersign_space_TODO;
-#sub numbersign space N O T E by numbersign_space_NOTE;
-#sub numbersign space H A C K by numbersign_space_HACK;
-#sub numbersign space M A R K by numbersign_space_MARK;
-     
-    
 
      script arab;
      lookup liga_arab_1;
 } calt;
+
+
+
+
+
+
 
