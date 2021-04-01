@@ -8,14 +8,17 @@ feature calt {
      lookup clig_ampersand;      # sequences starting with &
      lookup clig_plus;           # sequences starting with +
      lookup clig_greater;        # sequences starting with >
-     lookup clig_bar;            # sequences starting with |
      lookup clig_asterisk;       # sequences starting with *
+     lookup clig_bar;
      lookup clig_period;         # sequences starting with .
      lookup clig_question;       # sequences starting with ?
-     lookup clig_backslash;      # sequences starting with backslash
+     lookup clig_backslash;      # sequences starting with 
      lookup clig_percent;        # sequences starting with %
      lookup clig_asciitilde;     # sequences starting with ~
      lookup clig_asciicircum;    # sequences starting with ^
+     lookup clig_bracketleft;
+     lookup clig_bracketright;
+     lookup clig_parenleft;
      lookup clig_dollar;         # sequences starting with $
      lookup clig_numbersign;     # sequences starting with #
      lookup clig_equivalence;    # sequences starting with ≡
@@ -25,10 +28,15 @@ feature calt {
      lookup kern_keywords;       # contextual positions
      lookup kern_ligatures;
      lookup calt_boxdrawings;
+     lookup curlyarrows;
+     lookup markdown;
+     lookup git_tree;
 
      script arab;
      lookup liga_arab_1;
 } calt;
+
+
 
 
 
