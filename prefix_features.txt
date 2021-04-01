@@ -20,6 +20,48 @@ languagesystem math dflt; # Mathematical Alphanumeric Symbols default
 languagesystem zinh dflt;
 languagesystem zyyy dflt;
 
+lookup ccmp_latn_grek {
+# GSUB lookup 16, type 11 (Single)
+sub [i icy] by idotless;
+sub [j jecy] by jdotless;
+sub iogonek by dotlessiogonek;
+sub istroke by dotlessistroke;
+sub jstroke by dotlessjstroke;
+sub jcrossedtail by dotlessjcrossedtail;
+sub itildebelow by dotlessitildebelow;
+sub idotbelow by dotlessidotbelow;
+sub idoublestruckitalic by dotlessidoublestruckitalic;
+sub jdoublestruckitalic by dotlessjdoublestruckitalic;
+sub imathserifbold by dotlessimathserifbold;
+sub jmathserifbold by dotlessjmathserifbold;
+sub imathserifiboldit by dotlessimathserifiboldit;
+sub jmathserifiboldit by dotlessjmathserifiboldit;
+sub imathscript by dotlessimathscript;
+sub jmathscript by dotlessimathscript;
+sub imathfraktur by dotlessimathfraktur;
+sub jmathfraktur by dotlessjmathfraktur;
+sub ibb by dotlessibb;
+sub jbb by dotlessjbb;
+sub imathboldfraktur by dotlessimathboldfraktur;
+sub jmathboldfraktur by dotlessjmathboldfraktur;
+sub [imathsans imathmono] by dotlessiregular;
+sub [jmathsans jmathmono] by dotlessjregular;
+sub imathsansbold by dotlessibold;
+sub jmathsansbold by dotlessjbold;
+sub [imathserifitalic imathsansitalic] by imath;
+sub [jmathserifitalic jmathsansitalic] by jmath;
+sub imathsansboldit by dotlessibolditalic;
+sub jmathsansboldit by dotlessjbolditalic;
+sub imod by dotlessimod;
+sub iinferior by dotlessiinferior;
+sub jinferior by dotlessjinferior;
+sub jcrossedtailmod by dotlessjcrossedtailmod;
+sub istrokemod by dotlessistrokemod;
+sub iretroflexhook by dotlessiretroflexhook;
+sub imathboldscript by dotlessimathboldscript;
+sub jmathboldscript by dotlessjmathboldscript;
+} ccmp_latn_grek;
+
 # Copyright 2018-2019 kelas <me@kel.as>
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 # documentation files (the "Software"), to deal in the Software without restriction, including without limitation
@@ -47,16 +89,16 @@ languagesystem zyyy dflt;
 # v0.0.56 optimized triples in < block
 # v0.0.55 cleanup
 # v0.0.54 gpos example
-# v0.0.53 ignore <--<
+# v0.0.53ignore <--<
 # v0.0.52 fixed <-->
 # v0.0.51 fixed ---> ---<
 # v0.0.50 fixed <===> <--->
 # v0.0.49 fixed <||>
 # v0.0.48 fixed =>> precedence
-# v0.0.47 ignore <--> <--< <--...--< <--...-->
+# v0.0.47ignore <--> <--< <--...--< <--...-->
 # v0.0.46 rolled back =< (ambiguous)
-# v0.0.45 ignore =~/ and <||>
-# v0.0.44 ignore <--->
+# v0.0.45ignore =~/ and <||>
+# v0.0.44ignore <--->
 # v0.0.43 added =<
 # v0.0.42 added ==>>
 # v0.0.41 added <<==
@@ -81,17 +123,16 @@ languagesystem zyyy dflt;
 # chain is a match.
 
 lookup drop_if_next_is {
-    sub [exclam numbersign less percent equal underscore ampersand plus asterisk greater hyphen bar period
-         slash colon question asciitilde asciicircum backslash dollar at quotedbl bracketleft bracketright D P]' by v00;
+sub [exclam numbersign parenleft less percent equal underscore ampersand plus asterisk greater hyphen bar period slash colon question asciitilde asciicircum backslash dollar at quotedbl bracketleft bracketright D P]' by v00;
 } drop_if_next_is;
 
 ############################################################# 2
 
-# != 
-@exclam_heads = [equal];
-@exclam_tails = [exclam_equal];
+# != !≡
+@exclam_heads = [equal equivalence];
+@exclam_tails = [exclam_equal exclam_equivalence];
 
-# *= */ *>
+# *>
 @asterisk_heads = [greater];
 @asterisk_tails = [asterisk_greater];
 
@@ -103,31 +144,26 @@ lookup drop_if_next_is {
 @percent_heads = [equal];
 @percent_tails = [percent_equal];
 
-# #_ #( #{ #? ##
-@numbersign_heads = [underscore parenleft braceleft question numbersign];
-@numbersign_tails = [numbersign_underscore numbersign_parenleft numbersign_braceleft numbersign_question numbersign_numbersign];
+# #_ #( #{ #? ## #[
+@numbersign_heads = [underscore parenleft braceleft question numbersign bracketleft];
+@numbersign_tails = [numbersign_underscore numbersign_parenleft numbersign_braceleft numbersign_question numbersign_numbersign numbersign_bracketleft];
 
 # && &% &+ &- &/ &= 
 @ampersand_heads = [ampersand percent plus hyphen slash equal];
 @ampersand_tails = [ampersand_ampersand ampersand_percent ampersand_plus ampersand_hyphen ampersand_slash ampersand_equal];
 
-# <> <$ <* <+ <= <| <~ <-
+# <> <$ <* <+ <= <| <~ <- <?
 @less_heads = [greater dollar asterisk plus equal bar asciitilde hyphen];
 @less_doubles = [less_greater less_dollar less_asterisk less_plus less_equal less_bar less_asciitilde less_hyphen];
 # <$> <*> <+> <=> <|> <!> <@> <#> <%> <^> <&> <?> <.> </> ..... <==
-@less_triples = [less_dollar_greater less_asterisk_greater less_plus_greater less_equal_greater less_bar_greater
-    less_exclam_greater less_at_greater less_numbersign_greater less_percent_greater less_asciicircum_greater
-    less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater
-    less_quotedbl_greater less_colon_greater less_asciitilde_greater less_hyphen_greater less_less_equal
-    less_less_hyphen less_less_asciitilde less_less_asciicircum less_less_bar less_equal_less less_asciitilde_asciitilde
-    less_hyphen_hyphen less_bar_hyphen less_bar_bar less_hyphen_less less_equal_equal];
+@less_triples = [less_dollar_greater less_asterisk_greater less_plus_greater less_equal_greater less_bar_greater less_exclam_greater less_at_greater less_numbersign_greater less_percent_greater less_asciicircum_greater less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater less_quotedbl_greater less_colon_greater less_asciitilde_greater less_hyphen_greater less_less_equal less_less_hyphen less_less_asciitilde less_less_asciicircum less_less_bar less_equal_less less_asciitilde_asciitilde less_hyphen_hyphen less_bar_hyphen less_bar_bar less_hyphen_less less_equal_equal];
 @less_heads_ref = [exclam at numbersign percent asciicircum ampersand question period slash backslash quotedbl colon];
 # <!> <@> <#> <%> <^> <&> <?> <.> </> <\> <"> <:>
 @less_triples_end_greater_ref = [less_exclam_greater less_at_greater less_numbersign_greater less_percent_greater less_asciicircum_greater less_ampersand_greater less_question_greater less_period_greater less_slash_greater less_backslash_greater less_quotedbl_greater less_colon_greater];
 
-# -- -< -> -=
-@hyphen_heads =   [hyphen less greater equal];
-@hyphen_doubles = [hyphen_hyphen hyphen_less hyphen_greater hyphen_equal];
+# -- -< -> -= -|
+@hyphen_heads =   [hyphen less greater equal bar];
+@hyphen_doubles = [hyphen_hyphen hyphen_less hyphen_greater hyphen_equal hyphen_bar];
 @hyphen_triples = [hyphen_hyphen_greater hyphen_hyphen_hyphen hyphen_less_bar hyphen_less_less hyphen_greater_greater hyphen_greater_hyphen];
 
 # .~ .=
@@ -143,8 +179,12 @@ lookup drop_if_next_is {
 @colon_tails = [colon_equal colon_equivalence];
 
 # == => =~
-@equal_heads = [equal greater asciitilde];
-@equal_tails = [equal_equal equal_greater equal_asciitilde];
+@equal_heads = [equal greater asciitilde slash];
+@equal_tails = [equal_equal equal_greater equal_asciitilde equal_slash];
+
+# ≡/
+@equivalence_heads = [slash];
+@equivalence_tails = [equivalence_slash];
 
 # >- >=
 @greater_heads = [hyphen equal];
@@ -154,9 +194,9 @@ lookup drop_if_next_is {
 @question_heads = [period];
 @question_tails = [question_period];
 
-# |= || |> |-
-@bar_heads = [equal bar greater hyphen];
-@bar_tails = [bar_equal bar_bar bar_greater bar_hyphen];
+# |= |> |- |] |)
+@bar_heads = [equal greater hyphen bracketright parenright];
+@bar_tails = [bar_equal bar_greater bar_hyphen bar_bracketright bar_parenright];
 
 # ~= ~>
 @asciitilde_heads = [equal greater];
@@ -166,547 +206,590 @@ lookup drop_if_next_is {
 @asciicircum_heads = [equal];
 @asciicircum_tails = [asciicircum_equal];
 
+# [[ [|
+@bracketleft_heads = [bracketleft bar];
+@bracketleft_tails = [bracketleft_bracketleft bracketleft_bar];
+
+# ]]
+@bracketright_heads = [bracketright];
+@bracketright_tails = [bracketright_bracketright];
+
+# (|
+@parenleft_heads = [bar];
+@parenleft_tails = [parenleft_bar];
+
     
 
 ############################################################# 3
 
 lookup clig_exclam_tail_eq_le_excl {
-    sub [equal less] by [exclam_equal_equal exclam_equal_less]; # !== !=<
+sub [equal less] by [exclam_equal_equal exclam_equal_less]; # !== !=<
+sub equivalence by exclam_equivalence_equivalence;
 } clig_exclam_tail_eq_le_excl;
 
 lookup clig_numbersign_tail_parenleft {
-    sub parenleft by numbersign_underscore_parenleft; # #_(
+sub parenleft by numbersign_underscore_parenleft; # #_(
 } clig_numbersign_tail_parenleft;
 
 lookup clig_ampersand_tail_amp_amp {
-    sub ampersand by ampersand_ampersand_amp;  # &&&
+sub ampersand by ampersand_ampersand_amp;  # &&&
 } clig_ampersand_tail_amp_amp;
 
 lookup clig_plus_tail_plus_or_eq {
-    sub [plus equal] by [plus_plus_plus plus_plus_equal]; # +++ ++=
+sub [plus equal] by [plus_plus_plus plus_plus_equal]; # +++ ++=
 } clig_plus_tail_plus_or_eq;
 
 lookup clig_hyphen_tail_bar_greater {
-    sub greater by hyphen_bar_greater; # -|>
+sub greater by hyphen_bar_greater; # -|>
 } clig_hyphen_tail_bar_greater;
 
 lookup clig_hyphen_tail_less_less {
-    sub less by hyphen_less_less; # -<<
+sub less by hyphen_less_less; # -<<
 } clig_hyphen_tail_less_less;
 
 lookup clig_hyphen_tail_plus_hyphen {
-    sub hyphen by hyphen_plus_hyphen; # -+-
+sub hyphen by hyphen_plus_hyphen; # -+-
 } clig_hyphen_tail_plus_hyphen;
 
 lookup clig_equal_tail_greater_equal {
-    sub equal by equal_greater_equal; # =>=
+sub equal by equal_greater_equal; # =>=
 } clig_equal_tail_greater_equal;
 
 lookup clig_equal_tail_less_equal {
-    sub equal by equal_less_equal; # =<=
+sub equal by equal_less_equal; # =<=
 } clig_equal_tail_less_equal;
 
 lookup clig_hyphen_tail_greater_hyphen {
-    sub hyphen by hyphen_greater_hyphen; # ->-
+sub hyphen by hyphen_greater_hyphen; # ->-
 } clig_hyphen_tail_greater_hyphen;
 
 lookup clig_hyphen_tail_less_hyphen {
-    sub hyphen by hyphen_less_hyphen; # -<-
+sub hyphen by hyphen_less_hyphen; # -<-
 } clig_hyphen_tail_less_hyphen;
 
 lookup clig_greater_tail_greater_greater {
-    sub [hyphen equal asciicircum bar] by
-        [greater_greater_hyphen greater_greater_equal greater_greater_asciicircum greater_greater_bar]; # >>- >>= >>^ >>|
+sub [hyphen equal asciicircum bar] by [greater_greater_hyphen greater_greater_equal greater_greater_asciicircum greater_greater_bar]; # >>- >>= >>^ >>|
 } clig_greater_tail_greater_greater;
 
 lookup clig_colon_tail_greater_colon {
-    sub greater by colon_equal_greater ; # :=>
+sub greater by colon_equal_greater ; # :=>
 } clig_colon_tail_greater_colon;
 
 lookup clig_equal_tail_equal_greater {
-    sub [equal greater] by [equal_equal_equal equal_equal_greater]; # === ==>
+sub [equal greater] by [equal_equal_equal equal_equal_greater]; # === ==>
 } clig_equal_tail_equal_greater;
 
 lookup clig_equal_tail_eq_le_gt {
-    sub [equal less greater] by [equal_slash_equal equal_less_less equal_greater_greater]; # =/= =<< =>>
+sub [equal less greater] by [equal_slash_equal equal_less_less equal_greater_greater]; # =/= =<< =>>
 } clig_equal_tail_eq_le_gt;
 
 lookup clig_equal_tail_tilde_equal {
-    sub equal by equal_asciitilde_equal; # =~=
+sub equal by equal_asciitilde_equal; # =~=
 } clig_equal_tail_tilde_equal;
 
 lookup clig_bar_tail_bar_greater_hyphen {
-    sub [bar greater hyphen] by [bar_bar_bar bar_bar_greater bar_bar_hyphen]; # ||| ||> ||-
+sub [greater hyphen] by [bar_bar_greater bar_bar_hyphen]; # ||> ||-
 } clig_bar_tail_bar_greater_hyphen;
 
 lookup clig_bar_tail_greater_hyphen {
-    sub [greater hyphen] by [bar_greater_greater bar_greater_hyphen]; # |>> |>-
+sub [greater hyphen] by [bar_greater_greater bar_greater_hyphen]; # |>> |>-
 } clig_bar_tail_greater_hyphen;
 
 lookup clig_bar_tail_bar_less {
-    sub [bar less] by [bar_plus_bar bar_less_less]; # |+| |<<
+sub [bar less] by [bar_plus_bar bar_less_less]; # |+| |<<
 } clig_bar_tail_bar_less;
 
 lookup clig_bar_tail_hyphen_greater {
-    sub greater by bar_hyphen_greater; # |->
+sub greater by bar_hyphen_greater; # |->
 } clig_bar_tail_hyphen_greater;
 
 lookup clig_bar_tail_equal_greater {
-    sub greater by bar_equal_greater; # |=>
+sub greater by bar_equal_greater; # |=>
 } clig_bar_tail_equal_greater;
 
 lookup clig_bar_long_tail_hyphen_greater {
-    sub greater by bar_hyphen_hyphen_greater; # |-->
+sub greater by bar_hyphen_hyphen_greater; # |-->
 } clig_bar_long_tail_hyphen_greater;
 
 lookup clig_bar_long_tail_equal_greater {
-    sub greater by bar_equal_equal_greater; # |==>
+sub greater by bar_equal_equal_greater; # |==>
 } clig_bar_long_tail_equal_greater;
 
 lookup clig_asciicircum_tail_le_gt_pt {
-    sub [less greater] by
+sub [less greater] by
       [asciicircum_less_less asciicircum_greater_greater]; # ^<< ^>>
 } clig_asciicircum_tail_le_gt_pt;
 
 lookup clig_greater_tail_eq_gt {
-    sub [greater equal] by [greater_equal_greater greater_exclam_equal]; # >=> >!=
+sub [greater equal] by [greater_equal_greater greater_exclam_equal]; # >=> >!=
 } clig_greater_tail_eq_gt;
 
 lookup clig_greater_tail_hyphen_gt {
-    sub greater by greater_hyphen_greater; # >->
+sub greater by greater_hyphen_greater; # >->
 } clig_greater_tail_hyphen_gt;
 
 lookup clig_asciitilde_tail_gt {
-    sub greater by asciitilde_asciitilde_greater; # ~~>
+sub greater by asciitilde_asciitilde_greater; # ~~>
 } clig_asciitilde_tail_gt;
 
 lookup clig_asciitilde_tail_gt_gt {
-    sub greater by asciitilde_greater_greater;  # ~>>
+sub greater by asciitilde_greater_greater;  # ~>>
 } clig_asciitilde_tail_gt_gt;
 
 lookup clig_hyphen_tail_backsl_slash {
-    sub slash by hyphen_backslash_slash; # -\/
+sub slash by hyphen_backslash_slash; # -\/
+sub bar by hyphen_bar_bar; # -||
 } clig_hyphen_tail_backsl_slash;
 
 lookup clig_backslash_tail_slash_hyphen {
-    sub hyphen by backslash_slash_hyphen; # \/-
+sub hyphen by backslash_slash_hyphen; # \/-
+sub slash by backslash_hyphen_slash; # \-/
+sub greater by backslash_hyphen_greater; # /->
 } clig_backslash_tail_slash_hyphen;
 
 lookup clig_equivalence_tail_colon_equiv {
-    sub equivalence by equivalence_colon_equivalence;
+sub equivalence by equivalence_colon_equivalence;
 } clig_equivalence_tail_colon_equiv;
 
 lookup clig_equivalence_tail_equiv_equiv {
-    sub equivalence by equiv_equiv_equiv;
+sub equivalence by equiv_equiv_equiv;
 } clig_equivalence_tail_equiv_equiv;
 
 lookup clig_underscore_tail_bar_underscore {
-	sub underscore by underscore_bar_underscore; # _|_
+sub underscore by underscore_bar_underscore; # _|_
 } clig_underscore_tail_bar_underscore;
 
 lookup clig_tail_dollar_gt { sub greater by dollar_greater; } clig_tail_dollar_gt; # $>
 
 lookup clig_less_exclam_center{
-    sub greater by less_exclam_greater; # <!>
+sub greater by less_exclam_greater; # <!>
 } clig_less_exclam_center;
 
 lookup clig_less_at_center{
-    sub greater by less_at_greater; # <@>
+sub greater by less_at_greater; # <@>
 } clig_less_at_center;
 
 lookup clig_less_numbersign_center{
-    sub greater by less_numbersign_greater; # <#>
+sub greater by less_numbersign_greater; # <#>
 } clig_less_numbersign_center;
 
 lookup clig_less_percent_center{
-    sub greater by less_percent_greater; # <%>
+sub greater by less_percent_greater; # <%>
 } clig_less_percent_center;
 
 lookup clig_less_asciicircum_center{
-    sub greater by less_asciicircum_greater; # <^>
+sub greater by less_asciicircum_greater; # <^>
 } clig_less_asciicircum_center;
 
 lookup clig_less_ampersand_center{
-    sub greater by less_ampersand_greater; # <&>
+sub greater by less_ampersand_greater; # <&>
 } clig_less_ampersand_center;
 
 lookup clig_less_question_center{
-    sub greater by less_question_greater; # <?>
+sub greater by less_question_greater; # <?>
 } clig_less_question_center;
 
 lookup clig_less_period_center{
-    sub greater by less_period_greater; # <.>
+sub greater by less_period_greater; # <.>
 } clig_less_period_center;
 
 lookup clig_less_slash_center{
-    sub greater by less_slash_greater; # </>
+sub greater by less_slash_greater; # </>
 } clig_less_slash_center;
 
 lookup clig_less_backslash_center{
-    sub greater by less_backslash_greater; # <\>
+sub greater by less_backslash_greater; # <\>
 } clig_less_backslash_center;
 
 lookup clig_less_quotedbl_center{
-    sub greater by less_quotedbl_greater; # <">
+sub greater by less_quotedbl_greater; # <">
 } clig_less_quotedbl_center;
 
 lookup clig_less_colon_center{
-    sub greater by less_colon_greater; # <:>
+sub greater by less_colon_greater; # <:>
 } clig_less_colon_center;
 
 ############################################################# TAILS:
 
 lookup clig_exclam_tails {
-    sub @exclam_heads' by @exclam_tails; # != !! !>
+sub @exclam_heads' by @exclam_tails; # != !! !>
 } clig_exclam_tails;
 
 lookup clig_numbersign_tails {
-    sub @numbersign_heads' by @numbersign_tails; # #_ #( #{ #? #>
+sub @numbersign_heads' by @numbersign_tails; # #_ #( #{ #? #>
 } clig_numbersign_tails;
 
 lookup clig_ampersand_tails {
-    sub @ampersand_heads' by @ampersand_tails; # &% && &* &+ &- &/ &= &>
+sub @ampersand_heads' by @ampersand_tails; # &% && &* &+ &- &/ &= &>
 } clig_ampersand_tails;
 
 lookup clig_percent_tails {
-    sub @percent_heads' by @percent_tails; # %= %>
+sub @percent_heads' by @percent_tails; # %= %>
 } clig_percent_tails;
 
 lookup clig_asterisk_tails {
-    sub @asterisk_heads' by @asterisk_tails;
+sub @asterisk_heads' by @asterisk_tails;
 } clig_asterisk_tails;
 
 lookup clig_plus_tails {
-    sub @plus_heads' by @plus_tails;
+sub @plus_heads' by @plus_tails;
 } clig_plus_tails;
 
 lookup clig_slash_tails_final {
-    sub equal by slash_equal_equal; # /==
+sub equal by slash_equal_equal; # /==
+sub backslash by slash_hyphen_backslash; # /-\
+sub greater by slash_hyphen_greater; # /->
 } clig_slash_tails_final;
 
 lookup clig_slash_tails_3 {
-    sub slash slash slash' lookup clig_slash_tails_final;
-    sub slash_equal equal' lookup clig_slash_tails_final;
-    sub slash asterisk asterisk' lookup clig_slash_tails_final;
+sub slash_equal equal' lookup clig_slash_tails_final;
 } clig_slash_tails_3;
 
 lookup clig_period_tails {
-    sub @period_heads' by @period_tails;
+sub @period_heads' by @period_tails;
 } clig_period_tails;
 
 lookup clig_slash_tails {
-    sub @slash_heads' by @slash_tails;
+sub @slash_heads' by @slash_tails;
 } clig_slash_tails;
 
 lookup clig_colon_tails {
-    sub @colon_heads' by @colon_tails;
+sub @colon_heads' by @colon_tails;
 } clig_colon_tails;
 
 lookup clig_equal_tails {
-    sub @equal_heads' by @equal_tails;
+sub @equal_heads' by @equal_tails;
 } clig_equal_tails;
 
 lookup clig_greater_tails {
-    sub @greater_heads' by @greater_tails;
+sub @greater_heads' by @greater_tails;
 } clig_greater_tails;
 
 lookup clig_question_tails {
-    sub @question_heads' by @question_tails;
+sub @question_heads' by @question_tails;
 } clig_question_tails;
 
 lookup clig_bar_tails {
-    sub @bar_heads' by @bar_tails;
+sub @bar_heads' by @bar_tails;
 } clig_bar_tails;
 
 lookup clig_asciitilde_tails {
-    sub @asciitilde_heads' by @asciitilde_tails;
+sub @asciitilde_heads' by @asciitilde_tails;
 } clig_asciitilde_tails;
 
 lookup clig_asciicircum_tails {
-    sub @asciicircum_heads' by @asciicircum_tails;
+sub @asciicircum_heads' by @asciicircum_tails;
 } clig_asciicircum_tails;
 
 lookup clig_equivalence_tails {
-    sub equivalence by equivalence_equivalence;
+sub @equivalence_heads' by @equivalence_tails;
 } clig_equivalence_tails;
 
+lookup clig_bracketleft_tails {
+sub @bracketleft_heads' by @bracketleft_tails;
+} clig_bracketleft_tails;
+
+lookup clig_bracketright_tails {
+sub @bracketright_heads' by @bracketright_tails;
+} clig_bracketright_tails;
+
+lookup clig_parenleft_tails {
+sub @parenleft_heads' by @parenleft_tails;
+} clig_parenleft_tails;
+
 lookup clig_less_less_tails {
-    sub [equal hyphen asciitilde asciicircum bar] by
+sub [equal hyphen asciitilde asciicircum bar] by
         [less_less_equal less_less_hyphen less_less_asciitilde less_less_asciicircum less_less_bar]; # <<= <<- <<~ <<^ <<|
 } clig_less_less_tails;
 
 #############################################################
 
 lookup clig_less_long_tails_hyp_gt {
-    sub [hyphen greater]' by [less_exclam_hyphen_hyphen less_asterisk_asterisk_greater]; # <!--  <**>
+sub [hyphen greater]' by [less_exclam_hyphen_hyphen less_asterisk_asterisk_greater]; # <!--  <**>
 } clig_less_long_tails_hyp_gt;
 
 lookup clig_less_long_tails_hyphen_gt {
-    sub greater by less_hyphen_hyphen_greater; # <-->
+sub greater by less_hyphen_hyphen_greater; # <-->
 } clig_less_long_tails_hyphen_gt;
 
 lookup clig_less_long_tails_eq_gt {
-    sub greater by less_equal_equal_greater; # <==>
+sub greater by less_equal_equal_greater; # <==>
 } clig_less_long_tails_eq_gt;
 
 lookup clig_less_tail_tilde_less {
-    sub less by less_asciitilde_less; # <~<
+sub less by less_asciitilde_less; # <~<
 } clig_less_tail_tilde_less;
 
 lookup clig_less_long_less_eq_eq {
-    sub equal by less_less_equal_equal; # <<==
+sub equal by less_less_equal_equal; # <<==
 } clig_less_long_less_eq_eq;
 
 lookup clig_less_tails_2 {
-    # <> <$ <* <+ <= <| <! <@ <# <% <^ <& <? <. </ <\ <" <: <~ <-
-    sub @less_heads' by @less_doubles;
+# <> <$ <* <+ <= <| <! <@ <# <% <^ <& <? <. </ <\ <" <: <~ <-
+sub @less_heads' by @less_doubles;
 } clig_less_tails_2;
 
 #@less_doubles_end_greater = [less_dollar less_asterisk less_plus less_bar less_exclam less_at less_numbersign less_percent less_asciicircum less_ampersand less_question less_period less_slash less_backslash less_quotedbl less_colon less_asciitilde];
 
 
 #lookup clig_less_tails_greater_2_to_3 {
-#    sub @less_doubles_end_greater by @less_triples_end_greater;
+#sub @less_doubles_end_greater by @less_triples_end_greater;
 #} clig_less_tails_greater_2_to_3;
 
 lookup clig_less_tails_3 {
-    #rsub greater @less_doubles_end_greater' lookup clig_less_tails_greater_2_to_3;
-    #sub @less_doubles_end_greater' by @less_triples_end_greater;
+#sub greater @less_doubles_end_greater' lookup clig_less_tails_greater_2_to_3;
+#sub @less_doubles_end_greater' by @less_triples_end_greater;
 
-    # <$>  <*>  <+>  
-    sub less_dollar greater' by less_dollar_greater;
-    sub less_asterisk greater' by less_asterisk_greater;
-    sub less_plus greater' by less_plus_greater;
+# <$>  <*>  <+>  
+sub less_dollar greater' by less_dollar_greater;
+sub less_asterisk greater' by less_asterisk_greater;
+sub less_plus greater' by less_plus_greater;
         
-    # <==  <=<  <=>
-    sub less_equal [equal less greater]' by [less_equal_equal less_equal_less less_equal_greater];
-    # <-<  <--  <->
-    sub less_hyphen [less hyphen greater]' by [less_hyphen_less less_hyphen_hyphen less_hyphen_greater];
-    # <~~  <~>
-    sub less_asciitilde [asciitilde greater]' by [less_asciitilde_asciitilde less_asciitilde_greater];
-    # <|-  <||  <|>
-    sub less_bar [hyphen bar greater]' by [less_bar_hyphen less_bar_bar less_bar_greater];
-    
-
+# <==  <=<  <=>
+sub less_equal [equal less greater]' by [less_equal_equal less_equal_less less_equal_greater];
+# <-<  <--  <->
+sub less_hyphen [less hyphen greater]' by [less_hyphen_less less_hyphen_hyphen less_hyphen_greater];
+# <~~  <~>
+sub less_asciitilde [asciitilde greater]' by [less_asciitilde_asciitilde less_asciitilde_greater];
+# <|-  <||  <|>
+sub less_bar [hyphen bar greater]' by [less_bar_hyphen less_bar_bar less_bar_greater];
 } clig_less_tails_3;
 
 lookup clig_hyphen_tails {
-    sub @hyphen_heads by @hyphen_doubles;
+sub @hyphen_heads by @hyphen_doubles;
 } clig_hyphen_tails;
 
 lookup clig_hyphen_tails_3 {
-    sub hyphen_hyphen [greater hyphen]' by [hyphen_hyphen_greater hyphen_hyphen_hyphen]; # --> ---
-    sub hyphen_less bar' by hyphen_less_bar; # -<|
-    sub hyphen_greater greater' by hyphen_greater_greater; # ->>
+sub hyphen_hyphen [greater hyphen]' by [hyphen_hyphen_greater hyphen_hyphen_hyphen]; # --> ---
+sub hyphen_less bar' by hyphen_less_bar; # -<|
+sub hyphen_greater greater' by hyphen_greater_greater; # ->>
 } clig_hyphen_tails_3;
+
 
 #############################################################
 
 lookup clig_bar {
-    ignore sub bar bar bar bar; # four pipes in a row are no-op
-    ignore sub bar bar' bar; # further pipes are no-op
-    ignore sub less bar' bar greater; # disable <||>
-    ignore sub less bar' [greater hyphen bar]; # precedence <|> <|- <||
-    ignore sub less bar hyphen hyphen'; # precedence <|--
+ignore sub less bar' bar greater; # disable <||>
+ignore sub less bar' greater; # precedence <|>
 
-    sub bar'            lookup drop_if_next_is hyphen'              lookup drop_if_next_is hyphen' lookup drop_if_next_is greater'  lookup clig_bar_long_tail_hyphen_greater; # |-->
-    sub bar'            lookup drop_if_next_is equal'               lookup drop_if_next_is equal'  lookup drop_if_next_is greater' lookup clig_bar_long_tail_equal_greater; # |==>
-    sub bar'            lookup drop_if_next_is hyphen'              lookup drop_if_next_is greater' lookup clig_bar_tail_hyphen_greater; # |->
-    sub bar'            lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_bar_tail_equal_greater; # |=>
-    sub bar'            lookup drop_if_next_is bar'                 lookup drop_if_next_is [bar greater hyphen]' lookup clig_bar_tail_bar_greater_hyphen; # |||  ||>
-    sub bar'            lookup drop_if_next_is greater'             lookup drop_if_next_is [greater hyphen]' lookup clig_bar_tail_greater_hyphen; # |>> |>-
-    sub bar'            lookup drop_if_next_is plus'                lookup drop_if_next_is bar' lookup clig_bar_tail_bar_less;  #        |+|
-    sub bar'            lookup drop_if_next_is less'                lookup drop_if_next_is less' lookup clig_bar_tail_bar_less; #        |<<
-    sub bar'            lookup drop_if_next_is @bar_heads'          lookup clig_bar_tails;          #                                    |= || |>
+sub bar' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup drop_if_next_is greater' lookup clig_bar_long_tail_hyphen_greater; # |-->
+sub bar'            lookup drop_if_next_is equal'               lookup drop_if_next_is equal'  lookup drop_if_next_is greater' lookup clig_bar_long_tail_equal_greater; # |==>
+sub bar'            lookup drop_if_next_is hyphen'              lookup drop_if_next_is greater' lookup clig_bar_tail_hyphen_greater; # |->
+sub bar'            lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_bar_tail_equal_greater; # |=>
+sub bar'            lookup drop_if_next_is bar'                 lookup drop_if_next_is [greater hyphen]' lookup clig_bar_tail_bar_greater_hyphen; # ||> ||-
+sub bar'            lookup drop_if_next_is greater'             lookup drop_if_next_is [greater hyphen]' lookup clig_bar_tail_greater_hyphen; # |>> |>-
+sub bar'            lookup drop_if_next_is plus'                lookup drop_if_next_is bar' lookup clig_bar_tail_bar_less;  #        |+|
+sub bar'            lookup drop_if_next_is less'                lookup drop_if_next_is less' lookup clig_bar_tail_bar_less; #        |<<
+sub bar'            lookup drop_if_next_is @bar_heads'          lookup clig_bar_tails;          #                                    |= |> |] |)
 } clig_bar;
 
 lookup clig_less {
-    ignore sub [hyphen equal] less' less; # precedence exception -<< =<<
-    ignore sub hyphen less' bar; # precedence exception -<|
-    ignore sub hyphen less' hyphen; # precedence exception -<-
-    ignore sub less' hyphen hyphen less; # disable <--<
-    ignore sub less' hyphen hyphen hyphen; # disable <---  <---< <--->
-    ignore sub less' equal equal equal; # disable <===
-    ignore sub equal less' equal; # precedence exception =<=
+ignore sub [hyphen equal] less' less; # precedence exception -<< =<<
+ignore sub hyphen less' bar; # precedence exception -<|
+ignore sub hyphen less' hyphen; # precedence exception -<-
+ignore sub less' hyphen hyphen less; # disable <--<
+ignore sub less' hyphen hyphen hyphen; # disable <---  <---< <--->
+ignore sub less' equal equal equal; # disable <===
+ignore sub equal less' equal; # precedence exception =<=
 
-    sub less' lookup drop_if_next_is asciitilde' lookup drop_if_next_is less' lookup clig_less_tail_tilde_less; #  <~<
-    sub less' lookup drop_if_next_is exclam' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup clig_less_long_tails_hyp_gt; # <!--
-    sub less' lookup drop_if_next_is asterisk' lookup drop_if_next_is asterisk' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyp_gt; # <**>
-    sub less' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyphen_gt; # <-->
-    sub less' lookup drop_if_next_is equal' lookup drop_if_next_is equal' lookup drop_if_next_is greater' lookup clig_less_long_tails_eq_gt; # <==>
-    sub less' lookup drop_if_next_is less' lookup drop_if_next_is equal' lookup drop_if_next_is equal' lookup clig_less_long_less_eq_eq; # <<==
+sub less' lookup drop_if_next_is asciitilde' lookup drop_if_next_is less' lookup clig_less_tail_tilde_less; #  <~<
+sub less' lookup drop_if_next_is exclam' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup clig_less_long_tails_hyp_gt; # <!--
+sub less' lookup drop_if_next_is asterisk' lookup drop_if_next_is asterisk' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyp_gt; # <**>
+sub less' lookup drop_if_next_is hyphen' lookup drop_if_next_is hyphen' lookup drop_if_next_is greater' lookup clig_less_long_tails_hyphen_gt; # <-->
+sub less' lookup drop_if_next_is equal' lookup drop_if_next_is equal' lookup drop_if_next_is greater' lookup clig_less_long_tails_eq_gt; # <==>
+sub less' lookup drop_if_next_is less' lookup drop_if_next_is equal' lookup drop_if_next_is equal' lookup clig_less_long_less_eq_eq; # <<==
     
-    # <!> <@> <#> <%> <^> <&> <?> <.> </> <\> <"> <:>
-    sub less' lookup drop_if_next_is exclam' lookup drop_if_next_is greater' lookup clig_less_exclam_center;
-    sub less' lookup drop_if_next_is at' lookup drop_if_next_is greater' lookup clig_less_at_center;
-    sub less' lookup drop_if_next_is numbersign' lookup drop_if_next_is greater' lookup clig_less_numbersign_center;
-    sub less' lookup drop_if_next_is percent' lookup drop_if_next_is greater' lookup clig_less_percent_center;
-    sub less' lookup drop_if_next_is asciicircum' lookup drop_if_next_is greater' lookup clig_less_asciicircum_center;
-    sub less' lookup drop_if_next_is ampersand' lookup drop_if_next_is greater' lookup clig_less_ampersand_center;
-    sub less' lookup drop_if_next_is question' lookup drop_if_next_is greater' lookup clig_less_question_center;
-    sub less' lookup drop_if_next_is period' lookup drop_if_next_is greater' lookup clig_less_period_center;
-    sub less' lookup drop_if_next_is slash' lookup drop_if_next_is greater' lookup clig_less_slash_center;
-    sub less' lookup drop_if_next_is backslash' lookup drop_if_next_is greater' lookup clig_less_backslash_center;
-    sub less' lookup drop_if_next_is quotedbl' lookup drop_if_next_is greater' lookup clig_less_quotedbl_center;
-    sub less' lookup drop_if_next_is colon' lookup drop_if_next_is greater' lookup clig_less_colon_center;
+# <!> <@> <#> <%> <^> <&> <?> <.> </> <\> <"> <:>
+sub less' lookup drop_if_next_is exclam' lookup drop_if_next_is greater' lookup clig_less_exclam_center;
+sub less' lookup drop_if_next_is at' lookup drop_if_next_is greater' lookup clig_less_at_center;
+sub less' lookup drop_if_next_is numbersign' lookup drop_if_next_is greater' lookup clig_less_numbersign_center;
+sub less' lookup drop_if_next_is percent' lookup drop_if_next_is greater' lookup clig_less_percent_center;
+sub less' lookup drop_if_next_is asciicircum' lookup drop_if_next_is greater' lookup clig_less_asciicircum_center;
+sub less' lookup drop_if_next_is ampersand' lookup drop_if_next_is greater' lookup clig_less_ampersand_center;
+sub less' lookup drop_if_next_is question' lookup drop_if_next_is greater' lookup clig_less_question_center;
+sub less' lookup drop_if_next_is period' lookup drop_if_next_is greater' lookup clig_less_period_center;
+sub less' lookup drop_if_next_is slash' lookup drop_if_next_is greater' lookup clig_less_slash_center;
+sub less' lookup drop_if_next_is backslash' lookup drop_if_next_is greater' lookup clig_less_backslash_center;
+sub less' lookup drop_if_next_is quotedbl' lookup drop_if_next_is greater' lookup clig_less_quotedbl_center;
+sub less' lookup drop_if_next_is colon' lookup drop_if_next_is greater' lookup clig_less_colon_center;
     
-    sub less' lookup drop_if_next_is @less_heads' lookup clig_less_tails_2;
-    # <> <$ <* <+ <= <| <~ <-
+sub less' lookup drop_if_next_is @less_heads' lookup clig_less_tails_2;
+# <> <$ <* <+ <= <| <~ <-
     
-    sub less' lookup drop_if_next_is less' lookup drop_if_next_is [equal hyphen asciitilde asciicircum bar]' lookup clig_less_less_tails; 
-    # <<= <<- <<~ <<^ <<|
+sub less' lookup drop_if_next_is less' lookup drop_if_next_is [equal hyphen asciitilde asciicircum bar]' lookup clig_less_less_tails; 
+# <<= <<- <<~ <<^ <<|
     
-    sub v00 @less_doubles [hyphen asterisk greater less equal asciitilde asciicircum bar]' lookup clig_less_tails_3; 
-    # <$> <+> <*>    <== <=< <=> <~~ <~>    <|- <|| <|>
-        
+sub v00 @less_doubles [hyphen asterisk greater less equal asciitilde asciicircum bar]' lookup clig_less_tails_3; 
+ # <$> <+> <*>    <== <=< <=> <~~ <~>    <|- <|| <|>
 } clig_less;
 
 lookup clig_slash {
-    ignore sub equal slash' equal;      # precedence exception =/
-    ignore sub hyphen less' bar; # precedence exception -<|
-    sub slash' lookup drop_if_next_is @slash_heads' lookup clig_slash_tails; # /==
-    sub v00 [slash_equal] [equal]' lookup clig_slash_tails_3; #  /==
+ignore sub equal slash' equal;      # precedence exception =/
+ignore sub hyphen less' bar; # precedence exception -<|
+sub slash' lookup drop_if_next_is @slash_heads' lookup clig_slash_tails; # /==
+sub slash' lookup drop_if_next_is hyphen' lookup drop_if_next_is backslash' lookup clig_slash_tails_final; # /-\
+sub slash' lookup drop_if_next_is hyphen' lookup drop_if_next_is greater' lookup clig_slash_tails_final; # /->
+sub v00 [slash_equal] [equal]' lookup clig_slash_tails_3; #  /==
 } clig_slash;
 
 lookup clig_hyphen {
-    ignore sub hyphen hyphen hyphen hyphen; # four hyphens in a row are no-op
-    ignore sub hyphen hyphen' hyphen; # further hyphens are no-op
-    #ignore sub less exclam hyphen' hyphen'; # precedence exception <!--
-    #ignore sub less hyphen' [hyphen greater]'; # precedence exception <-- <->
-    ignore sub greater hyphen' greater; # precedence exception >->
-    ignore sub less hyphen hyphen hyphen' [greater less]; # disable <---> <---<
-    ignore sub less hyphen' hyphen hyphen [greater less]; # disable <---> <---<
-    ignore sub less hyphen' hyphen [greater less]; # disable <--> <--<
-    ignore sub less hyphen hyphen' [greater less]; # disable <--> <--<
-    ignore sub hyphen hyphen hyphen' [greater less]; # disable --------< --------->
-    ignore sub hyphen' hyphen hyphen [greater less]; # disable --------< --------->x
+ignore sub hyphen hyphen hyphen hyphen; # four hyphens in a row are no-op
+ignore sub hyphen hyphen' hyphen; # further hyphens are no-op
+#ignore sub less exclam hyphen' hyphen'; # precedence exception <!--
+#ignore sub less hyphen' [hyphen greater]'; # precedence exception <-- <->
+ignore sub greater hyphen' greater; # precedence exception >->
+ignore sub less hyphen hyphen hyphen' [greater less]; # disable <---> <---<
+ignore sub less hyphen' hyphen hyphen [greater less]; # disable <---> <---<
+ignore sub less hyphen' hyphen [greater less]; # disable <--> <--<
+ignore sub less hyphen hyphen' [greater less]; # disable <--> <--<
+ignore sub hyphen hyphen hyphen' [greater less]; # disable --------< --------->
+ignore sub hyphen' hyphen hyphen [greater less]; # disable --------< --------->x
+ignore sub [slash backslash] hyphen' greater;
 
-    sub hyphen' lookup drop_if_next_is backslash' lookup drop_if_next_is slash' lookup clig_hyphen_tail_backsl_slash; #  -\/
-    sub hyphen' lookup drop_if_next_is plus' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_plus_hyphen; #  -+-
-    sub hyphen' lookup drop_if_next_is greater' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_greater_hyphen; #  ->-
-    sub hyphen' lookup drop_if_next_is less' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_less_hyphen; #  -<-
-    sub hyphen' lookup drop_if_next_is less' lookup drop_if_next_is less' lookup clig_hyphen_tail_less_less;#   -<<
-    sub hyphen' lookup drop_if_next_is bar' lookup drop_if_next_is greater' lookup clig_hyphen_tail_bar_greater; # -|>
-    sub hyphen' lookup drop_if_next_is @hyphen_heads' lookup clig_hyphen_tails;     # -- -< -= ->
-    sub v00 @hyphen_doubles [greater less hyphen bar]' lookup clig_hyphen_tails_3;  # --> -|> -<| ---  ->>
+sub hyphen' lookup drop_if_next_is backslash' lookup drop_if_next_is slash' lookup clig_hyphen_tail_backsl_slash; #  -\/
+sub hyphen' lookup drop_if_next_is bar' lookup drop_if_next_is bar' lookup clig_hyphen_tail_backsl_slash; #  -||
+sub hyphen' lookup drop_if_next_is plus' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_plus_hyphen; #  -+-
+sub hyphen' lookup drop_if_next_is greater' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_greater_hyphen; #  ->-
+sub hyphen' lookup drop_if_next_is less' lookup drop_if_next_is hyphen' lookup clig_hyphen_tail_less_hyphen; #  -<-
+sub hyphen' lookup drop_if_next_is less' lookup drop_if_next_is less' lookup clig_hyphen_tail_less_less;#   -<<
+sub hyphen' lookup drop_if_next_is bar' lookup drop_if_next_is greater' lookup clig_hyphen_tail_bar_greater; # -|>
+sub hyphen' lookup drop_if_next_is @hyphen_heads' lookup clig_hyphen_tails;     # -- -< -= -> -|
+sub v00 @hyphen_doubles [greater less hyphen bar]' lookup clig_hyphen_tails_3;  # --> -|> -<| ---  ->>
 } clig_hyphen;
 
 lookup clig_equivalence {
-    ignore sub equivalence equivalence equivalence equivalence;
-    ignore sub equivalence equivalence' equivalence;
-    sub equivalence'     lookup drop_if_next_is colon'               lookup drop_if_next_is equivalence' lookup clig_equivalence_tail_colon_equiv; #    ≡:≡
-    sub equivalence'     lookup drop_if_next_is equivalence'         lookup drop_if_next_is equivalence' lookup clig_equivalence_tail_equiv_equiv; #    ≡≡≡
-    sub equivalence'     lookup drop_if_next_is equivalence'         lookup clig_equivalence_tails;          # ≡≡
+ignore sub equivalence equivalence equivalence equivalence;
+ignore sub equivalence equivalence' equivalence;
+sub equivalence'     lookup drop_if_next_is colon'               lookup drop_if_next_is equivalence' lookup clig_equivalence_tail_colon_equiv; #    ≡:≡
+sub equivalence'     lookup drop_if_next_is equivalence'         lookup drop_if_next_is equivalence' lookup clig_equivalence_tail_equiv_equiv; #    ≡≡≡
+sub equivalence'     lookup drop_if_next_is equivalence'         lookup clig_equivalence_tails;          # ≡≡
+sub equivalence' lookup drop_if_next_is @equivalence_heads'        lookup clig_equivalence_tails; # ≡/
 } clig_equivalence;
 
 lookup clig_colon {
-    #ignore sub equivalence colon' equivalence; # precedence exception ≡:≡
-    sub colon'          lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_colon_tail_greater_colon; # :=>
-    sub colon'          lookup drop_if_next_is @colon_heads'        lookup clig_colon_tails;        # := :≡
+#ignore sub equivalence colon' equivalence; # precedence exception ≡:≡
+sub colon'          lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_colon_tail_greater_colon; # :=>
+sub colon'          lookup drop_if_next_is @colon_heads'        lookup clig_colon_tails;        # := :≡
 } clig_colon;
 
 lookup clig_exclam {
-    ignore sub greater exclam' equal; # precedence exception >!=
-    sub exclam'           lookup drop_if_next_is equal'              lookup drop_if_next_is [equal less]' lookup clig_exclam_tail_eq_le_excl; # !== !=<
-    sub exclam'           lookup drop_if_next_is @exclam_heads'      lookup clig_exclam_tails; # != !! !>
+ignore sub greater exclam' equal; # precedence exception >!=
+sub exclam'           lookup drop_if_next_is equal'              lookup drop_if_next_is [equal less]' lookup clig_exclam_tail_eq_le_excl; # !== !=<
+sub exclam' lookup drop_if_next_is equivalence' lookup drop_if_next_is equivalence' lookup clig_exclam_tail_eq_le_excl; # !≡≡
+sub exclam'           lookup drop_if_next_is @exclam_heads'      lookup clig_exclam_tails; # != !! !> !≡
 } clig_exclam;
 
 lookup clig_plus {
-    ignore sub plus plus plus plus; # four pluses in a row are no-op
-    ignore sub plus plus' plus; # further pluses are no-op
-    sub plus'             lookup drop_if_next_is plus'               lookup drop_if_next_is [plus equal]' lookup clig_plus_tail_plus_or_eq; # +++
-    sub plus'             lookup drop_if_next_is @plus_heads'        lookup clig_plus_tails; # ++ += +>
+ignore sub plus plus plus plus; # four pluses in a row are no-op
+ignore sub plus plus' plus; # further pluses are no-op
+sub plus'             lookup drop_if_next_is plus'               lookup drop_if_next_is [plus equal]' lookup clig_plus_tail_plus_or_eq; # +++
+sub plus'             lookup drop_if_next_is @plus_heads'        lookup clig_plus_tails; # ++ += +>
 } clig_plus;
 
 lookup clig_ampersand {
-    ignore sub ampersand ampersand ampersand ampersand; # four amps in a row are no-op
-    ignore sub ampersand ampersand' ampersand; # further amps are no-op
-    sub ampersand'        lookup drop_if_next_is ampersand'           lookup drop_if_next_is ampersand' lookup clig_ampersand_tail_amp_amp; # &&&
-    sub ampersand'        lookup drop_if_next_is @ampersand_heads'    lookup clig_ampersand_tails; # &% && &* &+ &- &/ &= &>
+ignore sub ampersand ampersand ampersand ampersand; # four amps in a row are no-op
+ignore sub ampersand ampersand' ampersand; # further amps are no-op
+sub ampersand'        lookup drop_if_next_is ampersand'           lookup drop_if_next_is ampersand' lookup clig_ampersand_tail_amp_amp; # &&&
+sub ampersand'        lookup drop_if_next_is @ampersand_heads'    lookup clig_ampersand_tails; # &% && &* &+ &- &/ &= &>
 } clig_ampersand;
 
 lookup clig_greater {
-    #ignore sub bar greater' [greater hyphen]; # precedence exceptions |>> |>-
-    ignore sub equal greater' greater; # precedence exception ==>> =>>
-    ignore sub equal greater' equal; # precedence exception =>=
-    sub greater'        lookup drop_if_next_is greater'             lookup drop_if_next_is [hyphen equal asciicircum bar]' lookup clig_greater_tail_greater_greater; # >>-  >>=  >>^ >>|
-    sub greater'        lookup drop_if_next_is hyphen'              lookup drop_if_next_is greater' lookup clig_greater_tail_hyphen_gt; # >->
-    sub greater'        lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_greater_tail_eq_gt; # >=>
-    sub greater'        lookup drop_if_next_is exclam'              lookup drop_if_next_is equal' lookup clig_greater_tail_eq_gt; # >!=
-    sub greater'        lookup drop_if_next_is @greater_heads'      lookup clig_greater_tails;      # >- >=
+#ignore sub bar greater' [greater hyphen]; # precedence exceptions |>> |>-
+ignore sub equal greater' greater; # precedence exception ==>> =>>
+ignore sub equal greater' equal; # precedence exception =>=
+sub greater'        lookup drop_if_next_is greater'             lookup drop_if_next_is [hyphen equal asciicircum bar]' lookup clig_greater_tail_greater_greater; # >>-  >>=  >>^ >>|
+sub greater'        lookup drop_if_next_is hyphen'              lookup drop_if_next_is greater' lookup clig_greater_tail_hyphen_gt; # >->
+sub greater'        lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup clig_greater_tail_eq_gt; # >=>
+sub greater'        lookup drop_if_next_is exclam'              lookup drop_if_next_is equal' lookup clig_greater_tail_eq_gt; # >!=
+sub greater'        lookup drop_if_next_is @greater_heads'      lookup clig_greater_tails;      # >- >=
 } clig_greater;
 
 lookup clig_asterisk {
-    sub asterisk'       lookup drop_if_next_is @asterisk_heads'     lookup clig_asterisk_tails;     # *>
+sub asterisk'       lookup drop_if_next_is @asterisk_heads'     lookup clig_asterisk_tails;     # *>
 } clig_asterisk;
 
 lookup clig_period {
-    sub period'         lookup drop_if_next_is @period_heads'       lookup clig_period_tails;       # .~ .=
+sub period'         lookup drop_if_next_is @period_heads'       lookup clig_period_tails;       # .~ .=
 } clig_period;
 
 lookup clig_question {
-    sub question'       lookup drop_if_next_is @question_heads'     lookup clig_question_tails;     # ?.
+sub question'       lookup drop_if_next_is @question_heads'     lookup clig_question_tails;     # ?.
 } clig_question;
 
 lookup clig_backslash {
-    sub backslash'      lookup drop_if_next_is slash' lookup drop_if_next_is hyphen' lookup clig_backslash_tail_slash_hyphen; #  \/-
+sub backslash' lookup drop_if_next_is slash' lookup drop_if_next_is hyphen' lookup clig_backslash_tail_slash_hyphen; #  \/-
+sub backslash' lookup drop_if_next_is hyphen' lookup drop_if_next_is slash' lookup clig_backslash_tail_slash_hyphen; #  \-/
+sub backslash' lookup drop_if_next_is hyphen' lookup drop_if_next_is greater' lookup clig_backslash_tail_slash_hyphen; #  \->
 } clig_backslash;
 
 lookup clig_percent {
-    sub percent'        lookup drop_if_next_is @percent_heads'      lookup clig_percent_tails;      # %>% %= %>
+sub percent'        lookup drop_if_next_is @percent_heads'      lookup clig_percent_tails;      # %>% %= %>
 } clig_percent;
 
 lookup clig_asciicircum {
-    sub asciicircum'    lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_asciicircum_tail_le_gt_pt; # ^<<
-    sub asciicircum'    lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_asciicircum_tail_le_gt_pt; # ^>>
-    sub asciicircum'    lookup drop_if_next_is @asciicircum_heads'  lookup clig_asciicircum_tails;  # ^=
+sub asciicircum'    lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_asciicircum_tail_le_gt_pt; # ^<<
+sub asciicircum'    lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_asciicircum_tail_le_gt_pt; # ^>>
+sub asciicircum'    lookup drop_if_next_is @asciicircum_heads'  lookup clig_asciicircum_tails;  # ^=
 } clig_asciicircum;
 
+lookup clig_bracketleft {
+sub bracketleft' lookup drop_if_next_is @bracketleft_heads' lookup clig_bracketleft_tails;  # [[ [|
+} clig_bracketleft;
+
+lookup clig_bracketright {
+sub bracketright' lookup drop_if_next_is @bracketright_heads' lookup clig_bracketright_tails;  # ]]
+} clig_bracketright;
+
+lookup clig_parenleft {
+sub parenleft' lookup drop_if_next_is @parenleft_heads' lookup clig_parenleft_tails;  # (|
+} clig_parenleft;
+
 lookup clig_dollar {
-    sub dollar'         lookup drop_if_next_is greater'             lookup clig_tail_dollar_gt;     #                                    $>
+sub dollar'         lookup drop_if_next_is greater'             lookup clig_tail_dollar_gt;     # $>
 } clig_dollar;
 
 lookup clig_numbersign {
-    ignore sub numbersign numbersign numbersign;
-    ignore sub numbersign numbersign' numbersign;
-    sub numbersign'     lookup drop_if_next_is underscore'          lookup drop_if_next_is parenleft' lookup clig_numbersign_tail_parenleft; # #_(
-    sub numbersign'     lookup drop_if_next_is @numbersign_heads'   lookup clig_numbersign_tails;   # #_(                                #_  #(  #{  #?  #>
+ignore sub numbersign numbersign numbersign;
+ignore sub numbersign numbersign' numbersign;
+sub numbersign'     lookup drop_if_next_is underscore'          lookup drop_if_next_is parenleft' lookup clig_numbersign_tail_parenleft; # #_(
+sub numbersign'     lookup drop_if_next_is @numbersign_heads'   lookup clig_numbersign_tails;   # #_(                                #_  #(  #{  #?  #>
 } clig_numbersign;
 
 lookup clig_equal_tail_eq_gt_gt {
-    sub greater by equal_equal_greater_greater;
+sub greater by equal_equal_greater_greater;
 } clig_equal_tail_eq_gt_gt;
 
 lookup clig_equal {
-    ignore sub equal equal equal equal; # four eq's in a row are no-op
-    ignore sub equal equal' equal; # further eq's are no-op    
-    #ignore sub colon equal' greater; # precedence exception :=>
-    #ignore sub exclam equal' equal; # precedence exception !==
-    #ignore sub greater equal' greater; # precedence exception >=>
-    #ignore sub bar equal' greater; #precedence exception |=>
-    ignore sub equal' asciitilde slash; # disable =~/
-    ignore sub less equal' equal equal; # disable <===
-    ignore sub less equal equal' equal; # disable <===
-    ignore sub less equal equal equal' greater; # disable <===>
-    sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_equal_tail_eq_le_gt; #   =>>
-    sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup drop_if_next_is greater' lookup clig_equal_tail_eq_gt_gt; # ==>>
-    sub equal'          lookup drop_if_next_is asciitilde'          lookup drop_if_next_is equal'   lookup clig_equal_tail_tilde_equal; # =~=
-    sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is [equal greater]' lookup clig_equal_tail_equal_greater; # ===  ==>
-    sub equal'          lookup drop_if_next_is slash'               lookup drop_if_next_is equal'   lookup clig_equal_tail_eq_le_gt; #   =/=
-    sub equal'          lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_equal_tail_eq_le_gt; #   =<<
-    sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is equal'   lookup clig_equal_tail_greater_equal; #  =>=
-    sub equal'          lookup drop_if_next_is less'                lookup drop_if_next_is equal'   lookup clig_equal_tail_less_equal; #  =<=
-    sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~ =<
+ignore sub equal equal equal equal; # four eq's in a row are no-op
+ignore sub equal equal' equal; # further eq's are no-op    
+#ignore sub colon equal' greater; # precedence exception :=>
+#ignore sub exclam equal' equal; # precedence exception !==
+#ignore sub greater equal' greater; # precedence exception >=>
+#ignore sub bar equal' greater; #precedence exception |=>
+ignore sub equal' asciitilde slash; # disable =~/
+ignore sub less equal' equal equal; # disable <===
+ignore sub less equal equal' equal; # disable <===
+ignore sub less equal equal equal' greater; # disable <===>
+sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_equal_tail_eq_le_gt; #   =>>
+sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is greater' lookup drop_if_next_is greater' lookup clig_equal_tail_eq_gt_gt; # ==>>
+sub equal'          lookup drop_if_next_is asciitilde'          lookup drop_if_next_is equal'   lookup clig_equal_tail_tilde_equal; # =~=
+sub equal'          lookup drop_if_next_is equal'               lookup drop_if_next_is [equal greater]' lookup clig_equal_tail_equal_greater; # ===  ==>
+sub equal'          lookup drop_if_next_is slash'               lookup drop_if_next_is equal'   lookup clig_equal_tail_eq_le_gt; #   =/=
+sub equal'          lookup drop_if_next_is less'                lookup drop_if_next_is less'    lookup clig_equal_tail_eq_le_gt; #   =<<
+sub equal'          lookup drop_if_next_is greater'             lookup drop_if_next_is equal'   lookup clig_equal_tail_greater_equal; #  =>=
+sub equal'          lookup drop_if_next_is less'                lookup drop_if_next_is equal'   lookup clig_equal_tail_less_equal; #  =<=
+sub equal'          lookup drop_if_next_is @equal_heads'        lookup clig_equal_tails;        #  == => =~ =< =/
 } clig_equal;
 
+
 lookup clig_asciitilde {
-    sub asciitilde'     lookup drop_if_next_is asciitilde'          lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt; #  ~~>
-    sub asciitilde'     lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt_gt; #  ~>>
-    sub asciitilde'     lookup drop_if_next_is @asciitilde_heads'   lookup clig_asciitilde_tails;   #  ~= ~>
+sub asciitilde'     lookup drop_if_next_is asciitilde'          lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt; #  ~~>
+sub asciitilde'     lookup drop_if_next_is greater'             lookup drop_if_next_is greater' lookup clig_asciitilde_tail_gt_gt; #  ~>>
+sub asciitilde'     lookup drop_if_next_is @asciitilde_heads'   lookup clig_asciitilde_tails;   #  ~= ~>
 } clig_asciitilde;
 
 lookup clig_underscore {
-    sub underscore'     lookup drop_if_next_is bar'          lookup drop_if_next_is underscore' lookup clig_underscore_tail_bar_underscore; # _|_
+sub underscore'     lookup drop_if_next_is bar'          lookup drop_if_next_is underscore' lookup clig_underscore_tail_bar_underscore; # _|_
 } clig_underscore;
 
 ######################################################################################################
@@ -724,285 +807,295 @@ lookup clig_FATAL { sub bracketright by FATAL;} clig_FATAL;
 lookup clig_FIXME { sub bracketright by FIXME;} clig_FIXME;
 lookup clig_HACK { sub bracketright by HACK;} clig_HACK;
 lookup clig_INFO { sub bracketright by INFO;} clig_INFO;
+lookup clig_INFO_space { sub bracketright by INFO_space;} clig_INFO_space;
 lookup clig_MARK { sub bracketright by MARK_;} clig_MARK;
 lookup clig_NOTE { sub bracketright by NOTE;} clig_NOTE;
+lookup clig_PASS_space { sub bracketright by PASS_space;} clig_PASS_space;
 lookup clig_TODO { sub bracketright by TODO;} clig_TODO;
 lookup clig_TRACE { sub bracketright by TRACE;} clig_TRACE;
 lookup clig_WARN { sub bracketright by WARN;} clig_WARN;
+lookup clig_WARN_space { sub bracketright by WARN_space;} clig_WARN_space;
 lookup clig_WARNING { sub bracketright by WARNING;} clig_WARNING;
 
-lookup clig_numbersign_BUG { sub [G g] by numbersign_space_BUG;} clig_numbersign_BUG; # BUG
-lookup clig_numbersign_DEBUG { sub [G g] by numbersign_space_DEBUG;} clig_numbersign_DEBUG;
-lookup clig_numbersign_ERR { sub [R r] by numbersign_space_ERR;} clig_numbersign_ERR;
-lookup clig_numbersign_ERROR { sub [R r] by numbersign_space_ERROR;} clig_numbersign_ERROR;
-lookup clig_numbersign_FAIL { sub [L l] by numbersign_space_FAIL;} clig_numbersign_FAIL;
-lookup clig_numbersign_FATAL { sub [L l] by numbersign_space_FATAL;} clig_numbersign_FATAL;
-lookup clig_numbersign_FIXME { sub [E e] by numbersign_space_FIXME;} clig_numbersign_FIXME;
-lookup clig_numbersign_HACK { sub [K k] by numbersign_space_HACK;} clig_numbersign_HACK;
-lookup clig_numbersign_INFO { sub [O o] by numbersign_space_INFO;} clig_numbersign_INFO;
-lookup clig_numbersign_MARK { sub [K k] by numbersign_space_MARK;} clig_numbersign_MARK;
-lookup clig_numbersign_NOTE { sub [E e] by numbersign_space_NOTE;} clig_numbersign_NOTE;
-lookup clig_numbersign_TODO { sub [O o] by numbersign_space_TODO;} clig_numbersign_TODO;
-lookup clig_numbersign_TRACE { sub [E e] by numbersign_space_TRACE;} clig_numbersign_TRACE;
-lookup clig_numbersign_WARNING { sub [G g] by numbersign_space_WARNING;} clig_numbersign_WARNING;
-lookup clig_numbersign_WARN { sub [N n] by numbersign_space_WARN;} clig_numbersign_WARN;
-
-lookup clig_slash_BUG { sub [G g] by slash_slash_space_BUG;} clig_slash_BUG; # // BUG
-lookup clig_slash_DEBUG { sub [G g] by slash_slash_space_DEBUG;} clig_slash_DEBUG;
-lookup clig_slash_ERR { sub [R r] by slash_slash_space_ERR;} clig_slash_ERR;
-lookup clig_slash_ERROR { sub [R r] by slash_slash_space_ERROR;} clig_slash_ERROR;
-lookup clig_slash_FAIL { sub [L l] by slash_slash_space_FAIL;} clig_slash_FAIL;
-lookup clig_slash_FATAL { sub [L l] by slash_slash_space_FATAL;} clig_slash_FATAL;
-lookup clig_slash_FIXME { sub [E e] by slash_slash_space_FIXME;} clig_slash_FIXME;
-lookup clig_slash_HACK { sub [K k] by slash_slash_space_HACK;} clig_slash_HACK;
-lookup clig_slash_INFO { sub [O o] by slash_slash_space_INFO;} clig_slash_INFO;
-lookup clig_slash_MARK { sub [K k] by slash_slash_space_MARK;} clig_slash_MARK;
-lookup clig_slash_NOTE { sub [E e] by slash_slash_space_NOTE;} clig_slash_NOTE;
-lookup clig_slash_TODO { sub [O o] by slash_slash_space_TODO;} clig_slash_TODO;
-lookup clig_slash_TRACE { sub [E e] by slash_slash_space_TRACE;} clig_slash_TRACE;
-lookup clig_slash_WARNING { sub [G g] by slash_slash_space_WARNING;} clig_slash_WARNING;
-lookup clig_slash_WARN { sub [N n] by slash_slash_space_WARN;} clig_slash_WARN;
+#lookup clig_BUG_colon { sub colon by BUG_colon;} clig_BUG_colon; # BUG:
+#lookup clig_DEBUG_colon { sub colon by DEBUG_colon;} clig_DEBUG_colon;
+#lookup clig_ERR_colon { sub colon by ERR_colon;} clig_ERR_colon;
+#lookup clig_ERROR_colon { sub colon by ERROR_colon;} clig_ERROR_colon;
+#lookup clig_FAIL_colon { sub colon by FAIL_colon;} clig_FAIL_colon;
+#lookup clig_FATAL_colon { sub colon by FATAL_colon;} clig_FATAL_colon;
+#lookup clig_FIXME_colon { sub colon by FIXME_colon;} clig_FIXME_colon;
+#lookup clig_HACK_colon { sub colon by HACK_colon;} clig_HACK_colon;
+#lookup clig_INFO_colon { sub colon by INFO_colon;} clig_INFO_colon;
+#lookup clig_MARK_colon { sub colon by MARK_colon;} clig_MARK_colon;
+#lookup clig_NOTE_colon { sub colon by NOTE_colon;} clig_NOTE_colon;
+#lookup clig_TODO_colon { sub colon by TODO_colon;} clig_TODO_colon;
+#lookup clig_TRACE_colon { sub colon by TRACE_colon;} clig_TRACE_colon;
+#lookup clig_WARNING_colon { sub colon by WARNING_colon;} clig_WARNING_colon;
+#lookup clig_WARN_colon { sub colon by WARN_colon;} clig_WARN_colon;
 
 
-lookup next { sub [bracketleft slash numbersign space A B C D E F G H I K L M N O R T U W X a b c d e f g h i k l m n o r t u w x bracketright] by v00; } next;
+
+lookup next { sub [bracketleft slash numbersign space A B C D E F G H I K L M N O P R S T U W X a b c d e f g h i k l m n o p r s t u w x bracketright] by v00; } next;
 
 lookup clig_tags {
-    sub bracketleft' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup next bracketright' lookup clig_BUG;
-    sub bracketleft' lookup next [D d]' lookup next [E e]' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup next bracketright' lookup clig_DEBUG;
-    sub bracketleft' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup next [O o]' lookup next [R r]' lookup next bracketright' lookup clig_ERROR;
-    sub bracketleft' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup next bracketright' lookup clig_ERR;
-    sub bracketleft' lookup next [F f]' lookup next [A a]' lookup next [I i]' lookup next [L l]' lookup next bracketright' lookup clig_FAIL;
-    sub bracketleft' lookup next [F f]' lookup next [A a]' lookup next [T t]' lookup next [A a]' lookup next [L l]' lookup next bracketright' lookup clig_FATAL;
-    sub bracketleft' lookup next [F f]' lookup next [I i]' lookup next [X x]' lookup next [M m]' lookup next [E e]' lookup next bracketright' lookup clig_FIXME;
-    sub bracketleft' lookup next [H h]' lookup next [A a]' lookup next [C c]' lookup next [K k]' lookup next bracketright' lookup clig_HACK;
-    sub bracketleft' lookup next [I i]' lookup next [N n]' lookup next [F f]' lookup next [O o]' lookup next bracketright' lookup clig_INFO;
-    sub bracketleft' lookup next [M m]' lookup next [A a]' lookup next [R r]' lookup next [K k]' lookup next bracketright' lookup clig_MARK;
-    sub bracketleft' lookup next [N n]' lookup next [O o]' lookup next [T t]' lookup next [E e]' lookup next bracketright' lookup clig_NOTE;
-    sub bracketleft' lookup next [T t]' lookup next [O o]' lookup next [D d]' lookup next [O o]' lookup next bracketright' lookup clig_TODO;
-    sub bracketleft' lookup next [T t]' lookup next [R r]' lookup next [A a]' lookup next [C c]' lookup next [E e]' lookup next bracketright' lookup clig_TRACE;
-    sub bracketleft' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next bracketright' lookup clig_WARN;
-    sub bracketleft' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next [I i]' lookup next [N n]' lookup next [G g]' lookup next bracketright' lookup clig_WARNING;
+sub bracketleft' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup next bracketright' lookup clig_BUG;
+sub bracketleft' lookup next [D d]' lookup next [E e]' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup next bracketright' lookup clig_DEBUG;
+sub bracketleft' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup next [O o]' lookup next [R r]' lookup next bracketright' lookup clig_ERROR;
+sub bracketleft' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup next bracketright' lookup clig_ERR;
+sub bracketleft' lookup next [F f]' lookup next [A a]' lookup next [I i]' lookup next [L l]' lookup next bracketright' lookup clig_FAIL;
+sub bracketleft' lookup next [F f]' lookup next [A a]' lookup next [T t]' lookup next [A a]' lookup next [L l]' lookup next bracketright' lookup clig_FATAL;
+sub bracketleft' lookup next [F f]' lookup next [I i]' lookup next [X x]' lookup next [M m]' lookup next [E e]' lookup next bracketright' lookup clig_FIXME;
+sub bracketleft' lookup next [H h]' lookup next [A a]' lookup next [C c]' lookup next [K k]' lookup next bracketright' lookup clig_HACK;
+sub bracketleft' lookup next [I i]' lookup next [N n]' lookup next [F f]' lookup next [O o]' lookup next bracketright' lookup clig_INFO;
+sub bracketleft' lookup next [I i]' lookup next [N n]' lookup next [F f]' lookup next [O o]' lookup next space' lookup next bracketright' lookup clig_INFO_space;
+sub bracketleft' lookup next [M m]' lookup next [A a]' lookup next [R r]' lookup next [K k]' lookup next bracketright' lookup clig_MARK;
+sub bracketleft' lookup next [N n]' lookup next [O o]' lookup next [T t]' lookup next [E e]' lookup next bracketright' lookup clig_NOTE;
+sub bracketleft' lookup next [P p]' lookup next [A a]' lookup next [S s]' lookup next [S s]' lookup next space' lookup next bracketright' lookup clig_PASS_space;
+sub bracketleft' lookup next [T t]' lookup next [O o]' lookup next [D d]' lookup next [O o]' lookup next bracketright' lookup clig_TODO;
+sub bracketleft' lookup next [T t]' lookup next [R r]' lookup next [A a]' lookup next [C c]' lookup next [E e]' lookup next bracketright' lookup clig_TRACE;
+sub bracketleft' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next bracketright' lookup clig_WARN;
+sub bracketleft' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next space' lookup next bracketright' lookup clig_WARN_space;
+sub bracketleft' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next [I i]' lookup next [N n]' lookup next [G g]' lookup next bracketright' lookup clig_WARNING;
 
-    sub numbersign' lookup next space' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup clig_numbersign_BUG;
-    sub numbersign' lookup next space' lookup next [D d]' lookup next [E e]' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup clig_numbersign_DEBUG;
-    sub numbersign' lookup next space' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup next [O o]' lookup next [R r]' lookup clig_numbersign_ERROR;
-    sub numbersign' lookup next space' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup clig_numbersign_ERR;
-    sub numbersign' lookup next space' lookup next [F f]' lookup next [A a]' lookup next [I i]' lookup next [L l]' lookup clig_numbersign_FAIL;
-    sub numbersign' lookup next space' lookup next [F f]' lookup next [A a]' lookup next [T t]' lookup next [A a]' lookup next [L l]' lookup clig_numbersign_FATAL;
-    sub numbersign' lookup next space' lookup next [F f]' lookup next [I i]' lookup next [X x]' lookup next [M m]' lookup next [E e]' lookup clig_numbersign_FIXME;
-    sub numbersign' lookup next space' lookup next [H h]' lookup next [A a]' lookup next [C c]' lookup next [K k]' lookup clig_numbersign_HACK;
-    sub numbersign' lookup next space' lookup next [I i]' lookup next [N n]' lookup next [F f]' lookup next [O o]' lookup clig_numbersign_INFO;
-    sub numbersign' lookup next space' lookup next [M m]' lookup next [A a]' lookup next [R r]' lookup next [K k]' lookup clig_numbersign_MARK;
-    sub numbersign' lookup next space' lookup next [N n]' lookup next [O o]' lookup next [T t]' lookup next [E e]' lookup clig_numbersign_NOTE;
-    sub numbersign' lookup next space' lookup next [T t]' lookup next [O o]' lookup next [D d]' lookup next [O o]' lookup clig_numbersign_TODO;
-    sub numbersign' lookup next space' lookup next [T t]' lookup next [R r]' lookup next [A a]' lookup next [C c]' lookup next [E e]' lookup clig_numbersign_TRACE;
-    sub numbersign' lookup next space' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next [I i]' lookup next [N n]' lookup next [G g]' lookup clig_numbersign_WARNING;
-    sub numbersign' lookup next space' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup clig_numbersign_WARN;
+#sub [B b]' lookup next [U u]' lookup next [G g]' lookup next colon' lookup clig_BUG_colon;
+#sub [D d]' lookup next [E e]' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup next colon' lookup clig_DEBUG_colon;
+#sub [E e]' lookup next [R r]' lookup next [R r]' lookup next [O o]' lookup next [R r]' lookup next colon' lookup clig_ERROR_colon;
+#sub [E e]' lookup next [R r]' lookup next [R r]' lookup next colon' lookup clig_ERR_colon;
+#sub [F f]' lookup next [A a]' lookup next [I i]' lookup next [L l]' lookup next colon' lookup clig_FAIL_colon;
+#sub [F f]' lookup next [A a]' lookup next [T t]' lookup next [A a]' lookup next [L l]' lookup next colon' lookup clig_FATAL_colon;
+#sub [F f]' lookup next [I i]' lookup next [X x]' lookup next [M m]' lookup next [E e]' lookup next colon' lookup clig_FIXME_colon;
+#sub [H h]' lookup next [A a]' lookup next [C c]' lookup next [K k]' lookup next colon' lookup clig_HACK_colon;
+#sub [I i]' lookup next [N n]' lookup next [F f]' lookup next [O o]' lookup next colon' lookup clig_INFO_colon;
+#sub [M m]' lookup next [A a]' lookup next [R r]' lookup next [K k]' lookup next colon' lookup clig_MARK_colon;
+#sub [N n]' lookup next [O o]' lookup next [T t]' lookup next [E e]' lookup next colon' lookup clig_NOTE_colon;
+#sub [T t]' lookup next [O o]' lookup next [D d]' lookup next [O o]' lookup next colon' lookup clig_TODO_colon;
+#sub [T t]' lookup next [R r]' lookup next [A a]' lookup next [C c]' lookup next [E e]' lookup next colon' lookup clig_TRACE_colon;
+#sub [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next [I i]' lookup next [N n]' lookup next [G g]' lookup next colon' lookup clig_WARNING_colon;
+#sub [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next colon' lookup clig_WARN_colon;
 
-    sub slash' lookup next slash' lookup next space' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup clig_slash_BUG;
-    sub slash' lookup next slash' lookup next space' lookup next [D d]' lookup next [E e]' lookup next [B b]' lookup next [U u]' lookup next [G g]' lookup clig_slash_DEBUG;
-    sub slash' lookup next slash' lookup next space' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup next [O o]' lookup next [R r]' lookup clig_slash_ERROR;
-    sub slash' lookup next slash' lookup next space' lookup next [E e]' lookup next [R r]' lookup next [R r]' lookup clig_slash_ERR;
-    sub slash' lookup next slash' lookup next space' lookup next [F f]' lookup next [A a]' lookup next [I i]' lookup next [L l]' lookup clig_slash_FAIL;
-    sub slash' lookup next slash' lookup next space' lookup next [F f]' lookup next [A a]' lookup next [T t]' lookup next [A a]' lookup next [L l]' lookup clig_slash_FATAL;
-    sub slash' lookup next slash' lookup next space' lookup next [F f]' lookup next [I i]' lookup next [X x]' lookup next [M m]' lookup next [E e]' lookup clig_slash_FIXME;
-    sub slash' lookup next slash' lookup next space' lookup next [H h]' lookup next [A a]' lookup next [C c]' lookup next [K k]' lookup clig_slash_HACK;
-    sub slash' lookup next slash' lookup next space' lookup next [I i]' lookup next [N n]' lookup next [F f]' lookup next [O o]' lookup clig_slash_INFO;
-    sub slash' lookup next slash' lookup next space' lookup next [M m]' lookup next [A a]' lookup next [R r]' lookup next [K k]' lookup clig_slash_MARK;
-    sub slash' lookup next slash' lookup next space' lookup next [N n]' lookup next [O o]' lookup next [T t]' lookup next [E e]' lookup clig_slash_NOTE;
-    sub slash' lookup next slash' lookup next space' lookup next [T t]' lookup next [O o]' lookup next [D d]' lookup next [O o]' lookup clig_slash_TODO;
-    sub slash' lookup next slash' lookup next space' lookup next [T t]' lookup next [R r]' lookup next [A a]' lookup next [C c]' lookup next [E e]' lookup clig_slash_TRACE;
-    sub slash' lookup next slash' lookup next space' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup next [I i]' lookup next [N n]' lookup next [G g]' lookup clig_slash_WARNING;
-    sub slash' lookup next slash' lookup next space' lookup next [W w]' lookup next [A a]' lookup next [R r]' lookup next [N n]' lookup clig_slash_WARN;
+
 } clig_tags;
 
 
 lookup clig_cleanup {
-    sub v00 @hyphen_doubles' @hyphen_triples by v00;
-    sub v00 @less_doubles' @less_triples by v00;
-    sub v00 slash_equal' slash_equal_equal by v00; # trailing substitutions for clig_slash
+sub v00 @hyphen_doubles' @hyphen_triples by v00;
+sub v00 @less_doubles' @less_triples by v00;
+sub v00 slash_equal' slash_equal_equal by v00; # trailing substitutions for clig_slash
 } clig_cleanup;
 
 
 ######################################################################################################
 
 lookup liga_arab_1 {
-    lookupflag IgnoreMarks RightToLeft;
-    sub Alef Fathatan by AlefFathatan.liga;
-    sub Thal AlefSuperscript by AlefMaksuraThal.liga;
-    sub Reh AlefSuperscript by AlefMaksuraReh.liga;
-    sub Noon AlefMaksura.fina by NoonAlefMakFina.liga;
-    sub Noon Yeh.fina by NoonYehFina.liga;
-    sub AlefMaksura AlefSuperscript by AlefMaksuraAlef.liga;
-    sub Shadda Dammatan by ShaddaDammatan;
-    sub Shadda Kastratan by ShaddaKastratan;
-    sub Shadda Fatha by ShaddaFatha;
-    sub Shadda Damma by ShaddaDamma;
-    sub Shadda Kasra by ShaddaKasra;
-    sub Shadda AlefSuperscript by ShaddaAlefSuper;
-    sub Alef.fina Fathatan by AlefFinaFathatan.liga;
-    sub Lam.init Lam.medi by LamLam.init;
+lookupflag IgnoreMarks RightToLeft;
+sub Alef Fathatan by AlefFathatan.liga;
+sub Thal AlefSuperscript by AlefMaksuraThal.liga;
+sub Reh AlefSuperscript by AlefMaksuraReh.liga;
+sub Noon AlefMaksura.fina by NoonAlefMakFina.liga;
+sub Noon Yeh.fina by NoonYehFina.liga;
+sub AlefMaksura AlefSuperscript by AlefMaksuraAlef.liga;
+sub Shadda Dammatan by ShaddaDammatan;
+sub Shadda Kastratan by ShaddaKastratan;
+sub Shadda Fatha by ShaddaFatha;
+sub Shadda Damma by ShaddaDamma;
+sub Shadda Kasra by ShaddaKasra;
+sub Shadda AlefSuperscript by ShaddaAlefSuper;
+sub Alef.fina Fathatan by AlefFinaFathatan.liga;
+sub Lam.init Lam.medi by LamLam.init;
 } liga_arab_1;
 
 lookup kern_keywords useExtension {
-   ignore pos [@upper @lower @digit] @lower';
+ignore pos [@upper @lower @digit] @lower';
+# java:
+pos a' b' <60 0 0 0> s' <60 0 0 0> t' <30 0 0 0> r' <30 0 0 0> a c t;    # abstract
+pos a' s' <40 0 0 0> s' <30 0 0 0> e' <50 0 0 0> r' <70 0 0 0> t;        # assert
+pos b' o' <40 0 0 0> o' <70 0 0 0> l' e' <-70 0 0 0> a' <-40 0 0 0> n;   # boolean
+pos e' x' t' e' <-50 0 0 0> n' <-30 0 0 0> d s;                          # extends
+pos f' i' n' <10 0 0 0> a' <120 0 0 0> l' <120 0 0 0> l' <50 0 0 0> y;   # finally
+pos f' i' <-50 0 0 0> n' <-60 0 0 0> a l;                                # final
+pos i' m' p' <80 0 0 0> l' e' <-80 0 0 0> m' <-60 0 0 0> e' <-30 0 0 0> n t s; # implements
+pos i' m' p' <70 0 0 0> o' <90 0 0 0> r' <50 0 0 0> t;                   # import
+pos i' n' s' t' <-30 0 0 0> a' <-40 0 0 0> n' c' e' <-30 0 0 0> o f;     # instanceof
+pos n' a' <70 0 0 0> t' <70 0 0 0> i' <20 0 0 0> v' <-40 0 0 0> e;       # native
+pos p' a' c' <-20 0 0 0> k' <-45 0 0 0> a' <-50 0 0 0> g' <-30 0 0 0> e; # package
+pos s' y' n' <20 0 0 0> c' h' r' o' <-40 0 0 0> n' i' z' <-40 0 0 0> e' <-20 0 0 0> d; # synchronized
+pos s' t' r' i' <-60 0 0 0> c' <-120 0 0 0> t' <-80 0 0 0> f' <-70 0 0 0> p; # strictfp
+pos t' r' a' <-40 0 0 0> n' s' i' <-30 0 0 0> e' <-90 0 0 0> n t;        # transient
 
-   # java:
-   pos a' b' <60 0 0 0> s' <60 0 0 0> t' <30 0 0 0> r' <30 0 0 0> a c t;    # abstract
-   pos a' s' <40 0 0 0> s' <30 0 0 0> e' <50 0 0 0> r' <70 0 0 0> t;        # assert
-   pos b' o' <40 0 0 0> o' <70 0 0 0> l' e' <-70 0 0 0> a' <-40 0 0 0> n;   # boolean
-   pos e' x' t' e' <-50 0 0 0> n' <-30 0 0 0> d s;                          # extends
-   pos f' i' n' <10 0 0 0> a' <120 0 0 0> l' <120 0 0 0> l' <50 0 0 0> y;   # finally
-   pos f' i' <-50 0 0 0> n' <-60 0 0 0> a l;                                # final
-   pos i' m' p' <80 0 0 0> l' e' <-80 0 0 0> m' <-60 0 0 0> e' <-30 0 0 0> n t s; # implements
-   pos i' m' p' <70 0 0 0> o' <90 0 0 0> r' <50 0 0 0> t;                   # import
-   pos i' n' s' t' <-30 0 0 0> a' <-40 0 0 0> n' c' e' <-30 0 0 0> o f;     # instanceof
-   pos n' a' <70 0 0 0> t' <70 0 0 0> i' <20 0 0 0> v' <-40 0 0 0> e;       # native
-   pos p' a' c' <-20 0 0 0> k' <-45 0 0 0> a' <-50 0 0 0> g' <-30 0 0 0> e; # package
-   pos s' y' n' <20 0 0 0> c' h' r' o' <-40 0 0 0> n' i' z' <-40 0 0 0> e' <-20 0 0 0> d; # synchronized
-   pos s' t' r' i' <-60 0 0 0> c' <-120 0 0 0> t' <-80 0 0 0> f' <-70 0 0 0> p; # strictfp
-   pos t' r' a' <-40 0 0 0> n' s' i' <-30 0 0 0> e' <-90 0 0 0> n t;        # transient
+# ansi c:
+# auto       +break    case     +char   const      +continue
+# +default   do        +double  +else   +enum      extern
+# +float     for       +goto    if      int        +long
+# +register  +return   +short   +signed +sizeof    static
+# struct     +switch   typedef  +union  +unsigned  +void
+# +volatile  +while
+pos b' r' <30 0 0 0> e' <-40 0 0 0> a' <-10 0 0 0> k;                       # break
+pos c' h' a' <40 0 0 0> r;                                                  # char
+pos c' o' n' <50 0 0 0> t' <60 0 0 0> i' n' <-50 0 0 0> u' <-30 0 0 0> e;   # continue
+pos d' e' <50 0 0 0> f' a' <-20 0 0 0> u' <40 0 0 0> l' <80 0 0 0> t;       # default
+pos d' o' u' b' <120 0 0 0> l' <70 0 0 0> e;                                # double
+pos e' l' s' <-40 0 0 0> e;                                                 # else
+pos e' n' <-20 0 0 0> u' <-40 0 0 0> m;                                     # enum
+pos f' l' <-10 0 0 0> o' <-60 0 0 0> a t;                                   # float
+pos g' o' <70 0 0 0> t' <50 0 0 0> o;                                       # goto
+pos l' o' <-80 0 0 0> n' <-40 0 0 0> g;                                     # long
+pos r' e' <-30 0 0 0> g' i' <70 0 0 0> s' <20 0 0 0> t e r;                 # register
+pos r' e' <-20 0 0 0> t' <-40 0 0 0> u' <-20 0 0 0> r n;                    # return
+pos s' h' <30 0 0 0> o' <50 0 0 0> r' <30 0 0 0> t;                         # short
+pos s' i' <-40 0 0 0> g' <-70 0 0 0> n e d;                                 # signed
+pos s' i' <-30 0 0 0> z' <-90 0 0 0> e' <-60 0 0 0> o f;                    # sizeof
+pos s' w' <60 0 0 0> i' <60 0 0 0> t' <-30 0 0 0> c' <-50 0 0 0> h;         # switch
+pos u' n' <50 0 0 0> i' o' <-60 0 0 0> n;                                   # union
+pos u' n' <20 0 0 0> s i g n e d;                                           # unsigned
+pos v' o' <60 0 0 0> i' <40 0 0 0> d;                                       # void
+pos v' o' <60 0 0 0> l' a' t' <30 0 0 0> i' <60 0 0 0> l' <50 0 0 0> e;     # volatile
+pos w' h' <120 0 0 0> i' <130 0 0 0> l' <80 0 0 0> e;                       # while
 
-   # ansi c:
-   # auto       +break    case     +char   const      +continue
-   # +default   do        +double  +else   +enum      extern
-   # +float     for       +goto    if      int        +long
-   # +register  +return   +short   +signed +sizeof    static
-   # struct     +switch   typedef  +union  +unsigned  +void
-   # +volatile  +while
-   pos b' r' <30 0 0 0> e' <-40 0 0 0> a' <-10 0 0 0> k;                       # break
-   pos c' h' a' <40 0 0 0> r;                                                  # char
-   pos c' o' n' <50 0 0 0> t' <60 0 0 0> i' n' <-50 0 0 0> u' <-30 0 0 0> e;   # continue
-   pos d' e' <50 0 0 0> f' a' <-20 0 0 0> u' <40 0 0 0> l' <80 0 0 0> t;       # default
-   pos d' o' u' b' <120 0 0 0> l' <70 0 0 0> e;                                # double
-   pos e' l' s' <-40 0 0 0> e;                                                 # else
-   pos e' n' <-20 0 0 0> u' <-40 0 0 0> m;                                     # enum
-   pos f' l' <-10 0 0 0> o' <-60 0 0 0> a t;                                   # float
-   pos g' o' <70 0 0 0> t' <50 0 0 0> o;                                       # goto
-   pos l' o' <-80 0 0 0> n' <-40 0 0 0> g;                                     # long
-   pos r' e' <-30 0 0 0> g' i' <70 0 0 0> s' <20 0 0 0> t e r;                 # register
-   pos r' e' <-20 0 0 0> t' <-40 0 0 0> u' <-20 0 0 0> r n;                    # return
-   pos s' h' <30 0 0 0> o' <50 0 0 0> r' <30 0 0 0> t;                         # short
-   pos s' i' <-40 0 0 0> g' <-70 0 0 0> n e d;                                 # signed
-   pos s' i' <-30 0 0 0> z' <-90 0 0 0> e' <-60 0 0 0> o f;                    # sizeof
-   pos s' w' <60 0 0 0> i' <60 0 0 0> t' <-30 0 0 0> c' <-50 0 0 0> h;         # switch
-   pos u' n' <50 0 0 0> i' o' <-60 0 0 0> n;                                   # union
-   pos u' n' <20 0 0 0> s i g n e d;                                           # unsigned
-   pos v' o' <60 0 0 0> i' <40 0 0 0> d;                                       # void
-   pos v' o' <60 0 0 0> l' a' t' <30 0 0 0> i' <60 0 0 0> l' <50 0 0 0> e;     # volatile
-   pos w' h' <120 0 0 0> i' <130 0 0 0> l' <80 0 0 0> e;                       # while
-
-   # c++, all of ansi c plus:
-   # +asm               +bool           +catch      class              const_cast
-   # +delete            dynamic_cast    explicit    false              +friend
-   # inline             +mutable        namespace   new                operator
-   # +private           +protected      +public     reinterpret_cast   static_cast
-   # +template          +this           +throw      +true              try
-   # +typeid            typename        +virtual    +using             wchar_t
-   pos a' s' <-30 0 0 0> m;                                                 # asm
-   pos b' o' <40 0 0 0> o' <70 0 0 0> l;                                    # bool
-   pos c' a' <60 0 0 0> t' <40 0 0 0> c' <-40 0 0 0> h;                     # catch
-   pos d' e' <50 0 0 0> l' e' <-40 0 0 0> t' <-30 0 0 0> e;                 # delete
-   pos f' r' i' <-60 0 0 0> e' <-120 0 0 0> n' <-60 0 0 0> d;               # friend
-   pos m' u' <20 0 0 0> t' a' b' <90 0 0 0> l' <50 0 0 0> e;                # mutable
-   pos p' r' <30 0 0 0> i' <-30 0 0 0> v' <-70 0 0 0> a t e;                # private
-   pos p' r' <60 0 0 0> o' <30 0 0 0> t' e' c' t' e' <-40 0 0 0> d;         # protected
-   pos p' u' <80 0 0 0> b' <190 0 0 0> l' <150 0 0 0> i' <90 0 0 0> c;      # public
-   pos t' e' m' <20 0 0 0> p' <140 0 0 0> l' <80 0 0 0> a' <30 0 0 0> t e;  # template
-   pos t' h' <90 0 0 0> i' <90 0 0 0> s;                                    # this
-   pos t' h' <50 0 0 0> r' <50 0 0 0> o' <-40 0 0 0> w;                     # throw
-   pos t' r' <-10 0 0 0> u' <-30 0 0 0> e;                                  # true
-   pos t' y' p' <40 0 0 0> e' <100 0 0 0> i' <70 0 0 0> d;                  # typeid
-   pos u' s' i' <-40 0 0 0> n' <-60 0 0 0> g;                               # using
-   pos v' i' r' <-80 0 0 0> t' <-80 0 0 0> u' <-50 0 0 0> a' <20 0 0 0> l;  # virtual
-
+# c++, all of ansi c plus:
+# +asm               +bool           +catch      class              const_cast
+# +delete            dynamic_cast    explicit    false              +friend
+# inline             +mutable        namespace   new                operator
+# +private           +protected      +public     reinterpret_cast   static_cast
+# +template          +this           +throw      +true              try
+# +typeid            typename        +virtual    +using             wchar_t
+pos a' s' <-30 0 0 0> m;                                                 # asm
+pos b' o' <40 0 0 0> o' <70 0 0 0> l;                                    # bool
+pos c' a' <60 0 0 0> t' <40 0 0 0> c' <-40 0 0 0> h;                     # catch
+pos d' e' <50 0 0 0> l' e' <-40 0 0 0> t' <-30 0 0 0> e;                 # delete
+pos f' r' i' <-60 0 0 0> e' <-120 0 0 0> n' <-60 0 0 0> d;               # friend
+pos m' u' <20 0 0 0> t' a' b' <90 0 0 0> l' <50 0 0 0> e;                # mutable
+pos p' r' <30 0 0 0> i' <-30 0 0 0> v' <-70 0 0 0> a t e;                # private
+pos p' r' <60 0 0 0> o' <30 0 0 0> t' e' c' t' e' <-40 0 0 0> d;         # protected
+pos p' u' <80 0 0 0> b' <190 0 0 0> l' <150 0 0 0> i' <90 0 0 0> c;      # public
+pos t' e' m' <20 0 0 0> p' <140 0 0 0> l' <80 0 0 0> a' <30 0 0 0> t e;  # template
+pos t' h' <90 0 0 0> i' <90 0 0 0> s;                                    # this
+pos t' h' <50 0 0 0> r' <50 0 0 0> o' <-40 0 0 0> w;                     # throw
+pos t' r' <-10 0 0 0> u' <-30 0 0 0> e;                                  # true
+pos t' y' p' <40 0 0 0> e' <100 0 0 0> i' <70 0 0 0> d;                  # typeid
+pos u' s' i' <-40 0 0 0> n' <-60 0 0 0> g;                               # using
+pos v' i' r' <-80 0 0 0> t' <-80 0 0 0> u' <-50 0 0 0> a' <20 0 0 0> l;  # virtual
 } kern_keywords;
 
 
 lookup kern_ligatures useExtension {
-	ignore position exclam exclam exclam exclam; # four bangs in a row are no-op
-	ignore position exclam exclam' exclam;       # further bangs are no-op
-    pos exclam' <126 0 0 0> exclam' exclam' <-126 0 0 0>;                # !!!
-    pos exclam' <126 0 0 0> exclam' <-126 0 0 0>;                        # !!
-    pos exclam' <-10 0 0 0> greater' <-182 0 0 0>;                       # !>
-    pos numbersign' <-46 0 0 0> greater;                                 # #>
-    pos percent' <-44 0 0 0> greater' <-87 0 0 0> percent' <-40 0 0 0> ; # %>%
-    pos percent' <-31 0 0 0> greater' <-7 0 0 0>;                        # %>
-    pos percent' <-44 0 0 0> less' <-37 0 0 0> percent' <-40 0 0 0> ;    # %<%
-    pos ampersand' <-97 0 0 0> asterisk' <-66 0 0 0>;                    # &*
-    pos ampersand' <-51 0 0 0> greater' <-17 0 0 0>;                     # &>
-    ignore position asterisk asterisk asterisk asterisk; # four asts in a row are no-op
-    ignore position asterisk asterisk' asterisk;         # further asts are no-op
-    pos asterisk' <84 -193 0 0> asterisk' <0 68 0 0> asterisk' <-84 -193 0 0>;  # ***
-    pos asterisk' <60 0 0 0> equal' <49 0 0 0>;                          # *=
-    pos asterisk' <117 0 0 0> slash' <-134 0 0 0>;                       # */
-    ignore position period period period period; # four dots in a row are no-op
-    ignore position period period' period;       # further dots are no-op
-    pos period' <149 0 0 0> period' period' <-149 0 0 0>;                # ...
-    pos period' <125 0 0 0> period' <-125 0 0 0>;                        # ..
-    pos period' <148 0 0 0> period' <-39 0 0 0> less' <-245 0 0 0>;      # ..<
-    pos period' <-60 0 0 0> greater' <-192 0 0 0>;                       # .>
-    pos period' <-42 0 0 0> asciitilde' <-208 0 0 0>;                    # .~
-    ignore position slash slash slash slash; # four slashes in a row are no-op
-    ignore position slash slash' slash;      # further slashes are no-op
-    pos slash' <194 0 0 0> slash' slash' <-194 0 0 0>;                   # ///
-    pos slash' <127 0 0 0> slash' <-36 0 0 0>;                           # //
-    pos slash' <77 0 0 0> asterisk' <-84 0 0 0>;                         # /*
-    pos slash' <70 0 0 0> greater' <-215 0 0 0>;                         # />
-    pos slash' <-67 0 0 0> asterisk' <-104 0 0 0> asterisk' <-118 0 0 0>; # /**
-    ignore position colon colon colon colon; # four cols in a row are no-op
-    ignore position colon colon' colon;      # further cols are no-op
-    pos colon' <149 0 0 0> colon' colon' <-149 0 0 0>;                   # :::
-    pos colon' <101 0 0 0> colon' <-101 0 0 0>;                          # ::
-    pos colon' <-74 30 0 0> greater' <-172 0 0 0>;                       # :>
-    pos colon' <0 136 0 0> [parenleft parenright];                       # :( :)
-    pos colon' <50 136 0 0> hyphen' <-42 0 0 0> [parenleft parenright]' <-50 0 0 0>; # :-( :-)
-    pos colon' <0 136 0 0> [slash backslash];                            # :/ :\
-    pos colon' <0 196 0 0> [three D P];                                  # :3 :D :P
-    pos colon' <30 30 0 0> greater' <11 0 0 0> colon' <30 30 0 0>;       # :>:
-    pos colon' <30 30 0 0> less' <-11 0 0 0> colon' <30 30 0 0>;         # :<:
-    ignore position less less less less; # four lesses in a row are no-op
-    ignore position less less' less;     # further lesses are no-op
-    pos less' <163 0 0 0> less' less' <-163 0 0 0>;                      # <<<
-    pos less' <105 0 0 0> less' <-125 0 0 0>;                            # <<
-    pos less' <182 0 0 0> exclam' <15 0 0 0>;                            # <!
-    pos less' <2 0 0 0> [at asciicircum]' <-86 0 0 0>;                   # <@ <^
-    pos less' <2 0 0 0> [numbersign percent]' <-76 0 0 0>;               # <# <%
-    pos less' <2 0 0 0> ampersand' <-61 0 0 0>;                          # <!
-    pos less' <62 0 0 0> question;                                       # <?
-    pos less' <182 0 0 0> period' <75 0 0 0>;                            # <.
-    pos less' <22 0 0 0> slash' <-46 0 0 0>;                             # </
-    pos less' <82 0 0 0> backslash' <-56 0 0 0>;                         # <\
-    pos less' <72 0 0 0> quotedbl' <-6 0 0 0>;                           # <"
-    pos less' <172 0 0 0> colon' <65 30 0 0>;                            # <:    
-    ignore position greater greater greater greater;       # four gt's in a row are no-op
-    ignore position [asciitilde greater] greater' greater; # further gt's are no-op, precedence exception ~>>
-    pos greater' <103 0 0 0> greater' <-61 0 0 0> greater' <-223 0 0 0>; # >>>
-    pos greater' <65 0 0 0> greater' <-165 0 0 0>;                       # >>
-    ignore position question question question question; # four asks in a row are no-op
-    ignore position question question' question;         # further asks are no-op
-    pos question' <126 0 0 0> question' question' <-126 0 0 0>;          # ???
-    pos question' <68 0 0 0> question' <-68 0 0 0>;                      # ??
-    pos question' <68 0 0 0> asciitilde' <-87 0 0 0>;                    # ?~
-    pos question' <64 0 0 0> equal' <-48 0 0 0>;                         # ?=
-    pos question' <26 0 0 0> greater' <-82 0 0 0>;                       # ?>
-    pos asciicircum' <252 0 0 0> period' <48 0 0 0> period' <-133 0 0 0>; # ^..
-    pos asciicircum' <213 0 0 0> period;                                 # ^.
-    pos asciicircum' <59 0 0 0> question' <-48 0 0 0>;                   # ^?    
-    pos asciicircum' <41 0 0 0> greater' <-17 0 0 0>;                    # ^>    
-    ignore position backslash backslash backslash;
-    ignore position backslash backslash' backslash;
-    pos backslash' <127 0 0 0> backslash' <-127 0 0 0>;                  # \\
-    pos backslash' <51 0 0 0> greater' <-97 0 0 0>;                      # \>
-    pos at' <67 0 0 0> greater' <-2 0 0 0>;                              # @>
-    pos quotedbl' greater' <-97 0 0 0>;                                  # ">
+ignore pos exclam exclam exclam exclam; # four bangs in a row are no-op
+ignore pos exclam exclam' exclam;       # further bangs are no-op
+pos exclam' <126 0 0 0> exclam' exclam' <-126 0 0 0>;                # !!!
+pos exclam' <126 0 0 0> exclam' <-126 0 0 0>;                        # !!
+pos exclam' <-10 0 0 0> greater' <-182 0 0 0>;                       # !>
+pos numbersign' <-46 0 0 0> greater;                                 # #>
+pos percent' <-44 0 0 0> greater' <-87 0 0 0> percent' <-40 0 0 0> ; # %>%
+pos percent' <-31 0 0 0> greater' <-7 0 0 0>;                        # %>
+pos percent' <-44 0 0 0> less' <-37 0 0 0> percent' <-40 0 0 0> ;    # %<%
+pos ampersand' <-97 0 0 0> asterisk' <-66 0 0 0>;                    # &*
+pos ampersand' <-51 0 0 0> greater' <-17 0 0 0>;                     # &>
+ignore pos asterisk asterisk asterisk asterisk; # four asts in a row are no-op
+ignore pos asterisk asterisk' asterisk;         # further asts are no-op
+pos asterisk' <84 -193 0 0> asterisk' <0 68 0 0> asterisk' <-84 -193 0 0>;  # ***
+pos asterisk' <60 0 0 0> equal' <49 0 0 0>;                          # *=
+pos asterisk' <117 0 0 0> slash' <-134 0 0 0>;                       # */
+ignore pos period period period period; # four dots in a row are no-op
+ignore pos period period' period;       # further dots are no-op
+pos period' <149 0 0 0> period' period' <-149 0 0 0>;                # ...
+pos period' <125 0 0 0> period' <-125 0 0 0>;                        # ..
+pos period' <148 0 0 0> period' <-39 0 0 0> less' <-245 0 0 0>;      # ..<
+pos period' <-60 0 0 0> greater' <-192 0 0 0>;                       # .>
+pos period' <-42 0 0 0> asciitilde' <-208 0 0 0>;                    # .~
+ignore pos slash slash slash slash; # four slashes in a row are no-op
+ignore pos slash slash' slash;      # further slashes are no-op
+pos slash' <194 0 0 0> slash' slash' <-194 0 0 0>;                   # ///
+pos slash' <127 0 0 0> slash' <-36 0 0 0>;                           # //
+pos slash' <77 0 0 0> asterisk' <-84 0 0 0>;                         # /*
+pos slash' <70 0 0 0> greater' <-215 0 0 0>;                         # />
+pos slash' <-67 0 0 0> asterisk' <-104 0 0 0> asterisk' <-118 0 0 0>; # /**
+ignore pos colon colon colon colon; # four cols in a row are no-op
+ignore pos colon colon' colon;      # further cols are no-op
+pos colon' <149 0 0 0> colon' colon' <-149 0 0 0>;                   # :::
+pos colon' <101 0 0 0> colon' <-101 0 0 0>;                          # ::
+pos colon' <-74 30 0 0> greater' <-172 0 0 0>;                       # :>
+pos colon' <0 136 0 0> [parenleft parenright];                       # :( :)
+pos colon' <50 136 0 0> hyphen' <-42 0 0 0> [parenleft parenright]' <-50 0 0 0>; # :-( :-)
+pos colon' <0 136 0 0> [slash backslash];                            # :/ :\
+pos colon' <0 196 0 0> [three D P];                                  # :3 :D :P
+pos colon' <30 30 0 0> greater' <11 0 0 0> colon' <30 30 0 0>;       # :>:
+pos colon' <30 30 0 0> less' <-11 0 0 0> colon' <30 30 0 0>;         # :<:
+ignore pos less less less less; # four lesses in a row are no-op
+ignore pos less less' less;     # further lesses are no-op
+pos less' <163 0 0 0> less' less' <-163 0 0 0>;                      # <<<
+pos less' <105 0 0 0> less' <-125 0 0 0>;                            # <<
+pos less' <182 0 0 0> exclam' <15 0 0 0>;                            # <!
+pos less' <2 0 0 0> [at asciicircum]' <-86 0 0 0>;                   # <@ <^
+pos less' <2 0 0 0> [numbersign percent]' <-76 0 0 0>;               # <# <%
+pos less' <2 0 0 0> ampersand' <-61 0 0 0>;                          # <!
+pos less' <62 0 0 0> question;                                       # <?
+pos less' <182 0 0 0> period' <75 0 0 0>;                            # <.
+pos less' <22 0 0 0> slash' <-46 0 0 0>;                             # </
+pos less' <82 0 0 0> backslash' <-56 0 0 0>;                         # <\
+pos less' <72 0 0 0> quotedbl' <-6 0 0 0>;                           # <"
+pos less' <172 0 0 0> colon' <65 30 0 0>;                            # <:    
+ignore pos greater greater greater greater;       # four gt's in a row are no-op
+ignore pos [asciitilde greater] greater' greater; # further gt's are no-op, precedence exception ~>>
+pos greater' <103 0 0 0> greater' <-61 0 0 0> greater' <-223 0 0 0>; # >>>
+pos greater' <65 0 0 0> greater' <-165 0 0 0>;                       # >>
+ignore pos question question question question; # four asks in a row are no-op
+ignore pos question question' question;         # further asks are no-op
+pos question' <126 0 0 0> question' question' <-126 0 0 0>;          # ???
+pos question' <68 0 0 0> question' <-68 0 0 0>;                      # ??
+pos question' <68 0 0 0> asciitilde' <-87 0 0 0>;                    # ?~
+pos question' <64 0 0 0> equal' <-48 0 0 0>;                         # ?=
+pos question' <26 0 0 0> greater' <-82 0 0 0>;                       # ?>
+pos asciicircum' <252 0 0 0> period' <48 0 0 0> period' <-133 0 0 0>; # ^..
+pos asciicircum' <213 0 0 0> period;                                 # ^.
+pos asciicircum' <59 0 0 0> question' <-48 0 0 0>;                   # ^?    
+pos asciicircum' <41 0 0 0> greater' <-17 0 0 0>;                    # ^>    
+ignore pos backslash backslash backslash;
+ignore pos backslash backslash' backslash;
+pos backslash' <127 0 0 0> backslash' <-127 0 0 0>;                  # \\
+pos backslash' <51 0 0 0> greater' <-97 0 0 0>;                      # \>
+pos at' <67 0 0 0> greater' <-2 0 0 0>;                              # @>
+pos quotedbl' greater' <-97 0 0 0>;                                  # ">
+ignore pos bar bar bar bar; # four bars in a row are no-op
+ignore pos bar bar' bar;    # further bars are no-op
+pos bar' <126 0 0 0> bar' bar' <-126 0 0 0>;                         # |||
+pos bar' <126 0 0 0> bar' <-126 0 0 0>;                              # ||
+pos bar underscore' <0 -160 0 0> bar;
 } kern_ligatures;
 
 lookup calt_boxdrawings {
-   pos @boxdrawings @arrowsandco' <0 162 0 0>;
-   pos @arrowsandco' @boxdrawings <0 162 0 0>;
+pos @boxdrawings @arrowsandco' <0 162 0 0> @arrowsandco' <0 162 0 0> @arrowsandco' <0 162 0 0>;
+pos @boxdrawings @arrowsandco' <0 162 0 0> @arrowsandco' <0 162 0 0>;
+pos @boxdrawings @arrowsandco' <0 162 0 0>;
+pos @arrowsandco' <0 162 0 0> @arrowsandco' <0 162 0 0> @arrowsandco' <0 162 0 0> @boxdrawings;
+pos @arrowsandco' <0 162 0 0> @arrowsandco' <0 162 0 0> @boxdrawings;
+pos @arrowsandco' @boxdrawings <0 162 0 0>;
 } calt_boxdrawings;
 
+lookup curlyarrows {
+sub southEastArrow southWestArrow by curlyveedownarrow;
+sub southWestArrow southEastArrow by curlywedgedownarrow;
+sub northWestArrow northEastArrow by curlywedgeuparrow;
+sub northEastArrow northWestArrow by curlyveeuparrow;
+} curlyarrows;
 
+lookup markdown {
+sub hyphen space bracketleft [X x] bracketright by ballotBoxWithX;
+sub hyphen space bracketleft [V v] bracketright by ballotBoxWithCheck;
+sub hyphen space bracketleft space bracketright by ballotBox;
+sub hyphen space bracketleft hyphen bracketright by ballotBoxWithMinus;
+} markdown;
+
+lookup git_tree {
+sub bar slash' bar by slash.git03;
+sub slash' bar by slash.git04;
+sub space slash.git02 space slash.git02 space slash' by slash.git02;
+sub bar slash.git01 space slash.git02 space slash' by slash.git02;
+sub bar slash.git01 space slash' by slash.git02;
+sub bar slash' by slash.git01;
+sub bar backslash' bar by backslash.git03;
+sub backslash' bar by backslash.git04;
+sub space backslash.git02 space backslash' by backslash.git02;
+sub bar backslash.git01 space backslash' by backslash.git02;
+sub bar backslash' by backslash.git01;
+} git_tree;
 
 
