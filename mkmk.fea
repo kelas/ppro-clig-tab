@@ -1,337 +1,831 @@
 ﻿feature mkmk {
+#> feature
 # GPOS feature : Mark to Mark Positioning
-lookup mkmkLTM {
-markClass gravecomb <anchor -381 1240> @tm;
-markClass acutecomb <anchor -493 1240> @tm;
-markClass [circumflexcomb tildecomb brevecomb dotaccentcomb dieresiscomb gravetonecomb acutetonecomb macronacutecomb gravemacroncomb macrongravecomb acutemacroncomb graveacutegravecomb acutegraveacutecomb] <anchor -512 1240> @tm;
-markClass [macroncomb overlinecomb] <anchor -512 1330> @tm;
-markClass hookabovecomb <anchor -512 1062> @tm;
-markClass ringcomb <anchor -512 1188> @tm;
-markClass hungarumlautcomb <anchor -506 1207> @tm;
-markClass caroncomb <anchor -512 1200> @tm;
-markClass [verticallineabovecomb dblverticallineabovecomb] <anchor -512 1171> @tm;
-markClass dblgravecomb <anchor -518 1207> @tm;
-markClass candraBinducomb <anchor -512 1147> @tm;
-markClass breveinvertedcomb <anchor -512 1215> @tm;
-markClass [commaturnedabovecomb commareversedabovecomb] <anchor -502 1133> @tm;
-markClass commaabovecomb <anchor -502 1133> @tm;
-markClass [commaaboverightcomb leftangleabovecomb horncomb xabovecomb tildeverticalcomb dbloverlinecomb perispomenicomb doublebrevecomb] <anchor -512 1133> @tm;
-markClass koroniscomb <anchor -528 1133> @tm;
-markClass dialytikatonoscomb <anchor -512 1176> @tm;
-markClass gbridgeabovecomb <anchor -512 1199> @tm;
-markClass [nottildeabovecomb homotheticabovecomb arrowheadrightabovecomb lefthalfringabovecomb zigzagabovecomb] <anchor -512 1150> @tm;
-markClass almostequaltoabovecomb <anchor -512 1146> @tm;
-markClass fermatacomb <anchor -512 1143> @tm;
-markClass righthalfringabovecomb <anchor -512 1165> @tm;
-markClass dotaboverightcomb <anchor -512 1207> @tm;
-markClass doublemacroncomb <anchor -512 1330> @tm;
-markClass tildedoublecomb <anchor -515 1207> @tm;
-markClass breveinverteddoublecomb <anchor -512 1207> @tm;
-markClass [acomb ccomb dcomb ecomb hcomb icomb mcomb ocomb rcomb tcomb ucomb vcomb xcomb gravedottedcomb acutedottedcomb] <anchor -512 1200> @tm;
-markClass suspensioncomb <anchor -512 1190> @tm;
-markClass [parentabovecomb doubleparentabovecomb  arrowheadleftabovecomb] <anchor -512 1168> @tm;
-markClass [brevemacroncomb macronbrevecomb] <anchor -512 1177> @tm;
-markClass doublecircumflexcomb <anchor -512 1208> @tm;
-markClass ogonekabovecomb <anchor -512 1128> @tm;
-markClass deletionmarkcomb <anchor -512 1158> @tm;
-markClass uptackabovecomb <anchor -512 1198> @tm;
-markClass [dotaboveleftcomb kavykaaboveleftcomb kavykaaboverightcomb ligaturelefthalfcomb ligaturerighthalfcomb doubletildelefthalfcomb doubletilderighthalfcomb]  <anchor -512 1218> @tm;
-markClass [macronlefthalfcomb macronrighthalfcomb conjoiningmacroncomb] <anchor -512 1330> @tm;
-markClass circumflexdblcomb <anchor -512 1220> @tm;
-markClass diaeresisringcomb <anchor -512 1157> @tm;
-markClass infinitycomb <anchor -512 1166> @tm;
-markClass arrowdowncomb <anchor -512 1147> @tm;
-markClass tripledotcomb <anchor -512 1188> @tm;
-pos mark [gravecomb acutecomb] <anchor -493 1573> mark @tm;
-pos mark [circumflexcomb tildecomb macroncomb brevecomb dotaccentcomb dieresiscomb caroncomb verticallineabovecomb dblverticallineabovecomb hookabovecomb] <anchor -512 1573> mark @tm;
-pos mark overlinecomb <anchor 512 1573> mark @tm;
-pos mark ringcomb <anchor -512 1594> mark @tm;
-pos mark hungarumlautcomb <anchor -500 1571> mark @tm;
-pos mark dblgravecomb <anchor -534 1573> mark @tm;
-pos mark candraBinducomb <anchor -512 1600> mark @tm;
-pos mark breveinvertedcomb <anchor -512 1649> mark @tm;
-pos mark commaturnedabovecomb <anchor -502 1588> mark @tm;
-pos mark commaabovecomb <anchor -502 1691> mark @tm;
-pos mark commareversedabovecomb <anchor -512 1709> mark @tm;
-pos mark [commaaboverightcomb leftangleabovecomb xabovecomb tildeverticalcomb dbloverlinecomb gbridgeabovecomb almostequaltoabovecomb dotaboverightcomb zigzagabovecomb doublebrevecomb] <anchor -512 1579> mark @tm;
-pos mark horncomb <anchor -1183 1691> mark @tm;
-pos mark [gravetonecomb acutetonecomb] <anchor -517 1573> mark @tm;
-pos mark perispomenicomb <anchor -512 1650> mark @tm;
-pos mark koroniscomb <anchor -528 1691> mark @tm;
-pos mark dialytikatonoscomb <anchor -512 1660> mark @tm;
-pos mark nottildeabovecomb <anchor -512 1601> mark @tm;
-pos mark homotheticabovecomb <anchor -512 1582> mark @tm;
-pos mark arrowheadrightabovecomb <anchor -512 1592> mark @tm;
-pos mark lefthalfringabovecomb <anchor -512 1596> mark @tm;
-pos mark fermatacomb <anchor -512 1595> mark @tm;
-pos mark righthalfringabovecomb <anchor -512 1589> mark @tm;
-pos mark doublemacroncomb <anchor -512 1659> mark @tm;
-pos mark tildedoublecomb <anchor -512 1653> mark @tm;
-pos mark breveinverteddoublecomb <anchor -512 1653> mark @tm;
-pos mark [acomb ccomb dcomb ecomb hcomb icomb mcomb ocomb rcomb tcomb ucomb vcomb xcomb] <anchor -512 1894> mark @tm;
-pos mark [gravedottedcomb acutedottedcomb doublecircumflexcomb arrowheadleftabovecomb] <anchor -512 1603> mark @tm;
-pos mark suspensioncomb <anchor -512 1543> mark @tm;
-pos mark [macronacutecomb gravemacroncomb macrongravecomb acutemacroncomb graveacutegravecomb acutegraveacutecomb deletionmarkcomb] <anchor -512 1593> mark @tm;
-pos mark [brevemacroncomb macronbrevecomb dotaboveleftcomb] <anchor -512 1573> mark @tm;
-pos mark ogonekabovecomb <anchor -512 1563> mark @tm;
-pos mark kavykaaboverightcomb <anchor -44 1634> mark @tm;
-pos mark uptackabovecomb <anchor -512 1615> mark @tm;
-pos mark [kavykaaboveleftcomb ligaturelefthalfcomb ligaturerighthalfcomb doubletildelefthalfcomb doubletilderighthalfcomb] <anchor -512 1635> mark @tm;
-pos mark [macronlefthalfcomb macronrighthalfcomb conjoiningmacroncomb] <anchor -512 1610> mark @tm;
-pos mark circumflexdblcomb <anchor -512 1566> mark @tm;
-pos mark diaeresisringcomb <anchor -512 1606> mark @tm;
-pos mark infinitycomb <anchor -512 1643> mark @tm;
-pos mark arrowdowncomb <anchor -512 1653> mark @tm;
-pos mark tripledotcomb <anchor -512 1651> mark @tm;
-pos mark [parentabovecomb doubleparentabovecomb] <anchor -512 1616> mark @tm;
-} mkmkLTM;
+    markClass dieresis <anchor 512 1170> @tm;
+    markClass macron <anchor 512 1330> @tm;
+    markClass cedilla <anchor 512 10> @bm;
+    markClass ringhalfright <anchor 512 1158> @tm;
+    markClass ringhalfleft <anchor 512 1158> @tm;
+    markClass circumflex <anchor 512 1250> @tm;
+    markClass caron <anchor 512 1250> @tm;
+    markClass breve <anchor 512 1220> @tm;
+    markClass dotaccent <anchor 512 1200> @tm;
+    markClass ring <anchor 512 1158> @tm;
+    markClass ogonek <anchor 542 10> @bm;
+    markClass tilde <anchor 512 1220> @tm;
+    markClass gravecomb <anchor -422 1240> @tm;
+    markClass acutecomb <anchor -612 1240> @tm;
+    markClass circumflexcomb <anchor -512 1250> @tm;
+    markClass tildecomb <anchor -512 1220> @tm;
+    markClass macroncomb <anchor -512 1330> @tm;
+    markClass overlinecomb <anchor -512 1330> @tm;
+    markClass brevecomb <anchor -512 1220> @tm;
+    markClass dotaccentcomb <anchor -512 1200> @tm;
+    markClass dieresiscomb <anchor -512 1220> @tm;
+    markClass hookabovecomb <anchor -564 1092> @tm;
+    markClass ringcomb <anchor -512 1178> @tm;
+    markClass hungarumlautcomb <anchor -551 1197> @tm;
+    markClass caroncomb <anchor -512 1250> @tm;
+    markClass verticallineabovecomb <anchor -512 1170> @tm;
+    markClass dblverticallineabovecomb <anchor -512 1170> @tm;
+    markClass dblgravecomb <anchor -512 1197> @tm;
+    markClass candraBinducomb <anchor -512 1137> @tm;
+    markClass breveinvertedcomb <anchor -513 1197> @tm;
+    markClass commaturnedabovecomb <anchor -502 1105> @tm;
+    markClass commaabovecomb <anchor -616 1123> @tm;
+    markClass commareversedabovecomb <anchor -437 1123> @tm;
+    markClass commaaboverightcomb <anchor -72 1123> @tm;
+    markClass gravebelowcomb <anchor -512 -75> @bm;
+    markClass acutebelowcomb <anchor -512 -75> @bm;
+    markClass lefttackbelowcomb <anchor -512 -35> @bm;
+    markClass righttackbelowcomb <anchor -512 -35> @bm;
+    markClass leftangleabovecomb <anchor -514 1183> @tm;
+    markClass horncomb <anchor -263 1183> @tm;
+    markClass ringhalfleftbelowcomb <anchor -512 -20> @bm;
+    markClass uptackbelowcomb <anchor -512 -65> @bm;
+    markClass downtackbelowcomb <anchor -512 -65> @bm;
+    markClass plusbelowcomb <anchor -512 35> @bm;
+    markClass minusbelowcomb <anchor -512 -85> @bm;
+    markClass hookpalatalizedbelowcomb <anchor -95 10> @bm;
+    markClass hookretroflexbelowcomb <anchor -282 10> @bm;
+    markClass dotbelowcomb <anchor -513 -65> @bm;
+    markClass dieresisbelowcomb <anchor -513 -65> @bm;
+    markClass ringbelowcomb <anchor -513 -65> @bm;
+    markClass commaaccentcomb <anchor -512 120> @bm;
+    markClass cedillacomb <anchor -512 10> @bm;
+    markClass ogonekcomb <anchor -482 10> @bm;
+    markClass verticallinebelowcomb <anchor -512 10> @bm;
+    markClass bridgebelowcomb <anchor -512 10> @bm;
+    markClass dblarchinvertedbelowcomb <anchor -512 10> @bm;
+    markClass caronbelowcomb <anchor -512 10> @bm;
+    markClass circumflexbelowcomb <anchor -512 10> @bm;
+    markClass brevebelowcomb <anchor -512 -65> @bm;
+    markClass breveinvertedbelowcomb <anchor -512 10> @bm;
+    markClass tildebelowcomb <anchor -512 -65> @bm;
+    markClass macronbelowcomb <anchor -512 -65> @bm;
+    markClass lowlinecomb <anchor -512 10> @bm;
+    markClass dbllowlinecomb <anchor -512 10> @bm;
+    markClass ringhalfrightbelowcomb <anchor -512 10> @bm;
+    markClass bridgeinvertedbelowcomb <anchor -512 10> @bm;
+    markClass squarebelowcomb <anchor -512 10> @bm;
+    markClass seagullbelowcomb <anchor -512 10> @bm;
+    markClass xabovecomb <anchor -512 1190> @tm;
+    markClass tildeverticalcomb <anchor -512 1190> @tm;
+    markClass dbloverlinecomb <anchor -512 1190> @tm;
+    markClass gravetonecomb <anchor -512 1210> @tm;
+    markClass acutetonecomb <anchor -512 1210> @tm;
+    markClass perispomenicomb <anchor -512 1177> @tm;
+    markClass koroniscomb <anchor -512 1136> @tm;
+    markClass dialytikatonoscomb <anchor -512 1156> @tm;
+    markClass ypogegrammenicomb <anchor -512 -50> @bm;
+    markClass gbridgeabovecomb <anchor -512 1166> @tm;
+    markClass equalbelowcomb <anchor -512 10> @bm;
+    markClass doubleverticallinebelowcomb <anchor -512 10> @bm;
+    markClass leftanglebelowcomb <anchor -512 10> @bm;
+    markClass nottildeabovecomb <anchor -512 1166> @tm;
+    markClass homotheticabovecomb <anchor -512 1166> @tm;
+    markClass almostequaltoabovecomb <anchor -512 1146> @tm;
+    markClass arrowleftrightbelowcomb <anchor -512 10> @bm;
+    markClass arrowupbelowcomb <anchor -512 10> @bm;
+    markClass arrowheadrightabovecomb <anchor -512 1180> @tm;
+    markClass lefthalfringabovecomb <anchor -512 1180> @tm;
+    markClass fermatacomb <anchor -512 1140> @tm;
+    markClass xbelowcomb <anchor -512 -10> @bm;
+    markClass arrowheadleftbelowcomb <anchor -512 -10> @bm;
+    markClass arrowheadrightbelowcomb <anchor -512 -10> @bm;
+    markClass arrowheadrightheadupbelowcomb <anchor -512 -10> @bm;
+    markClass righthalfringabovecomb <anchor -512 1187> @tm;
+    markClass dotaboverightcomb <anchor -131 1187> @tm;
+    markClass asteriskbelowcomb <anchor -512 -10> @bm;
+    markClass doubleringbelowcomb <anchor -512 -10> @bm;
+    markClass zigzagabovecomb <anchor -512 1140> @tm;
+    markClass doublebrevebelowcomb <anchor -512 -10> @bm;
+    markClass doublebrevecomb <anchor -512 1187> @tm;
+    markClass doublemacroncomb <anchor -512 1187> @tm;
+    markClass doublemacronbelowcomb <anchor -512 -10> @bm;
+    markClass tildedoublecomb <anchor -512 1187> @tm;
+    markClass breveinverteddoublecomb <anchor -512 1187> @tm;
+    markClass arrowdoublerightbelowcomb <anchor -512 -10> @bm;
+    markClass segoltahb <anchor -333 1100> @hmt;
+    markClass shalshelethb <anchor -333 1100> @hmt;
+    markClass zaqefqatanhb <anchor -331 1100> @hmt;
+    markClass zaqefgadolhb <anchor -333 1100> @hmt;
+    markClass reviamugrashhb <anchor -390 1100> @hmt;
+    markClass zarqahb <anchor -286 1100> @hmt;
+    markClass pashtahb <anchor -462 1100> @hmt;
+    markClass gereshaccenthb <anchor -342 1100> @hmt;
+    markClass gereshmuqdamhb <anchor -342 1100> @hmt;
+    markClass gershayimaccenthb <anchor -239 1100> @hmt;
+    markClass qarneyparahb <anchor -127 1100> @hmt;
+    markClass telishagedolahb <anchor -315 1100> @hmt;
+    markClass pazerhb <anchor -285 1100> @hmt;
+    markClass qadmahb <anchor -472 1100> @hmt;
+    markClass telishaqetanahb <anchor -350 1100> @hmt;
+    markClass olehb <anchor -350 1100> @hmt;
+    markClass iluyhb <anchor -339 1100> @hmt;
+    markClass zinorhb <anchor -296 1100> @hmt;
+    markClass masoracirclehb <anchor -327 1100> @hmt;
+    markClass holamhb <anchor -457 1100> @hmt;
+    markClass holamhaserhb <anchor -457 1100> @hmt;
+    markClass rafehb <anchor 774 1100> @hmt;
+    markClass shindothb <anchor 572 1100> @hmt;
+    markClass sindothb <anchor -452 1100> @hmt;
+    markClass upperdothb <anchor 572 1100> @hmt;
+    markClass TahAbove.alt01 <anchor -512 970> @atm;
+    markClass Fathatan <anchor -512 976> @atm;
+    markClass Dammatan <anchor -512 970> @atm;
+    markClass Kastratan <anchor -512 40> @abm;
+    markClass Fatha <anchor -512 970> @atm;
+    markClass Damma <anchor -512 970> @atm;
+    markClass Kasra <anchor -512 40> @abm;
+    markClass shadda-ar <anchor -512 970> @atm;
+    markClass Sukun <anchor -512 970> @atm;
+    markClass MaddaAbove <anchor -512 970> @atm;
+    markClass HamzaAbove <anchor -512 970> @atm;
+    markClass HamzaBelove <anchor -512 40> @abm;
+    markClass InvertedDamma <anchor -512 970> @atm;
+    markClass SmallVAbv <anchor -512 970> @atm;
+    markClass AlefSuperscript <anchor -512 970> @atm;
+    markClass HighHamza <anchor -512 970> @atm;
+    markClass ArabThreeDots <anchor -512 970> @atm;
+    markClass undercommaaccent <anchor 504 10> @bm;
+    markClass ringacute <anchor 512 1188> @tm;
+    markClass dotmacron <anchor 512 1200> @tm;
+    markClass dieresismacron <anchor 512 1200> @tm;
+    markClass dieresiscaron <anchor 512 1200> @tm;
+    markClass tildemacron <anchor 512 1200> @tm;
+    markClass dieresisacute <anchor 512 1200> @tm;
+    markClass dieresisgrave <anchor 512 1200> @tm;
+    markClass OneDotAbove <anchor -512 970> @atm;
+    markClass OneDotBelove <anchor -512 40> @abm;
+    markClass TwoDotsAbove <anchor -512 970> @atm;
+    markClass TwoDotsBelove <anchor -512 40> @abm;
+    markClass ThreeDotsAbove <anchor -512 970> @atm;
+    markClass ThreeDotsBelove <anchor -512 40> @abm;
+    markClass ThreeDotsAboveDwn <anchor -512 970> @atm;
+    markClass ThreeDotsBeloveDwn <anchor -512 40> @abm;
+    markClass FourDotsAbove <anchor -512 970> @atm;
+    markClass FourDotsBelove <anchor -512 40> @abm;
+    markClass DoubleBarBelove <anchor -512 40> @abm;
+    markClass TwoDotsVAbove <anchor -512 970> @atm;
+    markClass TwoDotsVBelove <anchor -512 40> @abm;
+    markClass ArabRing <anchor -512 40> @abm;
+    markClass TahAbove <anchor -512 970> @atm;
+    markClass TahBelove <anchor -512 40> @abm;
+    markClass ShaddaDammatan <anchor -512 991> @atm;
+    markClass ShaddaKastratan <anchor -512 1073> @atm;
+    markClass ShaddaFatha <anchor -512 1212> @atm;
+    markClass ShaddaDamma <anchor -512 1032> @atm;
+    markClass ShaddaKasra <anchor -512 1270> @atm;
+    markClass ShaddaAlefSuper <anchor -512 1000> @atm;
+    markClass acomb <anchor -512 1217> @tm;
+    markClass ccomb <anchor -512 1217> @tm;
+    markClass dcomb <anchor -512 1217> @tm;
+    markClass ecomb <anchor -512 1217> @tm;
+    markClass hcomb <anchor -512 1217> @tm;
+    markClass icomb <anchor -512 1217> @tm;
+    markClass mcomb <anchor -512 1217> @tm;
+    markClass ocomb <anchor -512 1217> @tm;
+    markClass rcomb <anchor -512 1217> @tm;
+    markClass tcomb <anchor -512 1217> @tm;
+    markClass ucomb <anchor -512 1217> @tm;
+    markClass vcomb <anchor -512 1217> @tm;
+    markClass xcomb <anchor -512 1217> @tm;
+    markClass rhombusStopbelowar <anchor -512 40> @abm;
+    markClass rhombusStopabovear <anchor -512 970> @atm;
+    markClass dotStopabovear <anchor -512 970> @atm;
+    markClass sukunroundar <anchor -512 970> @atm;
+    markClass sukunovalar <anchor -512 970> @atm;
+    markClass seenbelowar <anchor -512 40> @abm;
+    markClass hahabovear <anchor -512 970> @atm;
+    markClass meemStopabovear <anchor -512 970> @atm;
+    markClass meembelowar <anchor -512 40> @abm;
+    markClass maddalongar <anchor -512 970> @atm;
+    markClass wawSmallar <anchor -512 970> @atm;
+    markClass yehabovear <anchor -512 970> @atm;
+    markClass yehbelowar <anchor -512 970> @atm;
+    markClass noonabovear <anchor -512 970> @atm;
+    markClass seenabovear <anchor -512 970> @atm;
+    markClass jeemabovear <anchor -512 970> @atm;
+    markClass lamAlefabovear <anchor -512 970> @atm;
+    markClass meemabovear <anchor -512 970> @atm;
+    markClass qafLamAlefMaksuraabovear <anchor -512 970> @atm;
+    markClass sadLamAlefMaksuraabovear <anchor -512 970> @atm;
+    markClass alefbelowar <anchor -512 40> @abm;
+    markClass noonghunnaabovear <anchor -512 970> @atm;
+    markClass fathaHorizontar <anchor -512 970> @atm;
+    markClass vinvertedabovear <anchor -512 970> @atm;
+    markClass dotvowelbelowar <anchor -512 40> @abm;
+    markClass dammareversedar <anchor -512 970> @atm;
+    markClass fathatwodotsar <anchor -512 970> @atm;
+    markClass gravedottedcomb <anchor -512 1200> @tm;
+    markClass acutedottedcomb <anchor -512 1200> @tm;
+    markClass macronacutecomb <anchor -512 1240> @tm;
+    markClass gravemacroncomb <anchor -512 1240> @tm;
+    markClass macrongravecomb <anchor -512 1240> @tm;
+    markClass acutemacroncomb <anchor -512 1240> @tm;
+    markClass graveacutegravecomb <anchor -512 1240> @tm;
+    markClass acutegraveacutecomb <anchor -512 1240> @tm;
+    markClass rbelowcomb <anchor -512 -10> @bm;
+    markClass snakebelowcomb <anchor -512 -10> @bm;
+    markClass brevemacroncomb <anchor -512 1177> @tm;
+    markClass macronbrevecomb <anchor -512 1177> @tm;
+    markClass doublecircumflexcomb <anchor -512 1208> @tm;
+    markClass zigzagbelowcomb <anchor -512 20> @bm;
+    markClass arrowheadrightheaddownbelow <anchor -512 -10> @bm;
+    markClass arrowheadleftabovecomb <anchor -512 1168> @tm;
+    markClass almostequaltobelowcomb <anchor -512 10> @bm;
+    markClass breveinverteddblbelowcomb <anchor -512 -10> @bm;
+    markClass deletionmarkcomb <anchor -512 1158> @tm;
+    markClass wideinvertedbridgebelowcomb <anchor -512 -10> @bm;
+    markClass dotaboveleftcomb <anchor -512 1218> @tm;
+    markClass kavykaaboveleftcomb <anchor -512 1218> @tm;
+    markClass ligaturelefthalfcomb <anchor -512 1218> @tm;
+    markClass ligaturerighthalfcomb <anchor -512 1218> @tm;
+    markClass doubletildelefthalfcomb <anchor -342 1218> @tm;
+    markClass doubletilderighthalfcomb <anchor -512 1218> @tm;
+    markClass macronlefthalfcomb <anchor -512 1330> @tm;
+    markClass macronrighthalfcomb <anchor -512 1330> @tm;
+    markClass conjoiningmacroncomb <anchor -512 1330> @tm;
+    markClass ligaturelefthalfbelowcomb <anchor -512 -10> @bm;
+    markClass ligaturerighthalfbelowcomb <anchor -342 -10> @bm;
+    markClass tildelefthalfbelowcomb <anchor -512 -10> @bm;
+    markClass tilderighthalfbelowcomb <anchor -512 -10> @bm;
+    markClass macronlefthalfbelowcomb <anchor -512 -129> @bm;
+    markClass macronrighthalfbelowcomb <anchor -512 -129> @bm;
+    markClass conjoiningmacronbelowcomb <anchor -512 -129> @bm;
+    markClass xxbelowcomb <anchor -512 0> @bm;
+    markClass wigglylinebelowcomb <anchor -512 0> @bm;
+    markClass openmarkbelowcomb <anchor -512 0> @bm;
+    markClass lightcentralizationstrokebelowcomb <anchor -512 102> @bm;
+    markClass strongcentralizationstrokebelowcomb <anchor -512 102> @bm;
+    markClass parentabovecomb <anchor -512 1168> @tm;
+    markClass doubleparentabovecomb <anchor -512 1168> @tm;
+    markClass parentbelowcomb <anchor -512 -10> @bm;
+    markClass uni1ABF <anchor -512 -10> @bm;
+    markClass uni1AC0 <anchor -512 -10> @bm;
+    markClass hookpalatalizedbelowcomb.alt01 <anchor -95 10> @bm;
+    markClass hookretroflexbelowcomb.alt01 <anchor -282 10> @bm;
 
-lookup mkmkLBM {
-markClass [gravebelowcomb acutebelowcomb dotbelowcomb verticallinebelowcomb dblarchinvertedbelowcomb caronbelowcomb circumflexbelowcomb brevebelowcomb breveinvertedbelowcomb tildebelowcomb bridgeinvertedbelowcomb seagullbelowcomb doublebrevebelowcomb doublemacronbelowcomb arrowdoublerightbelowcomb] <anchor -512 -70> @bm;
-markClass [lefttackbelowcomb righttackbelowcomb] <anchor -512 -48> @bm;
-markClass ringhalfleftbelowcomb <anchor -212 -36> @bm;
-markClass uptackbelowcomb <anchor -512 -43> @bm;
-markClass downtackbelowcomb <anchor -512 -33> @bm;
-markClass plusbelowcomb <anchor -512 30> @bm;
-markClass minusbelowcomb <anchor -512 -137> @bm;
-markClass dieresisbelowcomb <anchor -512 -81> @bm;
-markClass ringbelowcomb <anchor -512 -23> @bm;
-markClass commaaccentcomb <anchor -512 138> @bm;
-markClass ogonekcomb <anchor -500 30> @bm;
-markClass bridgebelowcomb <anchor -512 -40> @bm;
-markClass macronbelowcomb <anchor -512 -129> @bm;
-markClass lowlinecomb <anchor -512 -116> @bm;
-markClass dbllowlinecomb <anchor -512 -34> @bm;
-markClass ringhalfrightbelowcomb <anchor -542 -20> @bm;
-markClass squarebelowcomb <anchor -512 -41> @bm;
-markClass ypogegrammenicomb <anchor -512 -35> @bm;
-markClass equalbelowcomb <anchor -512 -33> @bm;
-markClass doubleverticallinebelowcomb <anchor -512 -23> @bm;
-markClass leftanglebelowcomb <anchor -512 -54> @bm;
-markClass arrowleftrightbelowcomb <anchor -512 -37> @bm;
-markClass [cedillacomb arrowupbelowcomb arrowheadleftbelowcomb arrowheadrightbelowcomb arrowheadrightheadupbelowcomb xxbelowcomb wigglylinebelowcomb openmarkbelowcomb doubleopenmarkbelowcomb] <anchor -512 0> @bm;
-markClass asteriskbelowcomb <anchor -512 -10> @bm;
-markClass doubleringbelowcomb <anchor -512 -20> @bm;
-markClass zigzagbelowcomb <anchor -512 20> @bm;
-markClass almostequaltobelowcomb <anchor -512 10> @bm;
-markClass [macronlefthalfbelowcomb macronrighthalfbelowcomb conjoiningmacronbelowcomb] <anchor -512 -129> @bm;
-markClass [lightcentralizationstrokebelowcomb strongcentralizationstrokebelowcomb] <anchor -512 102> @bm;
-markClass [arrowheadrightheaddownbelow xbelowcomb rbelowcomb snakebelowcomb breveinverteddblbelowcomb wideinvertedbridgebelowcomb ligaturelefthalfbelowcomb ligaturerighthalfbelowcomb tildelefthalfbelowcomb tilderighthalfbelowcomb parentbelowcomb uni1ABF uni1AC0] <anchor -512 -10> @bm;
-pos mark [gravebelowcomb acutebelowcomb lefttackbelowcomb righttackbelowcomb ringhalfleftbelowcomb uptackbelowcomb downtackbelowcomb plusbelowcomb minusbelowcomb dotbelowcomb dieresisbelowcomb ringbelowcomb commaaccentcomb cedillacomb bridgebelowcomb dblarchinvertedbelowcomb caronbelowcomb circumflexbelowcomb brevebelowcomb breveinvertedbelowcomb tildebelowcomb macronbelowcomb lowlinecomb dbllowlinecomb ringhalfrightbelowcomb bridgeinvertedbelowcomb squarebelowcomb seagullbelowcomb ypogegrammenicomb equalbelowcomb doubleverticallinebelowcomb leftanglebelowcomb arrowleftrightbelowcomb arrowupbelowcomb xbelowcomb arrowheadleftbelowcomb arrowheadrightbelowcomb arrowheadrightheadupbelowcomb asteriskbelowcomb doubleringbelowcomb doublebrevebelowcomb doublemacronbelowcomb arrowdoublerightbelowcomb ecedillabreve etadasiaypogegrammeni omegadasiaypogegrammeni rbelowcomb snakebelowcomb zigzagbelowcomb arrowheadrightheaddownbelow almostequaltobelowcomb breveinverteddblbelowcomb wideinvertedbridgebelowcomb ligaturelefthalfbelowcomb ligaturerighthalfbelowcomb tildelefthalfbelowcomb tilderighthalfbelowcomb macronlefthalfbelowcomb macronrighthalfbelowcomb conjoiningmacronbelowcomb xxbelowcomb openmarkbelowcomb lightcentralizationstrokebelowcomb strongcentralizationstrokebelowcomb parentbelowcomb uni1ABF uni1AC0] <anchor -512 -410> mark @bm;
-pos mark doubleopenmarkbelowcomb <anchor -308 -410> mark @bm;
+  lookup mkmkLTR {
+      pos mark dieresis
+          <anchor 512 1573> mark @tm;
+      pos mark macron
+          <anchor 512 1573> mark @tm;
+      pos mark cedilla
+          <anchor 512 -410> mark @bm;
+      pos mark ringhalfright
+          <anchor 512 1670> mark @tm;
+      pos mark ringhalfleft
+          <anchor 512 1670> mark @tm;
+      pos mark circumflex
+          <anchor 512 1573> mark @tm;
+      pos mark caron
+          <anchor 512 1573> mark @tm;
+      pos mark breve
+          <anchor 512 1593> mark @tm;
+      pos mark dotaccent
+          <anchor 512 1573> mark @tm;
+      pos mark ring
+          <anchor 512 1670> mark @tm;
+      pos mark ogonek
+          <anchor 542 -410> mark @bm;
+      pos mark tilde
+          <anchor 512 1573> mark @tm;
+      pos mark gravecomb
+          <anchor -422 1573> mark @tm;
+      pos mark acutecomb
+          <anchor -612 1573> mark @tm;
+      pos mark circumflexcomb
+          <anchor -512 1573> mark @tm;
+      pos mark tildecomb
+          <anchor -512 1573> mark @tm;
+      pos mark macroncomb
+          <anchor -512 1573> mark @tm;
+      pos mark overlinecomb
+          <anchor -512 1573> mark @tm;
+      pos mark brevecomb
+          <anchor -512 1593> mark @tm;
+      pos mark dotaccentcomb
+          <anchor -512 1573> mark @tm;
+      pos mark dieresiscomb
+          <anchor -512 1573> mark @tm;
+      pos mark hookabovecomb
+          <anchor -564 1543> mark @tm;
+      pos mark ringcomb
+          <anchor -512 1593> mark @tm;
+      pos mark hungarumlautcomb
+          <anchor -551 1573> mark @tm;
+      pos mark caroncomb
+          <anchor -512 1573> mark @tm;
+      pos mark verticallineabovecomb
+          <anchor -512 1573> mark @tm;
+      pos mark dblverticallineabovecomb
+          <anchor -512 1573> mark @tm;
+      pos mark dblgravecomb
+          <anchor -512 1573> mark @tm;
+      pos mark candraBinducomb
+          <anchor -512 1573> mark @tm;
+      pos mark breveinvertedcomb
+          <anchor -512 1593> mark @tm;
+      pos mark commaturnedabovecomb
+          <anchor -502 1573> mark @tm;
+      pos mark commaabovecomb
+          <anchor -596 1693> mark @tm;
+      pos mark commareversedabovecomb
+          <anchor -437 1693> mark @tm;
+      pos mark commaaboverightcomb
+          <anchor -72 1693> mark @tm;
+      pos mark gravebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark acutebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark lefttackbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark righttackbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark leftangleabovecomb
+          <anchor -514 1633> mark @tm;
+      pos mark horncomb
+          <anchor -263 1693> mark @tm;
+      pos mark ringhalfleftbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark uptackbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark downtackbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark plusbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark minusbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark hookpalatalizedbelowcomb
+          <anchor -95 -410> mark @bm;
+      pos mark hookretroflexbelowcomb
+          <anchor -282 -410> mark @bm;
+      pos mark dotbelowcomb
+          <anchor -513 -410> mark @bm;
+      pos mark dieresisbelowcomb
+          <anchor -513 -410> mark @bm;
+      pos mark ringbelowcomb
+          <anchor -513 -410> mark @bm;
+      pos mark commaaccentcomb
+          <anchor -512 -410> mark @bm;
+      pos mark cedillacomb
+          <anchor -512 -410> mark @bm;
+      pos mark ogonekcomb
+          <anchor -482 -410> mark @bm;
+      pos mark verticallinebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark bridgebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark dblarchinvertedbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark caronbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark circumflexbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark brevebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark breveinvertedbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark tildebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark macronbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark lowlinecomb
+          <anchor -512 -410> mark @bm;
+      pos mark dbllowlinecomb
+          <anchor -512 -410> mark @bm;
+      pos mark ringhalfrightbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark bridgeinvertedbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark squarebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark seagullbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark xabovecomb
+          <anchor -512 1593> mark @tm;
+      pos mark tildeverticalcomb
+          <anchor -512 1593> mark @tm;
+      pos mark dbloverlinecomb
+          <anchor -512 1593> mark @tm;
+      pos mark gravetonecomb
+          <anchor -512 1613> mark @tm;
+      pos mark acutetonecomb
+          <anchor -512 1613> mark @tm;
+      pos mark perispomenicomb
+          <anchor -512 1653> mark @tm;
+      pos mark koroniscomb
+          <anchor -512 1693> mark @tm;
+      pos mark dialytikatonoscomb
+          <anchor -512 1713> mark @tm;
+      pos mark ypogegrammenicomb
+          <anchor -512 -410> mark @bm;
+      pos mark gbridgeabovecomb
+          <anchor -512 1593> mark @tm;
+      pos mark equalbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark doubleverticallinebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark leftanglebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark nottildeabovecomb
+          <anchor -512 1593> mark @tm;
+      pos mark homotheticabovecomb
+          <anchor -512 1593> mark @tm;
+      pos mark almostequaltoabovecomb
+          <anchor -512 1603> mark @tm;
+      pos mark arrowleftrightbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark arrowupbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark arrowheadrightabovecomb
+          <anchor -512 1597> mark @tm;
+      pos mark lefthalfringabovecomb
+          <anchor -512 1597> mark @tm;
+      pos mark fermatacomb
+          <anchor -512 1597> mark @tm;
+      pos mark xbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark arrowheadleftbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark arrowheadrightbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark arrowheadrightheadupbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark righthalfringabovecomb
+          <anchor -512 1607> mark @tm;
+      pos mark dotaboverightcomb
+          <anchor -131 1567> mark @tm;
+      pos mark asteriskbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark doubleringbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark zigzagabovecomb
+          <anchor -512 1577> mark @tm;
+      pos mark doublebrevebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark doublebrevecomb
+          <anchor -512 1624> mark @tm;
+      pos mark doublemacroncomb
+          <anchor -512 1624> mark @tm;
+      pos mark doublemacronbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark tildedoublecomb
+          <anchor -512 1624> mark @tm;
+      pos mark breveinverteddoublecomb
+          <anchor -512 1624> mark @tm;
+      pos mark arrowdoublerightbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark tonos
+          <anchor 452 1700> mark @tm;
+      pos mark dieresistonos
+          <anchor 512 1700> mark @tm;
+      pos mark segoltahb
+          <anchor -824 1100> mark @hmt;
+      pos mark shalshelethb
+          <anchor -824 1100> mark @hmt;
+      pos mark zaqefqatanhb
+          <anchor -707 1100> mark @hmt;
+      pos mark zaqefgadolhb
+          <anchor -824 1100> mark @hmt;
+      pos mark reviamugrashhb
+          <anchor -794 1100> mark @hmt;
+      pos mark zarqahb
+          <anchor -834 1100> mark @hmt;
+      pos mark pashtahb
+          <anchor -794 1100> mark @hmt;
+      pos mark gereshaccenthb
+          <anchor -694 1100> mark @hmt;
+      pos mark gereshmuqdamhb
+          <anchor -694 1100> mark @hmt;
+      pos mark gershayimaccenthb
+          <anchor -804 1100> mark @hmt;
+      pos mark qarneyparahb
+          <anchor -1024 1100> mark @hmt;
+      pos mark telishagedolahb
+          <anchor -753 1100> mark @hmt;
+      pos mark pazerhb
+          <anchor -753 1100> mark @hmt;
+      pos mark qadmahb
+          <anchor -800 1100> mark @hmt;
+      pos mark telishaqetanahb
+          <anchor -840 1100> mark @hmt;
+      pos mark olehb
+          <anchor -840 1100> mark @hmt;
+      pos mark iluyhb
+          <anchor -838 1100> mark @hmt;
+      pos mark zinorhb
+          <anchor -844 1100> mark @hmt;
+      pos mark masoracirclehb
+          <anchor -804 1100> mark @hmt;
+      pos mark holamhb
+          <anchor -694 1100> mark @hmt;
+      pos mark holamhaserhb
+          <anchor -694 1100> mark @hmt;
+      pos mark rafehb
+          <anchor 130 1100> mark @hmt;
+      pos mark shindothb
+          <anchor 353 1100> mark @hmt;
+      pos mark sindothb
+          <anchor -671 1100> mark @hmt;
+      pos mark upperdothb
+          <anchor 353 1100> mark @hmt;
+      pos mark TahAbove.alt01
+          <anchor -512 1400> mark @atm;
+      pos mark Fathatan
+          <anchor -512 1400> mark @atm;
+      pos mark Dammatan
+          <anchor -512 1400> mark @atm;
+      pos mark Kastratan
+          <anchor -512 -390> mark @abm;
+      pos mark Fatha
+          <anchor -512 1400> mark @atm;
+      pos mark Damma
+          <anchor -512 1400> mark @atm;
+      pos mark Kasra
+          <anchor -512 -390> mark @abm;
+      pos mark shadda-ar
+          <anchor -512 1400> mark @atm;
+      pos mark Sukun
+          <anchor -512 1400> mark @atm;
+      pos mark MaddaAbove
+          <anchor -512 1400> mark @atm;
+      pos mark HamzaAbove
+          <anchor -512 1400> mark @atm;
+      pos mark HamzaBelove
+          <anchor -512 -390> mark @abm;
+      pos mark InvertedDamma
+          <anchor -512 1400> mark @atm;
+      pos mark SmallVAbv
+          <anchor -512 1400> mark @atm;
+      pos mark AlefSuperscript
+          <anchor -512 1400> mark @atm;
+      pos mark HighHamza
+          <anchor -512 1400> mark @atm;
+      pos mark ArabThreeDots
+          <anchor -512 1400> mark @atm;
+      pos mark dialytikaperispomeni
+          <anchor 512 1910> mark @tm;
+      pos mark psilivaria
+          <anchor 512 1700> mark @tm;
+      pos mark psilioxia
+          <anchor 512 1700> mark @tm;
+      pos mark psiliperispomeni
+          <anchor 512 1840> mark @tm;
+      pos mark dasiavaria
+          <anchor 512 1700> mark @tm;
+      pos mark dasiaoxia
+          <anchor 512 1700> mark @tm;
+      pos mark dasiaperispomeni
+          <anchor 512 1840> mark @tm;
+      pos mark dialytikavaria
+          <anchor 512 1870> mark @tm;
+      pos mark dialytikaoxia
+          <anchor 512 1870> mark @tm;
+      pos mark varia
+          <anchor -436 1700> mark @tm;
+      pos mark oxia
+          <anchor -588 1700> mark @tm;
+      pos mark undercommaaccent
+          <anchor 504 -410> mark @bm;
+      pos mark ringacute
+          <anchor 512 1803> mark @tm;
+      pos mark dotmacron
+          <anchor 512 1643> mark @tm;
+      pos mark dieresismacron
+          <anchor 512 1723> mark @tm;
+      pos mark dieresiscaron
+          <anchor 512 1663> mark @tm;
+      pos mark tildemacron
+          <anchor 512 1723> mark @tm;
+      pos mark dieresisacute
+          <anchor 512 1663> mark @tm;
+      pos mark dieresisgrave
+          <anchor 512 1663> mark @tm;
+      pos mark OneDotAbove
+          <anchor -512 1400> mark @atm;
+      pos mark OneDotBelove
+          <anchor -512 -390> mark @abm;
+      pos mark TwoDotsAbove
+          <anchor -512 1400> mark @atm;
+      pos mark TwoDotsBelove
+          <anchor -512 -390> mark @abm;
+      pos mark ThreeDotsAbove
+          <anchor -512 1400> mark @atm;
+      pos mark ThreeDotsBelove
+          <anchor -512 -390> mark @abm;
+      pos mark ThreeDotsAboveDwn
+          <anchor -512 1400> mark @atm;
+      pos mark ThreeDotsBeloveDwn
+          <anchor -512 -390> mark @abm;
+      pos mark FourDotsAbove
+          <anchor -512 1400> mark @atm;
+      pos mark FourDotsBelove
+          <anchor -512 -390> mark @abm;
+      pos mark DoubleBarBelove
+          <anchor -512 -390> mark @abm;
+      pos mark TwoDotsVAbove
+          <anchor -512 1400> mark @atm;
+      pos mark TwoDotsVBelove
+          <anchor -512 -390> mark @abm;
+      pos mark ArabRing
+          <anchor -512 -390> mark @abm;
+      pos mark TahAbove
+          <anchor -512 1400> mark @atm;
+      pos mark TahBelove
+          <anchor -512 -390> mark @abm;
+      pos mark ShaddaDammatan
+          <anchor -512 1940> mark @atm;
+      pos mark ShaddaKastratan
+          <anchor -512 1948> mark @atm;
+      pos mark ShaddaFatha
+          <anchor -512 1938> mark @atm;
+      pos mark ShaddaDamma
+          <anchor -512 1938> mark @atm;
+      pos mark ShaddaKasra
+          <anchor -512 1928> mark @atm;
+      pos mark ShaddaAlefSuper
+          <anchor -512 1838> mark @atm;
+      pos mark acomb
+          <anchor -512 1890> mark @tm;
+      pos mark ccomb
+          <anchor -512 1890> mark @tm;
+      pos mark dcomb
+          <anchor -512 1890> mark @tm;
+      pos mark ecomb
+          <anchor -512 1890> mark @tm;
+      pos mark hcomb
+          <anchor -512 1890> mark @tm;
+      pos mark icomb
+          <anchor -512 1890> mark @tm;
+      pos mark mcomb
+          <anchor -512 1890> mark @tm;
+      pos mark ocomb
+          <anchor -512 1890> mark @tm;
+      pos mark rcomb
+          <anchor -512 1890> mark @tm;
+      pos mark tcomb
+          <anchor -512 1890> mark @tm;
+      pos mark ucomb
+          <anchor -512 1890> mark @tm;
+      pos mark vcomb
+          <anchor -512 1890> mark @tm;
+      pos mark xcomb
+          <anchor -512 1890> mark @tm;
+      pos mark rhombusStopbelowar
+          <anchor -512 -390> mark @abm;
+      pos mark rhombusStopabovear
+          <anchor -512 1400> mark @atm;
+      pos mark dotStopabovear
+          <anchor -512 1400> mark @atm;
+      pos mark sukunroundar
+          <anchor -512 1400> mark @atm;
+      pos mark sukunovalar
+          <anchor -512 1400> mark @atm;
+      pos mark seenbelowar
+          <anchor -512 -390> mark @abm;
+      pos mark hahabovear
+          <anchor -512 1400> mark @atm;
+      pos mark meemStopabovear
+          <anchor -512 1400> mark @atm;
+      pos mark meembelowar
+          <anchor -512 -390> mark @abm;
+      pos mark maddalongar
+          <anchor -512 1400> mark @atm;
+      pos mark wawSmallar
+          <anchor -512 1400> mark @atm;
+      pos mark yehabovear
+          <anchor -512 1400> mark @atm;
+      pos mark yehbelowar
+          <anchor -512 1400> mark @atm;
+      pos mark noonabovear
+          <anchor -512 1400> mark @atm;
+      pos mark seenabovear
+          <anchor -512 1400> mark @atm;
+      pos mark jeemabovear
+          <anchor -512 1400> mark @atm;
+      pos mark lamAlefabovear
+          <anchor -512 1400> mark @atm;
+      pos mark meemabovear
+          <anchor -512 1400> mark @atm;
+      pos mark qafLamAlefMaksuraabovear
+          <anchor -512 1400> mark @atm;
+      pos mark sadLamAlefMaksuraabovear
+          <anchor -512 1400> mark @atm;
+      pos mark alefbelowar
+          <anchor -512 -390> mark @abm;
+      pos mark noonghunnaabovear
+          <anchor -512 1400> mark @atm;
+      pos mark fathaHorizontar
+          <anchor -512 1400> mark @atm;
+      pos mark vinvertedabovear
+          <anchor -512 1400> mark @atm;
+      pos mark dotvowelbelowar
+          <anchor -512 -390> mark @abm;
+      pos mark dammareversedar
+          <anchor -512 1400> mark @atm;
+      pos mark fathatwodotsar
+          <anchor -512 1400> mark @atm;
+      pos mark gravedottedcomb
+          <anchor -512 1603> mark @tm;
+      pos mark acutedottedcomb
+          <anchor -512 1603> mark @tm;
+      pos mark macronacutecomb
+          <anchor -512 1593> mark @tm;
+      pos mark gravemacroncomb
+          <anchor -512 1593> mark @tm;
+      pos mark macrongravecomb
+          <anchor -512 1593> mark @tm;
+      pos mark acutemacroncomb
+          <anchor -512 1593> mark @tm;
+      pos mark graveacutegravecomb
+          <anchor -512 1593> mark @tm;
+      pos mark acutegraveacutecomb
+          <anchor -512 1593> mark @tm;
+      pos mark rbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark snakebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark brevemacroncomb
+          <anchor -512 1573> mark @tm;
+      pos mark macronbrevecomb
+          <anchor -512 1573> mark @tm;
+      pos mark doublecircumflexcomb
+          <anchor -512 1603> mark @tm;
+      pos mark zigzagbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark arrowheadrightheaddownbelow
+          <anchor -512 -410> mark @bm;
+      pos mark arrowheadleftabovecomb
+          <anchor -512 1603> mark @tm;
+      pos mark almostequaltobelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark breveinverteddblbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark deletionmarkcomb
+          <anchor -512 1593> mark @tm;
+      pos mark wideinvertedbridgebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark dotaboveleftcomb
+          <anchor -512 1573> mark @tm;
+      pos mark kavykaaboveleftcomb
+          <anchor -512 1635> mark @tm;
+      pos mark ligaturelefthalfcomb
+          <anchor -512 1635> mark @tm;
+      pos mark ligaturerighthalfcomb
+          <anchor -512 1635> mark @tm;
+      pos mark doubletildelefthalfcomb
+          <anchor -342 1635> mark @tm;
+      pos mark doubletilderighthalfcomb
+          <anchor -512 1635> mark @tm;
+      pos mark macronlefthalfcomb
+          <anchor -512 1610> mark @tm;
+      pos mark macronrighthalfcomb
+          <anchor -512 1610> mark @tm;
+      pos mark conjoiningmacroncomb
+          <anchor -512 1610> mark @tm;
+      pos mark ligaturelefthalfbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark ligaturerighthalfbelowcomb
+          <anchor -342 -410> mark @bm;
+      pos mark tildelefthalfbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark tilderighthalfbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark macronlefthalfbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark macronrighthalfbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark conjoiningmacronbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark xxbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark wigglylinebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark openmarkbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark lightcentralizationstrokebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark strongcentralizationstrokebelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark parentabovecomb
+          <anchor -512 1616> mark @tm;
+      pos mark doubleparentabovecomb
+          <anchor -512 1616> mark @tm;
+      pos mark parentbelowcomb
+          <anchor -512 -410> mark @bm;
+      pos mark uni1ABF
+          <anchor -512 -410> mark @bm;
+      pos mark uni1AC0
+          <anchor -512 -410> mark @bm;
+      pos mark hookpalatalizedbelowcomb.alt01
+          <anchor -95 -410> mark @bm;
+      pos mark hookretroflexbelowcomb.alt01
+          <anchor -282 -410> mark @bm;
+  } mkmkLTR;
 
-} mkmkLBM;
-
-lookup mkmkATM {
-lookupflag RightToLeft;
-markClass TahAbove.alt01 <anchor 512 1148> @atm;
-markClass Fathatan <anchor 512 1455> @atm;
-markClass Dammatan <anchor 512 1400> @atm;
-markClass Fatha <anchor 523 1600> @atm;
-markClass Damma <anchor 508 1409> @atm;
-markClass Shadda <anchor 536 1479> @atm;
-markClass Sukun <anchor 512 1492> @atm;
-markClass MaddaAbove <anchor 512 1261> @atm;
-markClass HamzaAbove <anchor 512 1144> @atm;
-markClass InvertedDamma <anchor 478 1355> @atm;
-markClass SmallVAbv <anchor 512 1516> @atm;
-markClass ArabThreeDots <anchor 512 1036> @atm;
-markClass ShaddaDammatan <anchor 512 1011> @atm;
-markClass ShaddaKastratan <anchor 512 1101> @atm;
-markClass ShaddaFatha <anchor 512 1235> @atm;
-markClass ShaddaDamma <anchor 512 1057> @atm;
-markClass ShaddaKasra <anchor 512 1292> @atm;
-markClass ShaddaAlefSuper <anchor 512 1031> @atm;
-markClass rhombusStopabovear <anchor 512 1048> @atm;
-markClass dotStopabovear <anchor 512 1319> @atm;
-markClass sukunroundar <anchor 512 1270> @atm;
-markClass sukunovalar <anchor 512 1293> @atm;
-markClass hahabovear <anchor 512 1104> @atm;
-markClass meemStopabovear <anchor 512 1015> @atm;
-markClass maddalongar <anchor 512 1255> @atm;
-markClass yehabovear <anchor 512 1085> @atm;
-markClass noonabovear <anchor 512 1088> @atm;
-markClass seenabovear <anchor 512 1051> @atm;
-markClass jeemabovear <anchor 512 998> @atm;
-markClass lamAlefabovear <anchor 512 978> @atm;
-markClass meemabovear <anchor 512 1091> @atm;
-markClass qafLamAlefMaksuraabovear <anchor 512 1043> @atm;
-markClass sadLamAlefMaksuraabovear <anchor 512 1043> @atm;
-markClass noonghunnaabovear <anchor 512 1200> @atm;
-markClass fathaHorizontar <anchor 512 1228> @atm;
-markClass vinvertedabovear <anchor 512 1527> @atm;
-markClass dammareversedar <anchor 502 1412> @atm;
-markClass fathatwodotsar <anchor 512 1133> @atm;
-pos mark TahAbove.alt01 <anchor 512 1733> mark @atm;
-pos mark Fathatan <anchor 512 1889> mark @atm;
-pos mark Dammatan <anchor 512 1949> mark @atm;
-pos mark Fatha <anchor 512 1908> mark @atm;
-pos mark Damma <anchor 508 1935> mark @atm;
-pos mark Shadda <anchor 516 1908> mark @atm;
-pos mark Sukun <anchor 512 1934> mark @atm;
-pos mark MaddaAbove <anchor 512 1564> mark @atm;
-pos mark HamzaAbove <anchor 512 1584> mark @atm;
-pos mark InvertedDamma <anchor 478 1884> mark @atm;
-pos mark SmallVAbv <anchor 512 1937> mark @atm;
-pos mark ArabThreeDots <anchor 512 1601> mark @atm;
-pos mark ShaddaDammatan <anchor 513 1921> mark @atm;
-pos mark ShaddaKastratan <anchor 512 1905> mark @atm;
-pos mark ShaddaFatha <anchor 512 1884> mark @atm;
-pos mark ShaddaDamma <anchor 512 1921> mark @atm;
-pos mark ShaddaKasra <anchor 512 1902> mark @atm;
-pos mark ShaddaAlefSuper <anchor 512 1811> mark @atm;
-pos mark rhombusStopabovear <anchor 512 1570> mark @atm;
-pos mark dotStopabovear <anchor 512 1590> mark @atm;
-pos mark sukunroundar <anchor 512 1599> mark @atm;
-pos mark sukunovalar <anchor 512 1587> mark @atm;
-pos mark hahabovear <anchor 512 1596> mark @atm;
-pos mark meemStopabovear <anchor 512 1608> mark @atm;
-pos mark maddalongar <anchor 512 1595> mark @atm;
-pos mark yehabovear <anchor 512 1604> mark @atm;
-pos mark noonabovear <anchor 512 1616> mark @atm;
-pos mark seenabovear <anchor 512 1607> mark @atm;
-pos mark jeemabovear <anchor 512 1588> mark @atm;
-pos mark lamAlefabovear <anchor 512 1585> mark @atm;
-pos mark meemabovear <anchor 512 1602> mark @atm;
-pos mark qafLamAlefMaksuraabovear <anchor 512 1633> mark @atm;
-pos mark sadLamAlefMaksuraabovear <anchor 512 1620> mark @atm;
-pos mark noonghunnaabovear <anchor 512 1579> mark @atm;
-pos mark fathaHorizontar <anchor 512 1508> mark @atm;
-pos mark vinvertedabovear <anchor 512 1948> mark @atm;
-pos mark dammareversedar <anchor 502 1926> mark @atm;
-pos mark fathatwodotsar <anchor 512 1719> mark @atm;
-} mkmkATM;
-
-lookup mkmkABM {
-lookupflag RightToLeft;
-markClass rhombusStopbelowar <anchor 512 118> @abm;
-markClass Kastratan <anchor 512 75> @abm;
-markClass Kasra <anchor 512 -76> @abm;
-markClass HamzaBelove <anchor 512 26> @abm;
-markClass seenbelowar <anchor 512 147> @abm;
-markClass meembelowar <anchor 512 228> @abm;
-markClass alefbelowar <anchor 512 54> @abm;
-markClass dotvowelbelowar <anchor 512 67> @abm;
-pos mark Kastratan <anchor 512 -362> mark @abm;
-pos mark Kasra <anchor 512 -394> mark @abm;
-pos mark HamzaBelove <anchor 517 -394> mark @abm;
-pos mark rhombusStopbelowar <anchor 512 -388> mark @abm;
-pos mark seenbelowar <anchor 512 -385> mark @abm;
-pos mark meembelowar <anchor 512 -388> mark @abm;
-pos mark alefbelowar <anchor 512 -403> mark @abm;
-pos mark dotvowelbelowar <anchor 512 -291> mark @abm;
-} mkmkABM;
-
-lookup mkmkHTM {
-lookupflag RightToLeft;
-markClass segoltahb <anchor 691 1100> @hmt;
-markClass shalshelethb <anchor 693 1100> @hmt;
-markClass zaqefqatanhb <anchor 571 1100> @hmt;
-markClass zaqefgadolhb <anchor 678 1100> @hmt;
-markClass reviamugrashhb <anchor 634 1100> @hmt;
-markClass zarqahb <anchor 737 1100> @hmt;
-markClass pashtahb <anchor 562 1100> @hmt;
-markClass gereshaccenthb <anchor 682 1100> @hmt;
-markClass gereshmuqdamhb <anchor 682 1100> @hmt;
-markClass gershayimaccenthb <anchor 785 1100> @hmt;
-markClass telishagedolahb <anchor 719 1100> @hmt;
-markClass pazerhb <anchor 756 1100> @hmt;
-markClass qadmahb <anchor 562 1100> @hmt;
-markClass telishaqetanahb <anchor 674 1100> @hmt;
-markClass olehb <anchor 686 1100> @hmt;
-markClass iluyhb <anchor 685 1100> @hmt;
-markClass zinorhb <anchor 737 1100> @hmt;
-markClass masoracirclehb <anchor 696 1100> @hmt;
-markClass holamhb <anchor 572 1100> @hmt;
-markClass holamhaserhb <anchor 572 1100> @hmt;
-markClass shindothb <anchor 572 1100> @hmt;
-markClass sindothb <anchor 572 1100> @hmt;
-markClass upperdothb <anchor 572 1100> @hmt;
-pos mark segoltahb <anchor 200 1100> mark @hmt;
-pos mark shalshelethb <anchor 154 1100> mark @hmt;
-pos mark zaqefqatanhb <anchor 317 1100> mark @hmt;
-pos mark zaqefgadolhb <anchor 216 1101> mark @hmt;
-pos mark reviamugrashhb <anchor 230 1100> mark @hmt;
-pos mark zarqahb <anchor 182 1100> mark @hmt;
-pos mark pashtahb <anchor 239 1100> mark @hmt;
-pos mark gereshaccenthb <anchor 329 1100> mark @hmt;
-pos mark gereshmuqdamhb <anchor 329 1100> mark @hmt;
-pos mark gershayimaccenthb <anchor 233 1100> mark @hmt;
-pos mark telishagedolahb <anchor 242 1100> mark @hmt;
-pos mark pazerhb <anchor 282 1100> mark @hmt;
-pos mark qadmahb <anchor 239 1100> mark @hmt;
-pos mark telishaqetanahb <anchor 198 1100> mark @hmt;
-pos mark olehb <anchor 192 1100> mark @hmt;
-pos mark iluyhb <anchor 178 1100> mark @hmt;
-pos mark zinorhb <anchor 182 1100> mark @hmt;
-pos mark masoracirclehb <anchor 231 1100> mark @hmt;
-pos mark holamhb <anchor 322 1100> mark @hmt;
-pos mark holamhaserhb <anchor 318 1100> mark @hmt;
-pos mark shindothb <anchor 334 1100> mark @hmt;
-pos mark sindothb <anchor 341 1100> mark @hmt;
-pos mark upperdothb <anchor 363 1100> mark @hmt;
-} mkmkHTM;
-
-lookup mkmkHMB {
-lookupflag RightToLeft;
-markClass etnahtalefthb <anchor 739 70> @hmb;
-markClass tipehalefthb <anchor 642 0> @hmb;
-markClass yetivhb <anchor 800 20> @hmb;
-markClass tevirlefthb <anchor 690 70> @hmb;
-markClass atnahhafukhhb <anchor 738 70> @hmb;
-markClass munahlefthb <anchor 715 70> @hmb;
-markClass mahapakhlefthb <anchor 690 70> @hmb;
-markClass merkhalefthb <anchor 632 0> @hmb;
-markClass merkhakefulalefthb <anchor 721 0> @hmb;
-markClass dargalefthb <anchor 650 70> @hmb;
-markClass yerahbenyomolefthb <anchor 738 70> @hmb;
-markClass shevahb <anchor 571 70> @hmb;
-markClass hatafsegolhb <anchor 810 70> @hmb;
-markClass hatafpatahhb <anchor 864 70> @hmb;
-markClass hatafqamatshb <anchor 864 70> @hmb;
-markClass hiriqhb <anchor 571 70> @hmb;
-markClass tserehb <anchor 690 70> @hmb;
-markClass segolhb <anchor 711 70> @hmb;
-markClass patahhb <anchor 744 70> @hmb;
-markClass qamatshb <anchor 745 70> @hmb;
-markClass dehihb <anchor 722 70> @hmb;
-markClass qubutshb <anchor 830 70> @hmb;
-markClass lowerdothb <anchor 571 70> @hmb;
-markClass qamatsqatanhb <anchor 744 70> @hmb;
-pos mark etnahtalefthb <anchor 183 70> mark @hmb;
-pos mark tipehalefthb <anchor 254 0> mark @hmb;
-pos mark yetivhb <anchor 210 20> mark @hmb;
-pos mark tevirlefthb <anchor 168 70> mark @hmb;
-pos mark atnahhafukhhb <anchor 173 70> mark @hmb;
-pos mark munahlefthb <anchor 219 70> mark @hmb;
-pos mark mahapakhlefthb <anchor 203 70> mark @hmb;
-pos mark merkhalefthb <anchor 288 0> mark @hmb;
-pos mark merkhakefulalefthb <anchor 165 0> mark @hmb;
-pos mark dargalefthb <anchor 271 70> mark @hmb;
-pos mark yerahbenyomolefthb <anchor 170 70> mark @hmb;
-pos mark shevahb <anchor 312 70> mark @hmb;
-pos mark hatafsegolhb <anchor 98 70> mark @hmb;
-pos mark hatafpatahhb <anchor 49 70> mark @hmb;
-pos mark hatafqamatshb <anchor 49 70> mark @hmb;
-pos mark hiriqhb <anchor 312 70> mark @hmb;
-pos mark tserehb <anchor 205 70> mark @hmb;
-pos mark segolhb <anchor 182 70> mark @hmb;
-pos mark patahhb <anchor 169 70> mark @hmb;
-pos mark qamatshb <anchor 171 70> mark @hmb;
-pos mark dehihb <anchor 328 70> mark @hmb;
-pos mark qubutshb <anchor 110 70> mark @hmb;
-pos mark lowerdothb <anchor 348 70> mark @hmb;
-pos mark qamatsqatanhb <anchor 191 70> mark @hmb;
-} mkmkHMB;
-
-script latn; # Latin
-lookup mkmkLTM;
-lookup mkmkLBM;
-script arab; # Arabic
-lookup mkmkATM;
-lookup mkmkABM;
-script hebr; # Hebrew
-lookup mkmkHTM;
-lookup mkmkHMB;
-
+  lookup mkmkLTR;
+#< feature
 } mkmk;
